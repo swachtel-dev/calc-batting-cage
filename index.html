@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Batting Cage — Calc II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --max-w: 860px;
+  }
+
+  [data-theme="dark"] {
+    --bg-0: #08080a;
+    --bg-1: #111114;
+    --bg-2: #1a1a1f;
+    --bg-3: #222228;
+    --border: #2a2a32;
+    --border-hover: #3a3a44;
+    --text-1: #ececf0;
+    --text-2: #a0a0ae;
+    --text-3: #62626e;
+    --amber: #f5a623;
+    --amber-dim: #2e1f06;
+    --amber-glow: rgba(245, 166, 35, 0.12);
+    --green: #34d399;
+    --green-dim: #062e1e;
+    --red: #f87171;
+    --red-dim: #2e0a0a;
+    --blue: #60a5fa;
+    --overlay: rgba(0,0,0,0.6);
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+    --card-active: #151518;
+  }
+
+  [data-theme="light"] {
+    --bg-0: #f6f5f1;
+    --bg-1: #ffffff;
+    --bg-2: #f0efeb;
+    --bg-3: #e8e6e0;
+    --border: #dbd8d0;
+    --border-hover: #c5c2ba;
+    --text-1: #1a1918;
+    --text-2: #6b6860;
+    --text-3: #9e9b92;
+    --amber: #c27a0e;
+    --amber-dim: #fdf4e6;
+    --amber-glow: rgba(194, 122, 14, 0.08);
+    --green: #059669;
+    --green-dim: #ecfdf5;
+    --red: #dc2626;
+    --red-dim: #fef2f2;
+    --blue: #2563eb;
+    --overlay: rgba(255,255,255,0.7);
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --card-active: #fffdf8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-0);
+    color: var(--text-1);
+    min-height: 100vh;
+    transition: background 0.4s var(--ease-out), color 0.3s;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- Background texture --- */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* --- Screen management --- */
+  .screen { display: none; animation: fadeIn 0.35s var(--ease-out); }
+  .screen.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- Top bar (shared) --- */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .top-bar__brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--text-3);
+  }
+  .top-bar__brand span { color: var(--amber); }
+  .top-bar__right { display: flex; align-items: center; gap: 12px; }
+
+  /* --- Theme toggle --- */
+  .theme-toggle {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: 44px; height: 24px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s var(--ease-out);
+  }
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--text-2);
+    transition: transform 0.3s var(--ease-spring);
+  }
+  [data-theme="light"] .theme-toggle::after { transform: translateX(20px); }
+
+  /* ======================= SETUP SCREEN ======================= */
+  .setup-header {
+    text-align: center;
+    padding: 48px 0 40px;
+  }
+  .setup-header h1 {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .setup-header h1 span { color: var(--amber); }
+  .setup-header p {
+    color: var(--text-2);
+    font-size: 15px;
+  }
+
+  .chapter-group {
+    margin-bottom: 28px;
+  }
+  .chapter-group__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-3);
+    margin-bottom: 12px;
+    padding-left: 2px;
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+
+  .section-card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.25s var(--ease-out);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .section-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-2);
+  }
+  .section-card.on-deck {
+    border-left-color: var(--amber);
+    background: var(--card-active);
+    box-shadow: inset 0 0 0 1px var(--amber-glow);
+  }
+
+  .section-card__num {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-3);
+    background: var(--bg-2);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    transition: all 0.25s;
+  }
+  .section-card.on-deck .section-card__num {
+    color: var(--amber);
+    background: var(--amber-dim);
+  }
+
+  .section-card__info { flex: 1; min-width: 0; }
+  .section-card__title {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .section-card__count {
+    font-size: 12px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  .section-card__check {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s var(--ease-spring);
+    flex-shrink: 0;
+  }
+  .section-card.on-deck .section-card__check {
+    background: var(--amber);
+    border-color: var(--amber);
+  }
+  .section-card__check svg {
+    width: 12px; height: 12px;
+    stroke: var(--bg-0);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s var(--ease-spring);
+  }
+  .section-card.on-deck .section-card__check svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Start bar */
+  .start-bar {
+    position: sticky;
+    bottom: 0;
+    background: var(--bg-0);
+    border-top: 1px solid var(--border);
+    padding: 16px 0 24px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+  .start-bar::before {
+    content: '';
+    position: absolute;
+    top: -24px; left: 0; right: 0; height: 24px;
+    background: linear-gradient(transparent, var(--bg-0));
+    pointer-events: none;
+  }
+
+  .deck-count {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-3);
+  }
+  .deck-count span { color: var(--amber); font-weight: 600; }
+
+  .btn {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s var(--ease-out);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    outline: none;
+  }
+  .btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-0), 0 0 0 4px var(--amber);
+  }
+
+  .btn--primary {
+    background: var(--amber);
+    color: #0a0a0a;
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+  .btn--primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn--primary:active { transform: translateY(0); }
+  .btn--primary:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--text-2);
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+  }
+  .btn--ghost:hover { background: var(--bg-2); color: var(--text-1); }
+
+  .btn--sm { padding: 8px 14px; font-size: 13px; }
+
+  .select-actions {
+    display: flex; gap: 8px; margin-bottom: 20px;
+  }
+
+  /* ======================= PRACTICE SCREEN ======================= */
+  .practice-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .practice-bar__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .session-timer {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .session-timer__dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .problem-counter {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-3);
+  }
+  .problem-counter span { color: var(--text-1); }
+
+  /* Problem card */
+  .problem-area {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .problem-section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-3);
+    background: var(--bg-2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .problem-section-link {
+    display: none;
+    text-align: center;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s var(--ease-out);
+  }
+  .problem-section-link.visible { display: block; }
+  .problem-section-link a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s var(--ease-out);
+  }
+  .problem-section-link a:hover {
+    background: var(--bg-3);
+    text-decoration: underline;
+  }
+  .problem-section-link a svg {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+  }
+
+  .verdict-hint {
+    font-size: 13px;
+    color: var(--text-3);
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    animation: fadeIn 0.3s var(--ease-out);
+  }
+
+  .problem-card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .problem-card .katex-display { margin: 0; }
+  .problem-card .katex { font-size: 1.35em; }
+
+  /* Problem timer */
+  .problem-timer {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--amber);
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    transition: color 0.4s, opacity 0.4s;
+  }
+  .problem-timer.paused {
+    color: var(--text-3);
+    animation: none;
+  }
+  .problem-timer .timer-pulse {
+    display: inline-block;
+    animation: timerPulse 1s ease-in-out infinite;
+  }
+  .problem-timer.paused .timer-pulse { animation: none; }
+  @keyframes timerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+  }
+
+  /* Action area */
+  .action-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn--reveal {
+    background: var(--amber);
+    color: #0a0a0a;
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+  }
+
+  /* Answer reveal */
+  .answer-area {
+    display: none;
+    animation: slideUp 0.35s var(--ease-out);
+  }
+  .answer-area.visible { display: block; }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .answer-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  .answer-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+
+  .answer-display {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .answer-display .katex { font-size: 1.2em; }
+
+  /* Solution walkthrough */
+  .solution-toggle {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto 20px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .solution-toggle:hover { color: var(--text-2); }
+  .solution-toggle svg {
+    width: 14px; height: 14px;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .solution-toggle.expanded svg { transform: rotate(180deg); }
+
+  .solution-content {
+    display: none;
+    text-align: left;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-2);
+  }
+  .solution-content.visible { display: block; animation: fadeIn 0.3s var(--ease-out); }
+  .solution-content .katex { font-size: 1em; }
+
+  /* Verdict buttons */
+  .verdict-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .btn--correct {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+  }
+  .btn--correct:hover { filter: brightness(1.15); }
+
+  .btn--wrong {
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+  }
+  .btn--wrong:hover { filter: brightness(1.15); }
+
+  .btn--skip {
+    background: transparent;
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+  }
+  .btn--skip:hover { background: var(--bg-2); }
+
+  .btn--next {
+    background: var(--bg-3);
+    color: var(--text-1);
+    padding: 12px 32px;
+    font-size: 15px;
+    border-radius: var(--radius-md);
+  }
+  .btn--next:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+  .key-hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--text-3);
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* ======================= RESULTS SCREEN ======================= */
+  .results-header {
+    text-align: center;
+    padding: 40px 0 32px;
+  }
+  .results-header h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-card__value {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--text-1);
+    margin-bottom: 4px;
+  }
+  .stat-card__value.amber { color: var(--amber); }
+  .stat-card__value.green { color: var(--green); }
+  .stat-card__label {
+    font-size: 12px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Results table */
+  .results-table-wrap {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .results-table th {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-2);
+  }
+  .results-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .results-table tr:last-child td { border-bottom: none; }
+  .results-table .katex { font-size: 0.9em; }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .result-badge.correct { background: var(--green-dim); color: var(--green); }
+  .result-badge.wrong { background: var(--red-dim); color: var(--red); }
+  .result-badge.skipped { background: var(--bg-2); color: var(--text-3); }
+
+  .review-link {
+    font-size: 13px;
+    color: var(--blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .review-link:hover { text-decoration: underline; }
+  .review-link svg { width: 12px; height: 12px; }
+
+  .results-actions {
+    text-align: center;
+    padding-bottom: 48px;
+  }
+
+  /* ======================= RESPONSIVE ======================= */
+  @media (max-width: 600px) {
+    .setup-header h1 { font-size: 28px; }
+    .section-grid { grid-template-columns: 1fr; }
+    .problem-card { padding: 28px 20px; }
+    .problem-timer { font-size: 26px; }
+    .stats-row { gap: 12px; }
+    .stat-card { min-width: 90px; padding: 12px 16px; }
+    .stat-card__value { font-size: 20px; }
+    .verdict-row { flex-wrap: wrap; }
+    .results-table { font-size: 13px; }
+    .results-table th, .results-table td { padding: 10px 12px; }
+    .start-bar { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- =================== SETUP SCREEN =================== -->
+  <div id="setup-screen" class="screen active">
+    <div class="top-bar">
+      <div class="top-bar__brand">The Batting <span>Cage</span></div>
+      <div class="top-bar__right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+
+    <div class="setup-header">
+      <h1>Calculus <span>II</span></h1>
+      <p>Select sections to load, then step up to the plate.</p>
+    </div>
+
+    <div class="select-actions">
+      <button class="btn btn--ghost btn--sm" onclick="selectAll()">Select all</button>
+      <button class="btn btn--ghost btn--sm" onclick="clearAll()">Clear</button>
+    </div>
+
+    <div id="section-list"></div>
+
+    <div class="start-bar">
+      <div class="deck-count" id="deck-count">
+        <span>0</span> problems on deck
+      </div>
+      <button class="btn btn--primary" id="start-btn" disabled onclick="startSession()">
+        Start Session
+      </button>
+    </div>
+  </div>
+
+  <!-- =================== PRACTICE SCREEN =================== -->
+  <div id="practice-screen" class="screen">
+    <div class="practice-bar">
+      <div class="practice-bar__left">
+        <div class="session-timer">
+          <div class="session-timer__dot"></div>
+          <span id="session-timer-display">0:00</span>
+        </div>
+        <div class="problem-counter">
+          <span id="problem-current">1</span> / <span id="problem-total">12</span>
+        </div>
+      </div>
+      <button class="btn btn--ghost btn--sm" onclick="endSession()">End session</button>
+    </div>
+
+    <div class="problem-area">
+      <div class="problem-section-tag" id="problem-section-tag">
+        <span id="problem-section-num"></span>
+        <span id="problem-section-title"></span>
+      </div>
+
+      <div class="problem-section-link" id="problem-section-link"></div>
+
+      <div class="problem-prompt" id="problem-prompt" style="font-size:15px;color:var(--text-2);margin-bottom:16px;line-height:1.5"></div>
+
+      <div class="problem-card" id="problem-display"></div>
+
+      <div class="problem-timer" id="problem-timer">
+        <span class="timer-pulse" id="problem-timer-display">0:00</span>
+      </div>
+
+      <div class="action-area">
+        <div id="pre-reveal">
+          <button class="btn btn--reveal" onclick="revealAnswer()">
+            Show Answer <span class="key-hint">Space</span>
+          </button>
+        </div>
+
+        <div class="answer-area" id="post-reveal">
+          <div class="answer-divider"></div>
+          <div class="answer-label">Answer</div>
+          <div class="answer-display" id="answer-display"></div>
+
+          <button class="solution-toggle" id="solution-toggle" onclick="toggleSolution()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+            Show walkthrough
+          </button>
+          <div class="solution-content" id="solution-content"></div>
+
+          <div class="verdict-hint" id="verdict-hint" style="display:none">
+            How did you do? Be honest — this tracks your weak spots, not your grade.
+          </div>
+
+          <div class="verdict-row">
+            <button class="btn btn--correct" onclick="markResult('correct')">
+              Correct <span class="key-hint">1</span>
+            </button>
+            <button class="btn btn--wrong" onclick="markResult('wrong')">
+              Wrong <span class="key-hint">2</span>
+            </button>
+            <button class="btn btn--skip" onclick="markResult('skip')">
+              Skip <span class="key-hint">3</span>
+            </button>
+          </div>
+
+          <button class="btn btn--next" onclick="nextProblem()">
+            Next <span class="key-hint">Enter</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== RESULTS SCREEN =================== -->
+  <div id="results-screen" class="screen">
+    <div class="top-bar">
+      <div class="top-bar__brand">The Batting <span>Cage</span></div>
+      <div class="top-bar__right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+
+    <div class="results-header">
+      <h2>Session Complete</h2>
+    </div>
+
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="results-table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Section</th>
+            <th>Problem</th>
+            <th>Result</th>
+            <th>Time</th>
+            <th>Paul's Notes</th>
+          </tr>
+        </thead>
+        <tbody id="results-body"></tbody>
+      </table>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn--primary" onclick="backToSetup()">Practice Again</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ========================= PROBLEM DATA =========================
+const SECTIONS = {
+  "7.1": {
+    id: "7.1", title: "Integration by Parts",
+    chapter: "Integration Techniques", chapterNum: 7,
+    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx",
+    problems: [
+      {
+        prompt: "Evaluate the following integral using integration by parts.",
+        problem: "\\int x e^{3x} \\, dx",
+        answer: "\\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C",
+        solution: "We need to use integration by parts, which says \\( \\int u\\,dv = uv - \\int v\\,du \\).\n\n<b>Step 1: Choose u and dv.</b> We want to pick \\( u \\) as the part that gets simpler when we differentiate it, and \\( dv \\) as the part we can integrate. Here, \\( x \\) gets simpler when differentiated (it becomes 1), so:\n\n\\[ u = x \\qquad dv = e^{3x}\\,dx \\]\n\n<b>Step 2: Find du and v.</b> Differentiate \\( u \\) and integrate \\( dv \\):\n\n\\[ du = dx \\qquad v = \\int e^{3x}\\,dx = \\frac{1}{3}e^{3x} \\]\n\n(We get \\( v = \\tfrac{1}{3}e^{3x} \\) because the chain rule gives us a factor of 3 when differentiating \\( e^{3x} \\), so we need \\( \\tfrac{1}{3} \\) to compensate.)\n\n<b>Step 3: Apply the integration by parts formula.</b>\n\n\\[ \\int x e^{3x}\\,dx = uv - \\int v\\,du = \\frac{x}{3}e^{3x} - \\int \\frac{1}{3}e^{3x}\\,dx \\]\n\n<b>Step 4: Evaluate the remaining integral.</b> The integral \\( \\int \\frac{1}{3}e^{3x}\\,dx \\) is straightforward:\n\n\\[ \\int \\frac{1}{3}e^{3x}\\,dx = \\frac{1}{3} \\cdot \\frac{1}{3}e^{3x} = \\frac{1}{9}e^{3x} \\]\n\n<b>Step 5: Combine everything.</b>\n\n\\[ \\int x e^{3x}\\,dx = \\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C \\]"
+      },
+      {
+        prompt: "Evaluate the following integral using integration by parts.",
+        problem: "\\int x \\sin(5x) \\, dx",
+        answer: "-\\frac{x}{5}\\cos(5x) + \\frac{1}{25}\\sin(5x) + C",
+        solution: "We use integration by parts: \\( \\int u\\,dv = uv - \\int v\\,du \\).\n\n<b>Step 1: Choose u and dv.</b> Let \\( u = x \\) (because its derivative is simpler: just 1) and \\( dv = \\sin(5x)\\,dx \\) (because we know how to integrate sine).\n\n<b>Step 2: Find du and v.</b>\n\n\\[ du = dx \\qquad v = \\int \\sin(5x)\\,dx = -\\frac{1}{5}\\cos(5x) \\]\n\n(The antiderivative of \\( \\sin(5x) \\) is \\( -\\tfrac{1}{5}\\cos(5x) \\) because when you differentiate \\( -\\tfrac{1}{5}\\cos(5x) \\), the chain rule gives you \\( -\\tfrac{1}{5} \\cdot (-\\sin(5x)) \\cdot 5 = \\sin(5x) \\).)\n\n<b>Step 3: Apply the formula.</b>\n\n\\[ \\int x \\sin(5x)\\,dx = x \\cdot \\left(-\\frac{1}{5}\\cos(5x)\\right) - \\int \\left(-\\frac{1}{5}\\cos(5x)\\right)dx \\]\n\n\\[ = -\\frac{x}{5}\\cos(5x) + \\frac{1}{5}\\int \\cos(5x)\\,dx \\]\n\n<b>Step 4: Evaluate the remaining integral.</b>\n\n\\[ \\int \\cos(5x)\\,dx = \\frac{1}{5}\\sin(5x) \\]\n\nSo: \\( \\frac{1}{5} \\cdot \\frac{1}{5}\\sin(5x) = \\frac{1}{25}\\sin(5x) \\)\n\n<b>Step 5: Combine.</b>\n\n\\[ \\int x \\sin(5x)\\,dx = -\\frac{x}{5}\\cos(5x) + \\frac{1}{25}\\sin(5x) + C \\]"
+      },
+      {
+        prompt: "Evaluate the following integral. (Hint: think about what to choose for u and dv.)",
+        problem: "\\int \\ln(3x) \\, dx",
+        answer: "x\\ln(3x) - x + C",
+        solution: "This one is a little tricky because there is no obvious \\( dv \\). The key insight: we can write the integrand as \\( \\ln(3x) \\cdot 1 \\), and let \\( dv = dx \\).\n\n<b>Step 1: Choose u and dv.</b>\n\n\\[ u = \\ln(3x) \\qquad dv = dx \\]\n\nWhy? Because we know the derivative of \\( \\ln(3x) \\), and \\( dv = dx \\) integrates trivially.\n\n<b>Step 2: Find du and v.</b>\n\n\\[ du = \\frac{1}{3x} \\cdot 3\\,dx = \\frac{1}{x}\\,dx \\qquad v = x \\]\n\n(We used the chain rule to differentiate \\( \\ln(3x) \\): the derivative of \\( \\ln(\\text{stuff}) \\) is \\( \\frac{1}{\\text{stuff}} \\cdot (\\text{stuff})' \\), so \\( \\frac{1}{3x} \\cdot 3 = \\frac{1}{x} \\).)\n\n<b>Step 3: Apply the formula \\( \\int u\\,dv = uv - \\int v\\,du \\).</b>\n\n\\[ \\int \\ln(3x)\\,dx = x \\cdot \\ln(3x) - \\int x \\cdot \\frac{1}{x}\\,dx = x\\ln(3x) - \\int 1\\,dx \\]\n\n<b>Step 4: Evaluate.</b>\n\n\\[ \\int 1\\,dx = x \\]\n\n<b>Step 5: Final answer.</b>\n\n\\[ \\int \\ln(3x)\\,dx = x\\ln(3x) - x + C \\]"
+      }
+    ]
+  },
+  "7.4": {
+    id: "7.4", title: "Partial Fractions",
+    chapter: "Integration Techniques", chapterNum: 7,
+    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx",
+    problems: [
+      {
+        prompt: "Evaluate the following integral using partial fraction decomposition.",
+        problem: "\\int \\frac{1}{x^2 - 4}\\,dx",
+        answer: "\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right| + C",
+        solution: "<b>Step 1: Factor the denominator.</b> We recognize \\( x^2 - 4 \\) as a difference of squares:\n\n\\[ x^2 - 4 = (x-2)(x+2) \\]\n\n<b>Step 2: Set up the partial fraction decomposition.</b> Since both factors are linear (degree 1) and distinct, we write:\n\n\\[ \\frac{1}{(x-2)(x+2)} = \\frac{A}{x-2} + \\frac{B}{x+2} \\]\n\n<b>Step 3: Solve for A and B.</b> Multiply both sides by \\( (x-2)(x+2) \\):\n\n\\[ 1 = A(x+2) + B(x-2) \\]\n\nThis must hold for all \\( x \\). The fastest way to find \\( A \\) and \\( B \\) is to plug in strategic values:\n\n- Set \\( x = 2 \\): \\( 1 = A(4) + B(0) \\), so \\( A = \\frac{1}{4} \\)\n- Set \\( x = -2 \\): \\( 1 = A(0) + B(-4) \\), so \\( B = -\\frac{1}{4} \\)\n\n<b>Step 4: Rewrite and integrate.</b>\n\n\\[ \\int \\frac{1}{x^2-4}\\,dx = \\int \\left( \\frac{1/4}{x-2} - \\frac{1/4}{x+2} \\right) dx \\]\n\n\\[ = \\frac{1}{4}\\ln|x-2| - \\frac{1}{4}\\ln|x+2| + C \\]\n\n<b>Step 5: Simplify using log rules.</b> Since \\( \\ln a - \\ln b = \\ln\\frac{a}{b} \\):\n\n\\[ = \\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right| + C \\]"
+      },
+      {
+        prompt: "Evaluate the following integral using partial fraction decomposition.",
+        problem: "\\int \\frac{3}{x(x^2 + 4)}\\,dx",
+        answer: "\\frac{3}{4}\\ln|x| - \\frac{3}{8}\\ln(x^2+4) + C",
+        solution: "<b>Step 1: Identify the factor types.</b> The denominator has a linear factor \\( x \\) and an irreducible quadratic \\( x^2 + 4 \\) (it has no real roots because \\( x^2 + 4 > 0 \\) for all \\( x \\)).\n\n<b>Step 2: Set up the decomposition.</b> For a linear factor, use \\( \\frac{A}{x} \\). For an irreducible quadratic, use \\( \\frac{Bx + C}{x^2 + 4} \\):\n\n\\[ \\frac{3}{x(x^2+4)} = \\frac{A}{x} + \\frac{Bx+C}{x^2+4} \\]\n\n<b>Step 3: Solve for A, B, C.</b> Multiply both sides by \\( x(x^2+4) \\):\n\n\\[ 3 = A(x^2+4) + (Bx+C)(x) \\]\n\n\\[ 3 = Ax^2 + 4A + Bx^2 + Cx \\]\n\n\\[ 3 = (A+B)x^2 + Cx + 4A \\]\n\nMatch coefficients on both sides:\n- \\( x^2 \\) terms: \\( A + B = 0 \\)\n- \\( x^1 \\) terms: \\( C = 0 \\)\n- Constant terms: \\( 4A = 3 \\), so \\( A = \\frac{3}{4} \\)\n\nFrom \\( A + B = 0 \\): \\( B = -\\frac{3}{4} \\).\n\n<b>Step 4: Rewrite and integrate.</b>\n\n\\[ \\int \\frac{3}{x(x^2+4)}\\,dx = \\int \\frac{3/4}{x}\\,dx + \\int \\frac{-\\frac{3}{4}x}{x^2+4}\\,dx \\]\n\nThe first integral is \\( \\frac{3}{4}\\ln|x| \\).\n\nFor the second integral, notice the numerator \\( x \\) is (up to a constant) the derivative of \\( x^2 + 4 \\). Specifically, if we let \\( w = x^2 + 4 \\), then \\( dw = 2x\\,dx \\):\n\n\\[ \\int \\frac{-\\frac{3}{4}x}{x^2+4}\\,dx = -\\frac{3}{4} \\cdot \\frac{1}{2} \\int \\frac{dw}{w} = -\\frac{3}{8}\\ln|w| = -\\frac{3}{8}\\ln(x^2+4) \\]\n\n(We can drop the absolute value because \\( x^2 + 4 > 0 \\) always.)\n\n<b>Step 5: Final answer.</b>\n\n\\[ \\frac{3}{4}\\ln|x| - \\frac{3}{8}\\ln(x^2+4) + C \\]"
+      },
+      {
+        prompt: "Evaluate the following integral. Note: the degree of the numerator equals the degree of the denominator.",
+        problem: "\\int \\frac{x^2+2}{x^2-9}\\,dx",
+        answer: "x + \\frac{11}{6}\\ln\\left|\\frac{x-3}{x+3}\\right| + C",
+        solution: "<b>Step 1: Polynomial long division.</b> Before doing partial fractions, we need the degree of the numerator to be strictly less than the degree of the denominator. Here both are degree 2, so we divide:\n\n\\[ \\frac{x^2+2}{x^2-9} = 1 + \\frac{(x^2+2) - (x^2-9)}{x^2-9} = 1 + \\frac{11}{x^2-9} \\]\n\n(We subtracted: \\( (x^2+2) - 1 \\cdot (x^2-9) = x^2 + 2 - x^2 + 9 = 11 \\).)\n\n<b>Step 2: Factor the remaining denominator.</b>\n\n\\[ x^2 - 9 = (x-3)(x+3) \\]\n\n<b>Step 3: Partial fraction decomposition of the remainder.</b>\n\n\\[ \\frac{11}{(x-3)(x+3)} = \\frac{A}{x-3} + \\frac{B}{x+3} \\]\n\nMultiply through by \\( (x-3)(x+3) \\): \\( 11 = A(x+3) + B(x-3) \\)\n\n- Set \\( x = 3 \\): \\( 11 = 6A \\), so \\( A = \\frac{11}{6} \\)\n- Set \\( x = -3 \\): \\( 11 = -6B \\), so \\( B = -\\frac{11}{6} \\)\n\n<b>Step 4: Integrate each piece.</b>\n\n\\[ \\int \\left(1 + \\frac{11/6}{x-3} - \\frac{11/6}{x+3}\\right)dx \\]\n\n\\[ = x + \\frac{11}{6}\\ln|x-3| - \\frac{11}{6}\\ln|x+3| + C \\]\n\n<b>Step 5: Simplify.</b>\n\n\\[ = x + \\frac{11}{6}\\ln\\left|\\frac{x-3}{x+3}\\right| + C \\]"
+      }
+    ]
+  },
+  "10.1": {
+    id: "10.1", title: "Sequences",
+    chapter: "Series & Sequences", chapterNum: 10,
+    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/Sequences.aspx",
+    problems: [
+      {
+        prompt: "Write out the first five terms of the following sequence.",
+        problem: "\\left\\{ \\frac{3n}{n+2} \\right\\}_{n=1}^{\\infty}",
+        answer: "1,\\; \\tfrac{3}{2},\\; \\tfrac{9}{5},\\; 2,\\; \\tfrac{15}{7}",
+        solution: "To find the first five terms, we plug in \\( n = 1, 2, 3, 4, 5 \\) into the formula \\( a_n = \\frac{3n}{n+2} \\).\n\n<b>n = 1:</b> \\( a_1 = \\frac{3(1)}{1+2} = \\frac{3}{3} = 1 \\)\n\n<b>n = 2:</b> \\( a_2 = \\frac{3(2)}{2+2} = \\frac{6}{4} = \\frac{3}{2} \\)\n\n<b>n = 3:</b> \\( a_3 = \\frac{3(3)}{3+2} = \\frac{9}{5} \\) (this doesn't simplify further)\n\n<b>n = 4:</b> \\( a_4 = \\frac{3(4)}{4+2} = \\frac{12}{6} = 2 \\)\n\n<b>n = 5:</b> \\( a_5 = \\frac{3(5)}{5+2} = \\frac{15}{7} \\)\n\nSo the first five terms are \\( 1,\\; \\frac{3}{2},\\; \\frac{9}{5},\\; 2,\\; \\frac{15}{7} \\)."
+      },
+      {
+        prompt: "Determine whether the following sequence converges or diverges. If it converges, find the limit.",
+        problem: "\\left\\{ \\frac{5n^2+3}{2n^2-1} \\right\\}",
+        answer: "\\text{Converges to } \\frac{5}{2}",
+        solution: "To find the limit of a rational sequence (polynomial over polynomial) as \\( n \\to \\infty \\), we divide every term in the numerator and denominator by the highest power of \\( n \\) that appears.\n\n<b>Step 1: Identify the highest power.</b> Both numerator and denominator have \\( n^2 \\) as their highest-degree term.\n\n<b>Step 2: Divide top and bottom by \\( n^2 \\).</b>\n\n\\[ \\frac{5n^2+3}{2n^2-1} = \\frac{5n^2/n^2 + 3/n^2}{2n^2/n^2 - 1/n^2} = \\frac{5 + 3/n^2}{2 - 1/n^2} \\]\n\n<b>Step 3: Take the limit.</b> As \\( n \\to \\infty \\), the terms \\( 3/n^2 \\) and \\( 1/n^2 \\) both go to 0:\n\n\\[ \\lim_{n \\to \\infty} \\frac{5 + 3/n^2}{2 - 1/n^2} = \\frac{5 + 0}{2 - 0} = \\frac{5}{2} \\]\n\nSince the limit exists and is finite, the sequence <b>converges to \\( \\frac{5}{2} \\)</b>.\n\n(General rule: when the numerator and denominator have the same degree, the limit is the ratio of the leading coefficients.)"
+      },
+      {
+        prompt: "Determine whether the following sequence converges or diverges. If it converges, find the limit.",
+        problem: "\\left\\{ \\frac{(-1)^n}{n^2} \\right\\}",
+        answer: "\\text{Converges to } 0",
+        solution: "This sequence alternates in sign because of the \\( (-1)^n \\) factor. The terms are \\( -1, \\frac{1}{4}, -\\frac{1}{9}, \\frac{1}{16}, \\ldots \\)\n\n<b>Step 1: Use the Absolute Value Theorem.</b> This theorem says: if \\( |a_n| \\to 0 \\), then \\( a_n \\to 0 \\). (This only works when the limit is 0.)\n\n<b>Step 2: Compute the absolute value.</b>\n\n\\[ \\left| \\frac{(-1)^n}{n^2} \\right| = \\frac{|(-1)^n|}{n^2} = \\frac{1}{n^2} \\]\n\n<b>Step 3: Take the limit of the absolute value.</b>\n\n\\[ \\lim_{n \\to \\infty} \\frac{1}{n^2} = 0 \\]\n\nSince \\( |a_n| \\to 0 \\), by the Absolute Value Theorem, \\( a_n \\to 0 \\) as well.\n\nThe sequence <b>converges to 0</b>."
+      }
+    ]
+  },
+  "10.7": {
+    id: "10.7", title: "Comparison & Limit Comparison Tests",
+    chapter: "Series & Sequences", chapterNum: 10,
+    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/SeriesCompTest.aspx",
+    problems: [
+      {
+        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
+        problem: "\\sum_{n=1}^{\\infty} \\frac{2^n}{3^n + 1}",
+        answer: "\\text{Converges (Comparison Test)}",
+        solution: "<b>Strategy:</b> The series looks similar to a geometric series with ratio \\( \\frac{2}{3} \\). We will try the (Direct) Comparison Test.\n\n<b>Step 1: Find a suitable comparison series.</b> Notice that for all \\( n \\geq 1 \\):\n\n\\[ 3^n + 1 > 3^n \\]\n\nSince the denominator is bigger, the fraction is smaller:\n\n\\[ \\frac{2^n}{3^n + 1} < \\frac{2^n}{3^n} = \\left(\\frac{2}{3}\\right)^n \\]\n\n<b>Step 2: Check that the comparison series converges.</b> The series \\( \\sum_{n=1}^{\\infty} \\left(\\frac{2}{3}\\right)^n \\) is a geometric series with ratio \\( r = \\frac{2}{3} \\). Since \\( |r| = \\frac{2}{3} < 1 \\), this geometric series converges.\n\n<b>Step 3: Apply the Comparison Test.</b> We showed:\n- \\( 0 \\leq \\frac{2^n}{3^n+1} \\leq \\left(\\frac{2}{3}\\right)^n \\) for all \\( n \\geq 1 \\)\n- \\( \\sum \\left(\\frac{2}{3}\\right)^n \\) converges\n\nBy the Comparison Test, since our series is term-by-term less than or equal to a convergent series, <b>the series converges</b>."
+      },
+      {
+        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
+        problem: "\\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{n^2 + 3}",
+        answer: "\\text{Converges (Limit Comparison Test)}",
+        solution: "<b>Strategy:</b> For large \\( n \\), the \\( +3 \\) in the denominator becomes negligible, so \\( \\frac{\\sqrt{n}}{n^2+3} \\approx \\frac{\\sqrt{n}}{n^2} = \\frac{1}{n^{3/2}} \\). This suggests using the Limit Comparison Test (LCT) with a \\( p \\)-series.\n\n<b>Step 1: Choose the comparison series.</b> Let \\( b_n = \\frac{1}{n^{3/2}} \\).\n\n<b>Step 2: Compute the limit.</b>\n\n\\[ L = \\lim_{n \\to \\infty} \\frac{a_n}{b_n} = \\lim_{n \\to \\infty} \\frac{\\sqrt{n}/(n^2+3)}{1/n^{3/2}} \\]\n\nSimplify by multiplying top and bottom:\n\n\\[ = \\lim_{n \\to \\infty} \\frac{\\sqrt{n} \\cdot n^{3/2}}{n^2+3} = \\lim_{n \\to \\infty} \\frac{n^{1/2} \\cdot n^{3/2}}{n^2+3} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2+3} \\]\n\nDivide top and bottom by \\( n^2 \\):\n\n\\[ = \\lim_{n \\to \\infty} \\frac{1}{1 + 3/n^2} = \\frac{1}{1+0} = 1 \\]\n\n<b>Step 3: Apply the LCT.</b> Since \\( L = 1 \\), which is positive and finite (\\( 0 < L < \\infty \\)), the two series either both converge or both diverge.\n\n<b>Step 4: Determine whether the comparison series converges.</b> \\( \\sum \\frac{1}{n^{3/2}} \\) is a \\( p \\)-series with \\( p = \\frac{3}{2} > 1 \\), so it converges.\n\nTherefore, by the Limit Comparison Test, <b>the original series converges</b>."
+      },
+      {
+        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
+        problem: "\\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2}",
+        answer: "\\text{Converges (Comparison Test)}",
+        solution: "<b>Strategy:</b> The \\( \\sin^2(n) \\) term bounces around, but it is always bounded. That suggests using the Direct Comparison Test.\n\n<b>Step 1: Find a bound for the numerator.</b> For any real number \\( n \\):\n\n\\[ 0 \\leq \\sin^2(n) \\leq 1 \\]\n\nThis is because \\( -1 \\leq \\sin(n) \\leq 1 \\), so \\( 0 \\leq \\sin^2(n) \\leq 1 \\).\n\n<b>Step 2: Build the comparison inequality.</b> Dividing by \\( n^2 \\) (which is positive):\n\n\\[ 0 \\leq \\frac{\\sin^2(n)}{n^2} \\leq \\frac{1}{n^2} \\]\n\n<b>Step 3: Check the comparison series.</b> \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^2} \\) is a \\( p \\)-series with \\( p = 2 > 1 \\), so it converges. (This is a famous result; its sum is \\( \\frac{\\pi^2}{6} \\).)\n\n<b>Step 4: Apply the Comparison Test.</b> Since \\( 0 \\leq \\frac{\\sin^2(n)}{n^2} \\leq \\frac{1}{n^2} \\) and \\( \\sum \\frac{1}{n^2} \\) converges, the Comparison Test tells us <b>the series converges</b>."
+      }
+    ]
+  },
+  "11.1": {
+    id: "11.1", title: "Vectors \u2014 The Basics",
+    chapter: "Vectors & 3D Space", chapterNum: 11,
+    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/Vectors_Basics.aspx",
+    problems: [
+      {
+        prompt: "Find the vector from point P to point Q, and compute its magnitude.",
+        problem: "P = (1,5), \\quad Q = (4,-2)",
+        answer: "\\vec{v} = \\langle 3, -7 \\rangle,\\quad \\|\\vec{v}\\| = \\sqrt{58}",
+        solution: "<b>Step 1: Find the vector from P to Q.</b> To get the vector from one point to another, subtract the coordinates of the starting point from the ending point:\n\n\\[ \\vec{v} = Q - P = \\langle 4 - 1,\\; -2 - 5 \\rangle = \\langle 3, -7 \\rangle \\]\n\nThis means: go 3 units in the \\( x \\)-direction and \\( -7 \\) units (i.e., 7 units down) in the \\( y \\)-direction.\n\n<b>Step 2: Compute the magnitude.</b> The magnitude (or length) of a vector \\( \\langle a, b \\rangle \\) is given by:\n\n\\[ \\|\\vec{v}\\| = \\sqrt{a^2 + b^2} \\]\n\nPlugging in:\n\n\\[ \\|\\vec{v}\\| = \\sqrt{3^2 + (-7)^2} = \\sqrt{9 + 49} = \\sqrt{58} \\]\n\n\\( \\sqrt{58} \\approx 7.62 \\), so the distance from \\( P \\) to \\( Q \\) is about 7.62 units."
+      },
+      {
+        prompt: "Determine whether the following vector is a unit vector. Show your work.",
+        problem: "\\vec{u} = \\left\\langle \\tfrac{2}{3},\\, \\tfrac{1}{3},\\, \\tfrac{2}{3} \\right\\rangle",
+        answer: "\\text{Yes}",
+        solution: "A <b>unit vector</b> is a vector whose magnitude equals exactly 1.\n\n<b>Step 1: Compute the magnitude.</b> For a 3D vector \\( \\langle a, b, c \\rangle \\), the magnitude is \\( \\sqrt{a^2 + b^2 + c^2} \\).\n\n\\[ \\|\\vec{u}\\| = \\sqrt{\\left(\\frac{2}{3}\\right)^2 + \\left(\\frac{1}{3}\\right)^2 + \\left(\\frac{2}{3}\\right)^2} \\]\n\n<b>Step 2: Square each component.</b>\n\n\\[ = \\sqrt{\\frac{4}{9} + \\frac{1}{9} + \\frac{4}{9}} \\]\n\n<b>Step 3: Add the fractions.</b>\n\n\\[ = \\sqrt{\\frac{4 + 1 + 4}{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1 \\]\n\nSince the magnitude is 1, <b>yes, this is a unit vector</b>."
+      },
+      {
+        prompt: "Find the magnitude of the following vector.",
+        problem: "\\vec{v} = \\langle 5, -12 \\rangle",
+        answer: "13",
+        solution: "<b>Step 1: Recall the magnitude formula.</b> For a 2D vector \\( \\vec{v} = \\langle a, b \\rangle \\):\n\n\\[ \\|\\vec{v}\\| = \\sqrt{a^2 + b^2} \\]\n\nThis comes from the Pythagorean theorem: the vector is the hypotenuse of a right triangle with legs \\( a \\) and \\( b \\).\n\n<b>Step 2: Plug in the components.</b>\n\n\\[ \\|\\vec{v}\\| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} \\]\n\n<b>Step 3: Compute.</b>\n\n\\[ = \\sqrt{169} = 13 \\]\n\n(If you recognize the Pythagorean triple 5-12-13, you can see the answer immediately. Other common triples to know: 3-4-5, 8-15-17.)"
+      }
+    ]
+  }
+};
+
+// ========================= APP STATE =========================
+const state = {
+  selectedSections: new Set(),
+  queue: [],
+  currentIndex: 0,
+  results: [],
+  sessionStart: null,
+  problemStart: null,
+  sessionInterval: null,
+  problemInterval: null,
+  revealed: false,
+  solutionExpanded: false,
+  firstProblemSeen: false,
+};
+
+// ========================= INIT =========================
+document.addEventListener('DOMContentLoaded', () => {
+  renderSectionList();
+  document.addEventListener('keydown', handleKeyboard);
+});
+
+function renderSectionList() {
+  const container = document.getElementById('section-list');
+  const grouped = {};
+  for (const [id, sec] of Object.entries(SECTIONS)) {
+    const key = `Ch ${sec.chapterNum}: ${sec.chapter}`;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(sec);
+  }
+
+  let html = '';
+  for (const [chapter, sections] of Object.entries(grouped)) {
+    html += `<div class="chapter-group">
+      <div class="chapter-group__title">${chapter}</div>
+      <div class="section-grid">`;
+    for (const sec of sections) {
+      html += `<div class="section-card" data-id="${sec.id}" onclick="toggleSection('${sec.id}')">
+        <div class="section-card__num">\u00a7${sec.id}</div>
+        <div class="section-card__info">
+          <div class="section-card__title">${sec.title}</div>
+          <div class="section-card__count">${sec.problems.length} problems</div>
+        </div>
+        <div class="section-card__check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="4 12 10 18 20 6"/>
+          </svg>
+        </div>
+      </div>`;
+    }
+    html += `</div></div>`;
+  }
+  container.innerHTML = html;
+}
+
+// ========================= SETUP ACTIONS =========================
+function toggleSection(id) {
+  if (state.selectedSections.has(id)) {
+    state.selectedSections.delete(id);
+  } else {
+    state.selectedSections.add(id);
+  }
+  updateSetupUI();
+}
+
+function selectAll() {
+  for (const id of Object.keys(SECTIONS)) state.selectedSections.add(id);
+  updateSetupUI();
+}
+
+function clearAll() {
+  state.selectedSections.clear();
+  updateSetupUI();
+}
+
+function updateSetupUI() {
+  document.querySelectorAll('.section-card').forEach(card => {
+    card.classList.toggle('on-deck', state.selectedSections.has(card.dataset.id));
+  });
+
+  let count = 0;
+  for (const id of state.selectedSections) count += SECTIONS[id].problems.length;
+
+  const countEl = document.getElementById('deck-count');
+  countEl.innerHTML = `<span>${count}</span> problem${count !== 1 ? 's' : ''} on deck`;
+
+  document.getElementById('start-btn').disabled = count === 0;
+}
+
+// ========================= SESSION =========================
+function startSession() {
+  // Build and shuffle queue
+  state.queue = [];
+  for (const id of state.selectedSections) {
+    for (const prob of SECTIONS[id].problems) {
+      state.queue.push({ ...prob, sectionId: id });
+    }
+  }
+  shuffle(state.queue);
+
+  state.currentIndex = 0;
+  state.results = [];
+  state.sessionStart = Date.now();
+  state.revealed = false;
+  state.firstProblemSeen = false;
+
+  document.getElementById('problem-total').textContent = state.queue.length;
+
+  // Start session timer
+  state.sessionInterval = setInterval(updateSessionTimer, 1000);
+
+  showScreen('practice');
+  showProblem();
+}
+
+function endSession() {
+  // If current problem not yet answered, record as skip
+  if (state.currentIndex < state.queue.length && !state.results[state.currentIndex]) {
+    const elapsed = Date.now() - state.problemStart;
+    state.results[state.currentIndex] = {
+      item: state.queue[state.currentIndex],
+      verdict: 'skip',
+      time: elapsed
+    };
+  }
+
+  clearInterval(state.sessionInterval);
+  clearInterval(state.problemInterval);
+  showResults();
+}
+
+function showProblem() {
+  const item = state.queue[state.currentIndex];
+  const sec = SECTIONS[item.sectionId];
+
+  document.getElementById('problem-current').textContent = state.currentIndex + 1;
+  document.getElementById('problem-section-num').textContent = `\u00a7${sec.id}`;
+  document.getElementById('problem-section-title').textContent = sec.title;
+
+  // Show section tag (plain text), hide section link
+  document.getElementById('problem-section-tag').style.display = '';
+  document.getElementById('problem-section-link').classList.remove('visible');
+  document.getElementById('problem-section-link').innerHTML = '';
+
+  // Show prompt text
+  const promptEl = document.getElementById('problem-prompt');
+  promptEl.textContent = item.prompt || '';
+
+  // Render problem
+  const probEl = document.getElementById('problem-display');
+  probEl.innerHTML = '';
+  katex.render(item.problem, probEl, { displayMode: true, throwOnError: false });
+
+  // Reset state
+  state.revealed = false;
+  state.solutionExpanded = false;
+  document.getElementById('pre-reveal').style.display = '';
+  document.getElementById('post-reveal').classList.remove('visible');
+  document.getElementById('solution-content').classList.remove('visible');
+  document.getElementById('solution-toggle').classList.remove('expanded');
+  document.getElementById('solution-toggle').querySelector('svg + *') ||
+    (document.getElementById('solution-toggle').childNodes[1].textContent = ' Show walkthrough');
+
+  // Reset verdict button opacity
+  document.querySelectorAll('.verdict-row .btn').forEach(b => b.style.opacity = '');
+
+  // Show verdict hint only on first problem
+  const hintEl = document.getElementById('verdict-hint');
+  hintEl.style.display = 'none';
+
+  // Start problem timer
+  state.problemStart = Date.now();
+  clearInterval(state.problemInterval);
+  const timerEl = document.getElementById('problem-timer');
+  timerEl.classList.remove('paused');
+  document.getElementById('problem-timer-display').textContent = '0:00';
+  state.problemInterval = setInterval(updateProblemTimer, 1000);
+}
+
+function revealAnswer() {
+  if (state.revealed) return;
+  state.revealed = true;
+
+  // Pause problem timer
+  clearInterval(state.problemInterval);
+  document.getElementById('problem-timer').classList.add('paused');
+
+  // Swap section tag for clickable link
+  const item = state.queue[state.currentIndex];
+  const sec = SECTIONS[item.sectionId];
+  document.getElementById('problem-section-tag').style.display = 'none';
+  const linkEl = document.getElementById('problem-section-link');
+  linkEl.innerHTML = `<a href="${sec.notesUrl}" target="_blank" rel="noopener">
+    Review this topic on Paul's Online Math Notes: \u00a7${sec.id} ${sec.title}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>`;
+  linkEl.classList.add('visible');
+
+  // Show verdict hint on first problem only
+  if (!state.firstProblemSeen) {
+    document.getElementById('verdict-hint').style.display = '';
+    state.firstProblemSeen = true;
+  }
+
+  // Render answer
+  const ansEl = document.getElementById('answer-display');
+  ansEl.innerHTML = '';
+  katex.render(item.answer, ansEl, { displayMode: true, throwOnError: false });
+
+  // Prepare solution
+  const solEl = document.getElementById('solution-content');
+  solEl.innerHTML = item.solution.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+  renderMathInElement(solEl, {
+    delimiters: [
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false
+  });
+
+  // Show answer area
+  document.getElementById('pre-reveal').style.display = 'none';
+  document.getElementById('post-reveal').classList.add('visible');
+}
+
+function toggleSolution() {
+  state.solutionExpanded = !state.solutionExpanded;
+  document.getElementById('solution-content').classList.toggle('visible', state.solutionExpanded);
+  const toggle = document.getElementById('solution-toggle');
+  toggle.classList.toggle('expanded', state.solutionExpanded);
+}
+
+function markResult(verdict) {
+  const elapsed = Date.now() - state.problemStart;
+  state.results[state.currentIndex] = {
+    item: state.queue[state.currentIndex],
+    verdict: verdict,
+    time: elapsed
+  };
+
+  // Visual feedback on button
+  const buttons = document.querySelectorAll('.verdict-row .btn');
+  buttons.forEach(b => b.style.opacity = '0.4');
+  if (verdict === 'correct') document.querySelector('.btn--correct').style.opacity = '1';
+  else if (verdict === 'wrong') document.querySelector('.btn--wrong').style.opacity = '1';
+  else document.querySelector('.btn--skip').style.opacity = '1';
+}
+
+function nextProblem() {
+  // Ensure we have a result for current problem
+  if (!state.results[state.currentIndex]) {
+    state.results[state.currentIndex] = {
+      item: state.queue[state.currentIndex],
+      verdict: 'skip',
+      time: Date.now() - state.problemStart
+    };
+  }
+
+  // Reset button opacity
+  document.querySelectorAll('.verdict-row .btn').forEach(b => b.style.opacity = '');
+
+  state.currentIndex++;
+  if (state.currentIndex >= state.queue.length) {
+    endSession();
+  } else {
+    showProblem();
+  }
+}
+
+// ========================= RESULTS =========================
+function showResults() {
+  const totalTime = Date.now() - state.sessionStart;
+  const correct = state.results.filter(r => r && r.verdict === 'correct').length;
+  const wrong = state.results.filter(r => r && r.verdict === 'wrong').length;
+  const skipped = state.results.filter(r => r && r.verdict === 'skip').length;
+  const total = state.results.filter(r => r).length;
+  const answered = correct + wrong;
+  const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : '--';
+
+  // Stats
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card__value amber">${formatTime(totalTime)}</div>
+      <div class="stat-card__label">Total Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value">${total}</div>
+      <div class="stat-card__label">Problems</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value green">${correct}</div>
+      <div class="stat-card__label">Correct</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value">${wrong}</div>
+      <div class="stat-card__label">Wrong</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value">${accuracy}${accuracy !== '--' ? '%' : ''}</div>
+      <div class="stat-card__label">Accuracy</div>
+    </div>
+  `;
+
+  // Table
+  const tbody = document.getElementById('results-body');
+  tbody.innerHTML = '';
+
+  for (let i = 0; i < state.results.length; i++) {
+    const r = state.results[i];
+    if (!r) continue;
+    const sec = SECTIONS[r.item.sectionId];
+    const tr = document.createElement('tr');
+
+    // Problem cell — render with KaTeX
+    const probTd = document.createElement('td');
+    const probSpan = document.createElement('span');
+    probTd.appendChild(probSpan);
+
+    const badgeClass = r.verdict === 'correct' ? 'correct' : r.verdict === 'wrong' ? 'wrong' : 'skipped';
+    const badgeText = r.verdict === 'correct' ? '\u2713 Correct' : r.verdict === 'wrong' ? '\u2717 Wrong' : '\u2014 Skipped';
+
+    tr.innerHTML = `
+      <td style="font-family:var(--font-mono);color:var(--text-3);font-size:13px">${i + 1}</td>
+      <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-3)">\u00a7${sec.id}</span></td>
+      <td class="result-problem-cell"></td>
+      <td><span class="result-badge ${badgeClass}">${badgeText}</span></td>
+      <td style="font-family:var(--font-mono);font-size:13px;color:var(--text-2)">${formatTime(r.time)}</td>
+      <td>
+        <a class="review-link" href="${sec.notesUrl}" target="_blank" rel="noopener" title="Review lesson on Paul's Online Math Notes">
+          Paul's Notes: \u00a7${sec.id}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+
+    // Render KaTeX in problem cell
+    const cell = tr.querySelector('.result-problem-cell');
+    try {
+      katex.render(r.item.problem, cell, { displayMode: false, throwOnError: false });
+    } catch(e) {
+      cell.textContent = r.item.problem;
+    }
+  }
+
+  showScreen('results');
+}
+
+function backToSetup() {
+  showScreen('setup');
+}
+
+// ========================= TIMERS =========================
+function updateSessionTimer() {
+  const elapsed = Date.now() - state.sessionStart;
+  document.getElementById('session-timer-display').textContent = formatTime(elapsed);
+}
+
+function updateProblemTimer() {
+  const elapsed = Date.now() - state.problemStart;
+  document.getElementById('problem-timer-display').textContent = formatTime(elapsed);
+}
+
+function formatTime(ms) {
+  const totalSec = Math.floor(ms / 1000);
+  const min = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  return `${min}:${sec.toString().padStart(2, '0')}`;
+}
+
+// ========================= UTILITIES =========================
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(`${name}-screen`).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function handleKeyboard(e) {
+  const screen = document.querySelector('.screen.active');
+  if (!screen || screen.id !== 'practice-screen') return;
+
+  if (e.code === 'Space' && !state.revealed) {
+    e.preventDefault();
+    revealAnswer();
+  } else if (state.revealed) {
+    if (e.key === '1') markResult('correct');
+    else if (e.key === '2') markResult('wrong');
+    else if (e.key === '3') markResult('skip');
+    else if (e.code === 'Enter') { e.preventDefault(); nextProblem(); }
+  }
+}
+</script>
+</body>
+</html>
