@@ -154,10 +154,11 @@
   }
   .setup-header h1 {
     font-family: var(--font-display);
-    font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-bottom: 10px;
   }
   .setup-header h1 span { color: var(--amber); }
   .setup-header p {
@@ -466,6 +467,10 @@
     color: var(--text-3);
     animation: none;
   }
+  /* Timer hidden mode: display still there but faint and unanimated; session timer dimmed */
+  body.timer-hidden .problem-timer { visibility: hidden; height: 32px; }
+  body.timer-hidden .session-timer { opacity: 0.3; }
+  body.timer-hidden .session-timer__dot { animation: none; }
   .problem-timer .timer-pulse {
     display: inline-block;
     animation: timerPulse 1s ease-in-out infinite;
@@ -795,7 +800,10 @@
           <span id="problem-current">1</span> / <span id="problem-total">12</span>
         </div>
       </div>
-      <button class="btn btn--ghost btn--sm" onclick="endSession()">End session</button>
+      <div class="practice-bar__right" style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn--ghost btn--sm" id="timer-toggle" onclick="toggleTimer()" aria-pressed="false" title="Hide the timer if it feels stressful. Time still tracks for your results.">Hide timer</button>
+        <button class="btn btn--ghost btn--sm" onclick="endSession()">End session</button>
+      </div>
     </div>
 
     <div class="problem-area">
@@ -1415,6 +1423,27 @@ function toggleTheme() {
   const current = html.getAttribute('data-theme');
   html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
 }
+
+function toggleTimer() {
+  const body = document.body;
+  const btn = document.getElementById('timer-toggle');
+  const isHidden = body.classList.toggle('timer-hidden');
+  btn.textContent = isHidden ? 'Show timer' : 'Hide timer';
+  btn.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+  // Persist preference
+  try { localStorage.setItem('battingCage.hideTimer', isHidden ? '1' : '0'); } catch(e) {}
+}
+
+// Restore timer preference on load
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    if (localStorage.getItem('battingCage.hideTimer') === '1') {
+      document.body.classList.add('timer-hidden');
+      const btn = document.getElementById('timer-toggle');
+      if (btn) { btn.textContent = 'Show timer'; btn.setAttribute('aria-pressed','true'); }
+    }
+  } catch(e) {}
+});
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
