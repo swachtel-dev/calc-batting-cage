@@ -46,7 +46,40 @@ MD_FILES = sorted(glob.glob(os.path.join(CALC_II_ROOT, 'problem_bank_ch*.md')))
 EXCLUDE = {'problem_bank_ch11_12.md'}
 MD_FILES = [f for f in MD_FILES if os.path.basename(f) not in EXCLUDE]
 
+BANK_CSV = os.path.join(CALC_II_ROOT, 'question_bank.csv')
+
 OUT_PATH = os.path.join(DRAFTS_DIR, 'problems.json')
+
+# Map Paul's section id → course unit. Drives UI grouping so students see
+# "Unit 3: Integration by Parts" rather than "Ch 7" (which confusingly reads
+# as a unit number).
+SECTION_TO_UNIT = {
+    '7.1': 3, '7.2': 3,
+    '7.3': 4, '7.4': 4, '7.5': 4, '7.6': 4,
+    '7.7': 5, '7.8': 5, '7.9': 5, '7.10': 5,
+    '8.1': 6, '8.2': 6, '8.3': 6, '8.4': 6, '8.5': 6,
+    '9.1': 8, '9.2': 8, '9.3': 8, '9.4': 8, '9.5': 8,
+    '9.6': 9, '9.7': 9, '9.8': 9, '9.9': 9, '9.10': 9, '9.11': 9,
+    '10.1': 10, '10.2': 10, '10.3': 10, '10.4': 10, '10.5': 10,
+    '10.6': 11, '10.7': 11, '10.8': 11, '10.9': 11, '10.10': 11, '10.11': 11, '10.12': 11,
+    '10.13': 12, '10.14': 12, '10.15': 12, '10.16': 12, '10.17': 12, '10.18': 12,
+    # U2 sections (Calc I Ch 6 content, synthesized below from question_bank.csv)
+    '6.1': 2, '6.2': 2, '6.3': 2, '6.4': 2,
+}
+
+# Titles for the course units, shown as group headers in the UI.
+UNIT_TITLES = {
+    2:  'Volumes of Revolution and Work',
+    3:  'Integration by Parts and Trig Integrals',
+    4:  'Trig Substitution and Partial Fractions',
+    5:  'Integration Strategy and Improper Integrals',
+    6:  'Applications of Integration',
+    8:  'Parametric Equations',
+    9:  'Polar Coordinates',
+    10: 'Sequences and Series Foundations',
+    11: 'Convergence Tests',
+    12: 'Power Series and Taylor Series',
+}
 
 # Map Paul section ID (from MD "### Section ID: XYZ" line) to notes URL.
 # Paul uses the same slug in his URL: /Classes/CalcII/{SectionID}.aspx
@@ -190,16 +223,119 @@ def parse_md_file(path):
                 'solution': solution_clean,
             })
 
+        unit = SECTION_TO_UNIT.get(sec_num)
         sections_out.append({
             'id': sec_num,
             'title': sec_title,
             'sectionId': section_id,
             'chapter': CHAPTER_NAMES.get(ch_num, f'Chapter {ch_num}'),
             'chapterNum': ch_num,
+            'unit': unit,
+            'unitTitle': UNIT_TITLES.get(unit, '') if unit else '',
             'notesUrl': paul_url_for(section_id, sec_num) if section_id else '',
             'problems': problems,
         })
     return sections_out
+
+
+def build_calc1_sections_from_csv():
+    """Synthesize U2-coverage sections from question_bank.csv Calc I rows.
+
+    The MD files only cover Paul's Ch 7-10, leaving U1-U2 with no batting-cage
+    content. The CSV has 85 Calc I rows (area, volumes, work, avg fcn value)
+    with solutions populated — these became the batting cage's natural U2 pack.
+    """
+    import csv
+    if not os.path.exists(BANK_CSV):
+        return []
+    rows = list(csv.DictReader(open(BANK_CSV)))
+    calc1 = [r for r in rows if r.get('pauls_section','').startswith('Calc I')]
+    # Normalize section names (bank has both "Calc I - Area Between Curves" and
+    # "Calc I - AreaBetweenCurves"; merge).
+    def normalize_calc1(name):
+        n = name.replace('Calc I - ', '').replace(' ', '').lower()
+        if 'area' in n and 'between' in n: return ('6.1', 'Area Between Curves')
+        if 'volumewithrings' in n or 'volumes(rings)' in n: return ('6.2', 'Volumes of Revolution: Disks and Washers')
+        if 'volumewithcylinder' in n or 'volumes(cylinders)' in n: return ('6.3', 'Volumes of Revolution: Shells')
+        if 'morevolume' in n: return ('6.3', 'Volumes of Revolution: Shells')
+        if 'avgfcn' in n or 'averagefunction' in n: return (None, None)  # not in U2 scope
+        if 'work' in n: return ('6.4', 'Work')
+        return (None, None)
+
+    from collections import defaultdict
+    buckets = defaultdict(list)  # (sec_id, sec_title) → [problem dicts]
+    for r in calc1:
+        sec_id, sec_title = normalize_calc1(r['pauls_section'])
+        if not sec_id:
+            continue
+        # Strip $...$ delimiters on question/answer to feed normalize_problem_or_answer
+        problem_text = r.get('question_text','').strip()
+        answer_text = r.get('answer','').strip()
+        solution_text = r.get('solution','').strip()
+        # Use the same normalizers as the MD path for consistency
+        problem_clean = normalize_problem_or_answer(problem_text)
+        answer_clean = normalize_problem_or_answer(answer_text)
+        solution_clean = collapse_display_math(solution_text)
+        # Convert $...$ inside solution prose to \( \) for KaTeX auto-render.
+        # The CSV uses $ delimiters; the batting cage's auto-render config
+        # expects \( \) and \[ \] only.
+        solution_clean = convert_dollar_delimiters(solution_clean)
+        problem_clean = convert_dollar_delimiters(problem_clean)
+        answer_clean = convert_dollar_delimiters(answer_clean)
+        prompt = default_prompt_for_u2_section(sec_id)
+        buckets[(sec_id, sec_title)].append({
+            'prompt': prompt,
+            'problem': problem_clean,
+            'answer': answer_clean,
+            'solution': solution_clean,
+        })
+
+    # Emit sorted by section id
+    out = []
+    for (sec_id, sec_title), probs in sorted(buckets.items()):
+        unit = SECTION_TO_UNIT.get(sec_id)
+        out.append({
+            'id': sec_id,
+            'title': sec_title,
+            'sectionId': '',
+            'chapter': 'Applications of the Integral (Calc I review)',
+            'chapterNum': 6,
+            'unit': unit,
+            'unitTitle': UNIT_TITLES.get(unit, ''),
+            'notesUrl': calc1_notes_url(sec_id),
+            'problems': probs,
+        })
+    return out
+
+
+def default_prompt_for_u2_section(sec_id):
+    return {
+        '6.1': 'Find the area of the region bounded by the given curves.',
+        '6.2': 'Find the volume of the solid of revolution using the disk or washer method.',
+        '6.3': 'Find the volume of the solid of revolution using the method of cylindrical shells.',
+        '6.4': 'Solve the following work problem.',
+    }.get(sec_id, 'Solve the following problem.')
+
+
+def calc1_notes_url(sec_id):
+    return {
+        '6.1': 'https://tutorial.math.lamar.edu/Classes/CalcI/AreaBetweenCurves.aspx',
+        '6.2': 'https://tutorial.math.lamar.edu/Classes/CalcI/VolumeWithRings.aspx',
+        '6.3': 'https://tutorial.math.lamar.edu/Classes/CalcI/VolumeWithCylinder.aspx',
+        '6.4': 'https://tutorial.math.lamar.edu/Classes/CalcI/Work.aspx',
+    }.get(sec_id, '')
+
+
+def convert_dollar_delimiters(text):
+    """Convert $$...$$ to \\[...\\] and $...$ to \\(...\\). Bank uses $-delimiters.
+
+    Conservative: only convert balanced pairs on lines/segments that look like math.
+    """
+    # Display math: $$...$$ → \[ ... \]
+    text = re.sub(r'\$\$([^$]+?)\$\$', lambda m: '\\[ ' + m.group(1).strip() + ' \\]', text, flags=re.DOTALL)
+    # Inline: $...$ → \( ... \)
+    text = re.sub(r'\$([^$\n]+?)\$', lambda m: '\\( ' + m.group(1).strip() + ' \\)', text)
+    return text
 
 
 def default_prompt_for_section(section_num, section_title):
@@ -275,6 +411,9 @@ def main(verify=False):
         secs = parse_md_file(path)
         for s in secs:
             all_sections[s['id']] = s
+    # Add the synthesized Calc I Ch 6 sections for U2 coverage
+    for s in build_calc1_sections_from_csv():
+        all_sections[s['id']] = s
 
     # Sort by section numeric order for stable JSON
     ordered = {}

@@ -23,8 +23,8 @@
   }
 
   [data-theme="dark"] {
-    --bg-0: #08080a;
-    --bg-1: #111114;
+    --bg-0: #0f0f12;
+    --bg-1: #17171c;
     --bg-2: #1a1a1f;
     --bg-3: #222228;
     --border: #2a2a32;
@@ -171,11 +171,10 @@
   }
   .chapter-group__title {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-3);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: var(--text-2);
     margin-bottom: 12px;
     padding-left: 2px;
   }
@@ -751,6 +750,65 @@
     .results-table th, .results-table td { padding: 10px 12px; }
     .start-bar { flex-direction: column; gap: 12px; }
   }
+
+  .result-actions-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .result-walkthrough-toggle {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 0;
+    transition: color 0.2s;
+  }
+  .result-walkthrough-toggle:hover { color: var(--text-1); }
+  .result-walkthrough-toggle svg {
+    width: 12px; height: 12px;
+    transition: transform 0.25s var(--ease-out);
+  }
+  .result-walkthrough-toggle.expanded svg { transform: rotate(180deg); }
+  .result-walkthrough-row td {
+    background: var(--bg-2);
+    padding: 0 16px 16px !important;
+  }
+  .result-walkthrough-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 12px 4px 4px;
+  }
+  @media (max-width: 720px) {
+    .result-walkthrough-body { grid-template-columns: 1fr; }
+  }
+  .result-walkthrough-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+  .result-walkthrough-answer,
+  .result-walkthrough-solution {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-2);
+  }
+  .result-walkthrough-answer .katex { font-size: 1em; }
+
 </style>
 </head>
 <body>
@@ -842,8 +900,8 @@
           </button>
           <div class="solution-content" id="solution-content"></div>
 
-          <div class="verdict-hint" id="verdict-hint" style="display:none">
-            How did you do? Be honest — this tracks your weak spots, not your grade.
+          <div class="verdict-hint" id="verdict-hint">
+            Track your progress. An honest call here helps the session surface your weak spots.
           </div>
 
           <div class="verdict-row">
@@ -955,19 +1013,27 @@ async function loadProblems() {
 
 function renderSectionList() {
   const container = document.getElementById('section-list');
-  const grouped = {};
+  // Group by course unit; fall back to chapter for sections without a unit.
+  const grouped = new Map();
   for (const [id, sec] of Object.entries(SECTIONS)) {
-    const key = `Ch ${sec.chapterNum}: ${sec.chapter}`;
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(sec);
+    const unit = sec.unit || 0;
+    if (!grouped.has(unit)) {
+      grouped.set(unit, {
+        title: sec.unitTitle || `Ch ${sec.chapterNum}: ${sec.chapter}`,
+        sections: [],
+      });
+    }
+    grouped.get(unit).sections.push(sec);
   }
+  const ordered = [...grouped.entries()].sort((a, b) => a[0] - b[0]);
 
   let html = '';
-  for (const [chapter, sections] of Object.entries(grouped)) {
+  for (const [u, group] of ordered) {
+    const label = u ? `Unit ${u} \u00b7 ${group.title}` : group.title;
     html += `<div class="chapter-group">
-      <div class="chapter-group__title">${chapter}</div>
+      <div class="chapter-group__title">${label}</div>
       <div class="section-grid">`;
-    for (const sec of sections) {
+    for (const sec of group.sections) {
       html += `<div class="section-card" data-id="${sec.id}" onclick="toggleSection('${sec.id}')">
         <div class="section-card__num">\u00a7${sec.id}</div>
         <div class="section-card__info">
@@ -1104,9 +1170,9 @@ function showProblem() {
   // Reset verdict button opacity
   document.querySelectorAll('.verdict-row .btn').forEach(b => b.style.opacity = '');
 
-  // Show verdict hint only on first problem
+  // Verdict hint visible on every problem — a gentle reminder of the point.
   const hintEl = document.getElementById('verdict-hint');
-  hintEl.style.display = 'none';
+  hintEl.style.display = '';
 
   // Start problem timer
   state.problemStart = Date.now();
@@ -1139,12 +1205,6 @@ function revealAnswer() {
     </svg>
   </a>`;
   linkEl.classList.add('visible');
-
-  // Show verdict hint on first problem only
-  if (!state.firstProblemSeen) {
-    document.getElementById('verdict-hint').style.display = '';
-    state.firstProblemSeen = true;
-  }
 
   // Render answer (same format contract as problem)
   const ansEl = document.getElementById('answer-display');
@@ -1255,20 +1315,21 @@ function showResults() {
   const tbody = document.getElementById('results-body');
   tbody.innerHTML = '';
 
+  const MATH_DELIMS = [
+    { left: '\\[', right: '\\]', display: true },
+    { left: '\\(', right: '\\)', display: false },
+  ];
+
   for (let i = 0; i < state.results.length; i++) {
     const r = state.results[i];
     if (!r) continue;
     const sec = SECTIONS[r.item.sectionId];
-    const tr = document.createElement('tr');
-
-    // Problem cell — render with KaTeX
-    const probTd = document.createElement('td');
-    const probSpan = document.createElement('span');
-    probTd.appendChild(probSpan);
 
     const badgeClass = r.verdict === 'correct' ? 'correct' : r.verdict === 'wrong' ? 'wrong' : 'skipped';
     const badgeText = r.verdict === 'correct' ? '\u2713 Correct' : r.verdict === 'wrong' ? '\u2717 Wrong' : '\u2014 Skipped';
 
+    const tr = document.createElement('tr');
+    tr.className = 'result-row';
     tr.innerHTML = `
       <td style="font-family:var(--font-mono);color:var(--text-3);font-size:13px">${i + 1}</td>
       <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-3)">\u00a7${sec.id}</span></td>
@@ -1276,28 +1337,66 @@ function showResults() {
       <td><span class="result-badge ${badgeClass}">${badgeText}</span></td>
       <td style="font-family:var(--font-mono);font-size:13px;color:var(--text-2)">${formatTime(r.time)}</td>
       <td>
-        <a class="review-link" href="${sec.notesUrl}" target="_blank" rel="noopener" title="Review lesson on Paul's Online Math Notes">
-          Paul's Notes: \u00a7${sec.id}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
+        <div class="result-actions-cell">
+          <button class="result-walkthrough-toggle" data-idx="${i}" onclick="toggleResultWalkthrough(${i})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            Walkthrough
+          </button>
+          <a class="review-link" href="${sec.notesUrl}" target="_blank" rel="noopener" title="Review lesson on Paul's Online Math Notes">
+            Paul's \u00a7${sec.id}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
       </td>
     `;
     tbody.appendChild(tr);
 
-    // Render KaTeX in problem cell
     const cell = tr.querySelector('.result-problem-cell');
-    try {
-      katex.render(r.item.problem, cell, { displayMode: false, throwOnError: false });
-    } catch(e) {
-      cell.textContent = r.item.problem;
-    }
+    cell.innerHTML = (r.item.problem || '').replace(/\n/g, '<br>');
+    renderMathInElement(cell, { delimiters: MATH_DELIMS, throwOnError: false });
+
+    // Expandable walkthrough row
+    const wtr = document.createElement('tr');
+    wtr.className = 'result-walkthrough-row';
+    wtr.id = `result-walkthrough-${i}`;
+    wtr.style.display = 'none';
+    wtr.innerHTML = `
+      <td colspan="6">
+        <div class="result-walkthrough-body">
+          <div class="result-walkthrough-section">
+            <div class="result-walkthrough-label">Answer</div>
+            <div class="result-walkthrough-answer"></div>
+          </div>
+          <div class="result-walkthrough-section">
+            <div class="result-walkthrough-label">Walkthrough</div>
+            <div class="result-walkthrough-solution"></div>
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(wtr);
+    const ansEl = wtr.querySelector('.result-walkthrough-answer');
+    ansEl.innerHTML = (r.item.answer || '').replace(/\n/g, '<br>');
+    renderMathInElement(ansEl, { delimiters: MATH_DELIMS, throwOnError: false });
+    const solEl = wtr.querySelector('.result-walkthrough-solution');
+    solEl.innerHTML = (r.item.solution || '').replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+    renderMathInElement(solEl, { delimiters: MATH_DELIMS, throwOnError: false });
   }
 
   showScreen('results');
+}
+
+function toggleResultWalkthrough(idx) {
+  const row = document.getElementById(`result-walkthrough-${idx}`);
+  const btn = document.querySelector(`.result-walkthrough-toggle[data-idx="${idx}"]`);
+  if (!row) return;
+  const isHidden = row.style.display === 'none';
+  row.style.display = isHidden ? '' : 'none';
+  if (btn) btn.classList.toggle('expanded', isHidden);
 }
 
 function backToSetup() {

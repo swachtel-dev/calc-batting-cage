@@ -1,10 +1,510 @@
 {
+  "6.1": {
+    "id": "6.1",
+    "title": "Area Between Curves",
+    "sectionId": "",
+    "chapter": "Applications of the Integral (Calc I review)",
+    "chapterNum": 6,
+    "unit": 2,
+    "unitTitle": "Volumes of Revolution and Work",
+    "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcI/AreaBetweenCurves.aspx",
+    "problems": [
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ Find the area under \\( f(x) = \\cos x \\) on \\( [0, \\pi/2] \\). \\]",
+        "answer": "\\( 1 \\)",
+        "solution": "This is a definite integral. \\[ \\int_0^{\\pi/2} \\cos x \\, dx = \\sin x \\Big|_0^{\\pi/2} = \\sin(\\pi/2) - \\sin(0) = 1 - 0 = 1. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area under \\( f(x) = e^x \\) on \\( [0, 1] \\).",
+        "answer": "\\( e - 1 \\)",
+        "solution": "\\[ \\int_0^1 e^x \\, dx = e^x \\Big|_0^1 = e^1 - e^0 = e - 1. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area under \\( f(x) = x^2 \\) on \\( [0, 1] \\).",
+        "answer": "\\( \\frac{1}{3} \\)",
+        "solution": "\\[ \\int_0^1 x^2 \\, dx = \\frac{x^3}{3} \\Big|_0^1 = \\frac{1}{3} - 0 = \\frac{1}{3}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area between \\( f(x) = x \\), \\( g(x) = x^2 \\).",
+        "answer": "\\( \\frac{1}{6} \\)",
+        "solution": "Step 1: Find intersections. \\( x = x^2 \\Rightarrow x(1-x) = 0 \\Rightarrow x = 0, 1 \\).\n\nStep 2: On \\( [0,1] \\), check \\( x = \\frac{1}{2} \\): \\( f = \\frac{1}{2} \\), \\( g = \\frac{1}{4} \\). So \\( x \\geq x^2 \\).\n\nStep 3: \\[ A = \\int_0^1 (x - x^2) dx = \\frac{x^2}{2} - \\frac{x^3}{3} \\Big|_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area between \\( f(x) = x^2 \\), \\( g(x) = x^3 \\).",
+        "answer": "\\( \\frac{1}{12} \\)",
+        "solution": "Step 1: Intersections. \\( x^2 = x^3 \\Rightarrow x^2(1-x) = 0 \\Rightarrow x = 0, 1 \\).\n\nStep 2: On \\( [0,1] \\), \\( x^2 \\geq x^3 \\) (check \\( x = \\frac{1}{2} \\): \\( \\frac{1}{4} > \\frac{1}{8} \\)).\n\nStep 3: \\[ A = \\int_0^1 (x^2 - x^3) dx = \\frac{x^3}{3} - \\frac{x^4}{4} \\Big|_0^1 = \\frac{1}{3} - \\frac{1}{4} = \\frac{1}{12}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area between \\( f(x) = x \\), \\( g(x) = x^3 \\).",
+        "answer": "\\( \\frac{1}{2} \\)",
+        "solution": "Step 1: Intersections. \\( x = x^3 \\Rightarrow x(x^2-1) = 0 \\Rightarrow x = -1, 0, 1 \\).\n\nStep 2: The region is symmetric about the origin, and on \\( [0,1] \\), \\( x \\geq x^3 \\).\n\nStep 3: \\[ A = 2 \\int_0^1 (x - x^3) dx = 2\\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_0^1 = 2\\left(\\frac{1}{2} - \\frac{1}{4}\\right) = \\frac{1}{2}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "Find the area between \\( f(x) = e^x \\), \\( g(x) = x \\).",
+        "answer": "\\[ \\( e - \\frac{3}{2} \\) (assuming interval \\( [0,1] \\)) \\]",
+        "solution": "Note: \\( e^x > x \\) for all real \\( x \\), so the curves never intersect. We assume the standard interval \\( [0,1] \\).\n\nOn \\( [0,1] \\), \\( e^x \\geq x \\).\n\n\\[ A = \\int_0^1 (e^x - x) dx = \\left[e^x - \\frac{x^2}{2}\\right]_0^1 = \\left(e - \\frac{1}{2}\\right) - (1 - 0) = e - \\frac{3}{2}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ Find the area between \\( f(x) = \\sqrt{x} \\), \\( g(x) = x \\). \\]",
+        "answer": "\\( \\frac{1}{6} \\)",
+        "solution": "Step 1: Intersections. \\( \\sqrt{x} = x \\Rightarrow x = x^2 \\Rightarrow x(x-1) = 0 \\Rightarrow x = 0, 1 \\).\n\nStep 2: On \\( [0,1] \\), \\( \\sqrt{x} \\geq x \\) (check \\( x = \\frac{1}{4} \\): sqrt = \\( \\frac{1}{2} \\), \\( x = \\frac{1}{4} \\)).\n\nStep 3: \\[ A = \\int_0^1 (\\sqrt{x} - x) dx = \\left[\\frac{2x^{3/2}}{3} - \\frac{x^2}{2}\\right]_0^1 = \\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}. \\]"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {x^3} + 2 \\), \\( y = 1 \\) and \\( x = 2 \\). \\]",
+        "answer": "\\( \\frac{27}{4} \\)",
+        "solution": "Find intersections. \\( y = x^3 + 2 \\) meets \\( y = 1 \\) when \\( x^3 + 2 = 1 \\), so \\( x = -1 \\). The region is bounded on the right by \\( x = 2 \\).\n\nOn \\( [-1, 2] \\), \\( x^3 + 2 \\geq 1 \\) (the curve is above the line).\n\n\\( A = \\int_{-1}^{2} [(x^3 + 2) - 1] dx = \\int_{-1}^{2} (x^3 + 1) dx = [\\frac{x^4}{4} + x]_{-1}^{2} = (4 + 2) - (\\frac{1}{4} - 1) = 6 + \\frac{3}{4} = \\frac{27}{4} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {x^2} - 6x + 10 \\) and \\( y = 5 \\). \\]",
+        "answer": "\\( \\frac{32}{3} \\)",
+        "solution": "Intersections: \\( x^2 - 6x + 10 = 5 \\Rightarrow x^2 - 6x + 5 = 0 \\Rightarrow (x-1)(x-5) = 0 \\), so \\( x = 1, 5 \\).\n\nThe parabola has vertex at \\( x = 3 \\) with \\( y = 1 \\), so on \\( (1, 5) \\) the line \\( y = 5 \\) is above the parabola.\n\n\\( A = \\int_1^5 [5 - (x^2 - 6x + 10)] dx = \\int_1^5 (-x^2 + 6x - 5) dx = [-\\frac{x^3}{3} + 3x^2 - 5x]_1^5 = (-\\frac{125}{3} + 75 - 25) - (-\\frac{1}{3} + 3 - 5) = -\\frac{124}{3} + 52 = \\frac{32}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {x^2} - 6x + 10 \\), \\( x = 1 \\), \\( x = 5 \\) and the x-axis. \\]",
+        "answer": "\\( \\frac{28}{3} \\)",
+        "solution": "Since the parabola \\( y = x^2 - 6x + 10 \\) has vertex \\( (3, 1) \\), it stays above the x-axis on \\( [1, 5] \\).\n\n\\( A = \\int_1^5 (x^2 - 6x + 10) dx = [\\frac{x^3}{3} - 3x^2 + 10x]_1^5 = (\\frac{125}{3} - 75 + 50) - (\\frac{1}{3} - 3 + 10) = \\frac{124}{3} - 32 = \\frac{28}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = {y^2} + 2y + 4 \\) and \\( x = 4 \\). \\]",
+        "answer": "\\( \\frac{4}{3} \\)",
+        "solution": "Integrate with respect to \\( y \\). Intersections: \\( y^2 + 2y + 4 = 4 \\Rightarrow y^2 + 2y = 0 \\Rightarrow y = 0, -2 \\).\n\nOn \\( (-2, 0) \\), the parabola \\( x = y^2 + 2y + 4 \\) is left of \\( x = 4 \\) (e.g., at \\( y = -1 \\): \\( x = 3 < 4 \\)).\n\n\\( A = \\int_{-2}^{0} [4 - (y^2 + 2y + 4)] dy = \\int_{-2}^{0} (-y^2 - 2y) dy = [-\\frac{y^3}{3} - y^2]_{-2}^{0} = 0 - (\\frac{8}{3} - 4) = \\frac{4}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = 5 - \\sqrt x \\), \\( x = 1 \\), \\( x = 4 \\) and the x-axis. \\]",
+        "answer": "\\( \\frac{31}{3} \\)",
+        "solution": "On \\( [1, 4] \\), \\( y = 5 - \\sqrt{x} \\) is positive (\\( 5 - 2 = 3 \\) at \\( x = 4 \\)).\n\n\\( A = \\int_1^4 (5 - \\sqrt{x}) dx = [5x - \\frac{2}{3} x^{3/2}]_1^4 = (20 - \\frac{16}{3}) - (5 - \\frac{2}{3}) = 15 - \\frac{14}{3} = \\frac{31}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = {{\\bf{e}}^y} \\), \\( x = 1 \\), \\( y = 1 \\) and \\( y = 2 \\). \\]",
+        "answer": "\\( e^2 - e - 1 \\)",
+        "solution": "Integrate with respect to \\( y \\) on \\( [1, 2] \\). Since \\( e^y > 1 \\) for \\( y \\geq 1 \\), the curve \\( x = e^y \\) is to the right of \\( x = 1 \\).\n\n\\( A = \\int_1^2 (e^y - 1) dy = [e^y - y]_1^2 = (e^2 - 2) - (e - 1) = e^2 - e - 1 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = 4y - {y^2} \\) and the y-axis. \\]",
+        "answer": "\\( \\frac{32}{3} \\)",
+        "solution": "\\( x = 4y - y^2 \\) meets \\( x = 0 \\) when \\( y(4 - y) = 0 \\), so \\( y = 0, 4 \\). The parabola opens left and is positive on \\( (0, 4) \\).\n\n\\( A = \\int_0^4 (4y - y^2) dy = [2y^2 - \\frac{y^3}{3}]_0^4 = 32 - \\frac{64}{3} = \\frac{32}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {x^2} + 2x + 4 \\), \\( y = 3x + 6 \\), \\( x = - 3 \\) and \\( x = 3 \\). \\]",
+        "answer": "\\( 15 \\)",
+        "solution": "Curves intersect when \\( x^2 + 2x + 4 = 3x + 6 \\Rightarrow x^2 - x - 2 = 0 \\Rightarrow (x-2)(x+1) = 0 \\), so \\( x = -1, 2 \\).\n\nTest signs across \\( [-3, 3] \\):\n  At \\( x = -2 \\): parabola \\( = 4 \\), line \\( = 0 \\) \\( \\Rightarrow \\) parabola above.\n  At \\( x = 0 \\): parabola \\( = 4 \\), line \\( = 6 \\) \\( \\Rightarrow \\) line above.\n  At \\( x = 3 \\): parabola \\( = 19 \\), line \\( = 15 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_{-3}^{-1} (x^2 - x - 2) dx + \\int_{-1}^{2} (-x^2 + x + 2) dx + \\int_{2}^{3} (x^2 - x - 2) dx \\).\n\nAntiderivative of \\( (x^2 - x - 2) \\): \\( G(x) = \\frac{x^3}{3} - \\frac{x^2}{2} - 2x \\).\n\nFirst: \\( G(-1) - G(-3) = (-\\frac{1}{3} - \\frac{1}{2} + 2) - (-9 - \\frac{9}{2} + 6) = \\frac{7}{6} - (-\\frac{15}{2}) = \\frac{7}{6} + \\frac{45}{6} = \\frac{52}{6} = \\frac{26}{3} \\).\nMiddle: \\( -[G(2) - G(-1)] = -[(\\frac{8}{3} - 2 - 4) - (-\\frac{1}{3} - \\frac{1}{2} + 2)] = -[-\\frac{10}{3} - \\frac{7}{6}] = \\frac{10}{3} + \\frac{7}{6} = \\frac{27}{6} = \\frac{9}{2} \\).\nThird: \\( G(3) - G(2) = (9 - \\frac{9}{2} - 6) - (\\frac{8}{3} - 2 - 4) = -\\frac{3}{2} - (-\\frac{10}{3}) = -\\frac{9}{6} + \\frac{20}{6} = \\frac{11}{6} \\).\n\nTotal: \\( \\frac{26}{3} + \\frac{9}{2} + \\frac{11}{6} = \\frac{52}{6} + \\frac{27}{6} + \\frac{11}{6} = \\frac{90}{6} = 15 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = 6y - {y^2} \\), \\( x = 2y \\), \\( y = - 2 \\) and \\( y = 5 \\). \\]",
+        "answer": "\\( \\frac{71}{3} \\)",
+        "solution": "Integrate in \\( y \\). Curves \\( x = 6y - y^2 \\) and \\( x = 2y \\) intersect when \\( 6y - y^2 = 2y \\Rightarrow y(4 - y) = 0 \\), \\( y = 0, 4 \\).\n\nTest signs across \\( [-2, 5] \\):\n  At \\( y = -1 \\): parabola \\( = -7 \\), line \\( = -2 \\) \\( \\Rightarrow \\) line right of parabola.\n  At \\( y = 2 \\): parabola \\( = 8 \\), line \\( = 4 \\) \\( \\Rightarrow \\) parabola right.\n  At \\( y = 4.5 \\): parabola \\( = 6.75 \\), line \\( = 9 \\) \\( \\Rightarrow \\) line right.\n\n\\( A = \\int_{-2}^{0} [2y - (6y - y^2)] dy + \\int_{0}^{4} [(6y - y^2) - 2y] dy + \\int_{4}^{5} [2y - (6y - y^2)] dy = \\int_{-2}^{0} (y^2 - 4y) dy + \\int_{0}^{4} (4y - y^2) dy + \\int_{4}^{5} (y^2 - 4y) dy = [\\frac{y^3}{3} - 2y^2]_{-2}^{0} = 0 - (-\\frac{8}{3} - 8) = \\frac{32}{3} \\). Middle: \\( [2y^2 - \\frac{y^3}{3}]_0^4 = 32 - \\frac{64}{3} = \\frac{32}{3} \\). Last: \\( [\\frac{y^3}{3} - 2y^2]_4^5 = (\\frac{125}{3} - 50) - (\\frac{64}{3} - 32) = -\\frac{25}{3} + (-\\frac{64}{3} + 32) \\) wait: \\( \\frac{125}{3} - 50 = -\\frac{25}{3} \\); \\( \\frac{64}{3} - 32 = -\\frac{32}{3} \\); difference \\( = -\\frac{25}{3} - (-\\frac{32}{3}) = \\frac{7}{3} \\).\n\nTotal: \\( \\frac{32}{3} + \\frac{32}{3} + \\frac{7}{3} = \\frac{71}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {x^2} + 8 \\), \\( y = 3{x^2} \\), \\( x = - 3 \\) and \\( x = 4 \\). \\]",
+        "answer": "\\( \\frac{142}{3} \\)",
+        "solution": "Curves \\( y = x^2 + 8 \\) and \\( y = 3x^2 \\) intersect when \\( 2x^2 = 8 \\), \\( x = \\pm 2 \\).\n\nOn \\( (-2, 2) \\): \\( x^2 + 8 > 3x^2 \\) (e.g., at \\( x = 0 \\), \\( 8 > 0 \\)).\nOn \\( (-3, -2) \\) and \\( (2, 4) \\): \\( 3x^2 > x^2 + 8 \\).\n\n\\( A = \\int_{-3}^{-2} (3x^2 - (x^2+8)) dx + \\int_{-2}^{2} ((x^2+8) - 3x^2) dx + \\int_{2}^{4} (3x^2 - (x^2+8)) dx = \\int_{-3}^{-2} (2x^2 - 8) dx + \\int_{-2}^{2} (8 - 2x^2) dx + \\int_{2}^{4} (2x^2 - 8) dx = [\\frac{2x^3}{3} - 8x]_{-3}^{-2} + [8x - \\frac{2x^3}{3}]_{-2}^{2} + [\\frac{2x^3}{3} - 8x]_{2}^{4} \\).\n\nFirst: \\( (-\\frac{16}{3} + 16) - (-18 + 24) = \\frac{32}{3} - 6 = \\frac{14}{3} \\).\nSecond (even integrand, twice 0 to 2): \\( 2[16 - \\frac{16}{3}] = 2 \\cdot \\frac{32}{3} = \\frac{64}{3} \\).\nThird: \\( (\\frac{128}{3} - 32) - (\\frac{16}{3} - 16) = \\frac{32}{3} - (-\\frac{32}{3}) = \\frac{64}{3} \\).\n\nTotal: \\( \\frac{14}{3} + \\frac{64}{3} + \\frac{64}{3} = \\frac{142}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = {y^2} \\), \\( x = {y^3} \\) and \\( y = 2 \\). \\]",
+        "answer": "\\( \\frac{3}{2} \\)",
+        "solution": "Integrate in \\( y \\). \\( x = y^2 \\) and \\( x = y^3 \\) intersect when \\( y = 0, 1 \\). On \\( [0, 1] \\), \\( y^2 \\geq y^3 \\); on \\( [1, 2] \\), \\( y^3 \\geq y^2 \\).\n\n\\( A = \\int_0^1 (y^2 - y^3) dy + \\int_1^2 (y^3 - y^2) dy = [\\frac{y^3}{3} - \\frac{y^4}{4}]_0^1 + [\\frac{y^4}{4} - \\frac{y^3}{3}]_1^2 = (\\frac{1}{3} - \\frac{1}{4}) + [(4 - \\frac{8}{3}) - (\\frac{1}{4} - \\frac{1}{3})] = \\frac{1}{12} + \\frac{4}{3} + \\frac{1}{12} = \\frac{2}{12} + \\frac{4}{3} = \\frac{1}{6} + \\frac{4}{3} = \\frac{1}{6} + \\frac{8}{6} = \\frac{9}{6} = \\frac{3}{2} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( \\displaystyle y = \\frac{7}{x} \\), \\( \\displaystyle y = \\frac{1}{x} - 3 \\), \\( x = - 1 \\) and \\( x = - 4 \\). \\]",
+        "answer": "\\( 3 \\)",
+        "solution": "Curves intersect: \\( \\frac{7}{x} = \\frac{1}{x} - 3 \\Rightarrow \\frac{6}{x} = -3 \\Rightarrow x = -2 \\).\n\nTest on \\( x \\) in \\( [-4, -1] \\):\n  At \\( x = -3 \\): \\( \\frac{7}{x} \\approx -2.33 \\), \\( \\frac{1}{x} - 3 \\approx -3.33 \\) \\( \\Rightarrow \\) \\( \\frac{7}{x} \\) above.\n  At \\( x = -1.5 \\): \\( \\frac{7}{x} \\approx -4.67 \\), \\( \\frac{1}{x} - 3 \\approx -3.67 \\) \\( \\Rightarrow \\) \\( \\frac{1}{x} - 3 \\) above.\n\n\\( A = \\int_{-4}^{-2} [\\frac{7}{x} - (\\frac{1}{x} - 3)] dx + \\int_{-2}^{-1} [(\\frac{1}{x} - 3) - \\frac{7}{x}] dx = \\int_{-4}^{-2} (\\frac{6}{x} + 3) dx + \\int_{-2}^{-1} (-\\frac{6}{x} - 3) dx = [6 \\ln|x| + 3x]_{-4}^{-2} + [-6 \\ln|x| - 3x]_{-2}^{-1} = (6 \\ln 2 - 6) - (6 \\ln 4 - 12) + (0 + 3) - (-6 \\ln 2 + 6) = 6 \\ln 2 - 6 - 12 \\ln 2 + 12 + 3 + 6 \\ln 2 - 6 = (6 - 12 + 6) \\ln 2 + (-6 + 12 + 3 - 6) = 0 + 3 = 3 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = 2{x^2} + 1 \\), \\( y = 7 - x \\), \\( x = 4 \\) and the y-axis. \\]",
+        "answer": "\\( \\frac{455}{12} \\)",
+        "solution": "Curves \\( y = 2x^2 + 1 \\) and \\( y = 7 - x \\) intersect: \\( 2x^2 + x - 6 = 0 \\Rightarrow x = \\frac{3}{2} \\) (and \\( -2 \\), outside interval). On \\( [0, 4] \\), split at \\( x = \\frac{3}{2} \\).\n\nAt \\( x = 0 \\): parabola \\( = 1 \\), line \\( = 7 \\) \\( \\Rightarrow \\) line above.\nAt \\( x = 2 \\): parabola \\( = 9 \\), line \\( = 5 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_0^{3/2} [(7 - x) - (2x^2 + 1)] dx + \\int_{3/2}^{4} [(2x^2 + 1) - (7 - x)] dx = \\int_0^{3/2} (6 - x - 2x^2) dx + \\int_{3/2}^{4} (2x^2 + x - 6) dx \\).\n\nFirst: \\( [6x - \\frac{x^2}{2} - \\frac{2x^3}{3}]_0^{3/2} = 9 - \\frac{9}{8} - \\frac{9}{4} = \\frac{72}{8} - \\frac{9}{8} - \\frac{18}{8} = \\frac{45}{8} \\).\nSecond: \\( [\\frac{2x^3}{3} + \\frac{x^2}{2} - 6x]_{3/2}^{4} = (\\frac{128}{3} + 8 - 24) - (\\frac{9}{4} + \\frac{9}{8} - 9) = (\\frac{128}{3} - 16) - (\\frac{9}{4} + \\frac{9}{8} - 9) = \\frac{80}{3} - (-\\frac{45}{8}) = \\frac{80}{3} + \\frac{45}{8} = \\frac{640}{24} + \\frac{135}{24} = \\frac{775}{24} \\).\n\nTotal: \\( \\frac{45}{8} + \\frac{775}{24} = \\frac{135}{24} + \\frac{775}{24} = \\frac{910}{24} = \\frac{455}{12} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( \\displaystyle y = \\sin \\left( {\\frac{1}{2}x} \\right) \\), \\( y = 3 + \\cos \\left( {2x} \\right) \\), \\( x = 0 \\) and \\( x = \\frac{\\pi }{4} \\). \\]",
+        "answer": "\\( \\frac{3\\pi}{4} + \\sqrt{2 + \\sqrt{2}} - \\frac{3}{2} \\)",
+        "solution": "On \\( [0, \\frac{\\pi}{4}] \\), \\( 3 + \\cos(2x) \\) is in \\( [3, 4] \\) and \\( \\sin(\\frac{x}{2}) \\) is in \\( [0, \\sin(\\frac{\\pi}{8})] \\) \\( \\approx [0, 0.38] \\).\n\nSo \\( 3 + \\cos(2x) > \\sin(\\frac{x}{2}) \\) on the interval.\n\n\\( A = \\int_0^{\\pi/4} [(3 + \\cos(2x)) - \\sin(\\frac{x}{2})] dx = [3x + \\frac{\\sin(2x)}{2} + 2\\cos(\\frac{x}{2})]_0^{\\pi/4} = (\\frac{3\\pi}{4} + \\frac{\\sin(\\pi/2)}{2} + 2\\cos(\\frac{\\pi}{8})) - (0 + 0 + 2) = \\frac{3\\pi}{4} + \\frac{1}{2} + 2\\cos(\\frac{\\pi}{8}) - 2 \\).\n\nUsing \\( \\cos(\\frac{\\pi}{8}) = \\frac{\\sqrt{2 + \\sqrt{2}}}{2} \\): \\( A = \\frac{3\\pi}{4} + \\sqrt{2 + \\sqrt{2}} - \\frac{3}{2} \\).\n\nNumerically \\( \\approx 2.356 + 1.848 - 1.5 \\approx 2.704 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = \\sqrt {2y + 6} \\), \\( x = y - 1 \\), \\( y = 1 \\) and \\( y = 6 \\). \\]",
+        "answer": "\\( \\frac{235}{6} - \\frac{70\\sqrt{2}}{3} \\)",
+        "solution": "Integrate in \\( y \\). Curves \\( x = \\sqrt{2y + 6} \\) and \\( x = y - 1 \\) intersect: square \\( \\Rightarrow 2y + 6 = y^2 - 2y + 1 \\Rightarrow y^2 - 4y - 5 = 0 \\Rightarrow (y-5)(y+1) = 0 \\), so \\( y = 5 \\) (the \\( y = -1 \\) root is extraneous).\n\nAt \\( y = 1 \\): \\( \\sqrt{8} \\approx 2.83 \\) vs \\( 0 \\) \\( \\Rightarrow \\) \\( \\sqrt{2y+6} \\) right.\nAt \\( y = 6 \\): \\( \\sqrt{18} \\approx 4.24 \\) vs \\( 5 \\) \\( \\Rightarrow \\) \\( y - 1 \\) right.\n\n\\( A = \\int_1^5 [\\sqrt{2y + 6} - (y - 1)] dy + \\int_5^6 [(y - 1) - \\sqrt{2y + 6}] dy \\).\n\nFor \\( \\int \\sqrt{2y + 6} dy \\): substitute \\( u = 2y + 6 \\), \\( du = 2 dy \\): \\( = \\frac{1}{3} (2y + 6)^{3/2} \\).\n\nFirst integral: \\( [\\frac{1}{3}(2y+6)^{3/2} - \\frac{y^2}{2} + y]_1^5 = (\\frac{1}{3}(16)^{3/2} - \\frac{25}{2} + 5) - (\\frac{1}{3}(8)^{3/2} - \\frac{1}{2} + 1) = (\\frac{64}{3} - \\frac{15}{2}) - (\\frac{16\\sqrt{2}}{3} + \\frac{1}{2}) = \\frac{64}{3} - \\frac{16\\sqrt{2}}{3} - 8 \\).\n\nSecond: \\( [\\frac{y^2}{2} - y - \\frac{1}{3}(2y+6)^{3/2}]_5^6 = (18 - 6 - \\frac{1}{3}(18)^{3/2}) - (\\frac{25}{2} - 5 - \\frac{1}{3}(16)^{3/2}) = (12 - 18\\sqrt{2}) - (\\frac{15}{2} - \\frac{64}{3}) = 12 - 18\\sqrt{2} + \\frac{64}{3} - \\frac{15}{2} \\).\n\nSum: \\( \\frac{64}{3} - \\frac{16\\sqrt{2}}{3} - 8 + 12 - 18\\sqrt{2} + \\frac{64}{3} - \\frac{15}{2} = \\frac{128}{3} - \\frac{16\\sqrt{2}}{3} - 54\\sqrt{2}/3 + 4 - \\frac{15}{2} = \\frac{128}{3} - \\frac{70\\sqrt{2}}{3} + (8 - 15)/2 = \\frac{128}{3} - \\frac{70\\sqrt{2}}{3} - \\frac{7}{2} = \\frac{256}{6} - \\frac{21}{6} - \\frac{70\\sqrt{2}}{3} = \\frac{235}{6} - \\frac{70\\sqrt{2}}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = 2 - {{\\bf{e}}^{2 - x}} \\), \\( y = {x^2} - 4x + 7 \\), \\( x = 3 \\) and the y-axis. Note : These functions do not intersect. \\]",
+        "answer": "\\( e^2 - e^{-1} + 6 \\)",
+        "solution": "As noted, the curves do not intersect. On \\( [0, 3] \\):\n  At \\( x = 0 \\): \\( 2 - e^2 \\approx -5.39 \\) vs \\( 7 \\) \\( \\Rightarrow \\) parabola above.\n  At \\( x = 3 \\): \\( 2 - e^{-1} \\approx 1.63 \\) vs \\( 4 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_0^3 [(x^2 - 4x + 7) - (2 - e^{2-x})] dx = \\int_0^3 (x^2 - 4x + 5 + e^{2-x}) dx \\).\n\nAntiderivative: \\( \\frac{x^3}{3} - 2x^2 + 5x - e^{2-x} \\).\n\nEvaluate: \\( (9 - 18 + 15 - e^{-1}) - (0 - 0 + 0 - e^2) = (6 - e^{-1}) - (-e^2) = e^2 - e^{-1} + 6 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = {{\\bf{e}}^{2x - 1}} \\), \\( y = {{\\bf{e}}^{5 - x}} \\), \\( x = 0 \\) and \\( x = 3 \\). \\]",
+        "answer": "\\( \\frac{e^2}{2}(e^6 - 6e^2 + 2 + e^{-2})/e \\)",
+        "solution": "Curves \\( y = e^{2x-1} \\) and \\( y = e^{5-x} \\) intersect: \\( 2x - 1 = 5 - x \\Rightarrow x = 2 \\).\n\nAt \\( x = 0 \\): \\( e^{-1} \\approx 0.37 \\) vs \\( e^5 \\approx 148 \\) \\( \\Rightarrow \\) \\( e^{5-x} \\) above.\nAt \\( x = 3 \\): \\( e^5 \\) vs \\( e^2 \\) \\( \\Rightarrow \\) \\( e^{2x-1} \\) above.\n\n\\( A = \\int_0^2 (e^{5-x} - e^{2x-1}) dx + \\int_2^3 (e^{2x-1} - e^{5-x}) dx \\).\n\nAntiderivatives: \\( \\int e^{5-x} dx = -e^{5-x} \\); \\( \\int e^{2x-1} dx = \\frac{e^{2x-1}}{2} \\).\n\nFirst: \\( [-e^{5-x} - \\frac{e^{2x-1}}{2}]_0^2 = (-e^3 - \\frac{e^3}{2}) - (-e^5 - \\frac{e^{-1}}{2}) = -\\frac{3e^3}{2} + e^5 + \\frac{e^{-1}}{2} \\).\n\nSecond: \\( [\\frac{e^{2x-1}}{2} + e^{5-x}]_2^3 = (\\frac{e^5}{2} + e^2) - (\\frac{e^3}{2} + e^3) = \\frac{e^5}{2} + e^2 - \\frac{3e^3}{2} \\).\n\nTotal: \\( e^5 + \\frac{e^5}{2} - 3e^3 + e^2 + \\frac{e^{-1}}{2} = \\frac{3e^5}{2} - 3e^3 + e^2 + \\frac{1}{2e} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( x = \\cos \\left( {\\pi y} \\right) \\), \\( x = 3 \\), \\( y = 0 \\) and \\( y = 4 \\). \\]",
+        "answer": "\\( 12 \\)",
+        "solution": "On \\( [0, 4] \\), \\( x = \\cos(\\pi y) \\) is in \\( [-1, 1] \\) and \\( x = 3 \\) is to the right.\n\n\\( A = \\int_0^4 [3 - \\cos(\\pi y)] dy = [3y - \\frac{\\sin(\\pi y)}{\\pi}]_0^4 = 12 - 0 - 0 = 12 \\).\n\n(The \\( \\sin(\\pi y) \\) term vanishes at \\( y = 0 \\) and \\( y = 4 \\) since both are integers.)"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( y = x^2 + 2\\( , \\)y = \\sin(x)\\( , \\)x = -1\\( and \\)x = 2 \\)",
+        "answer": "\\( 9 + \\cos 2 - \\cos 1 \\)",
+        "solution": "Since \\( x^2 + 2 \\geq 2 > 1 \\geq \\sin(x) \\), the parabola is above the sine curve everywhere.\n\n\\( A = \\int_{-1}^{2} [(x^2 + 2) - \\sin x] dx = \\left[\\frac{x^3}{3} + 2x + \\cos x\\right]_{-1}^{2} = \\left(\\frac{8}{3} + 4 + \\cos 2\\right) - \\left(-\\frac{1}{3} - 2 + \\cos 1\\right) = 9 + \\cos 2 - \\cos 1 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( y = \\frac{8}{x}\\( , \\)y = 2x\\( and \\)x = 4 \\)",
+        "answer": "\\( 12 - 8 \\ln 2 \\)",
+        "solution": "\\( y = \\frac{8}{x} \\) and \\( y = 2x \\) intersect at \\( x = 2 \\) (positive solution of \\( x^2 = 4 \\)). Together with \\( x = 4 \\), the region lies between \\( x = 2 \\) and \\( x = 4 \\), with \\( y = 2x \\) above (e.g., at \\( x = 3 \\): \\( 6 > \\frac{8}{3} \\)) and \\( y = \\frac{8}{x} \\) below.\n\n\\( A = \\int_2^4 \\left(2x - \\frac{8}{x}\\right) dx = \\left[x^2 - 8 \\ln|x|\\right]_2^4 = (16 - 8 \\ln 4) - (4 - 8 \\ln 2) = 12 - 8 \\ln 2 \\).\n\n(Using \\( \\ln 4 = 2 \\ln 2 \\): \\( 12 - 16 \\ln 2 + 8 \\ln 2 = 12 - 8 \\ln 2 \\).)"
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( x = 3 + y^2\\( , \\)x = 2 - y^2\\( , \\)y = 1\\( and \\)y = -2 \\)",
+        "answer": "\\( 9 \\)",
+        "solution": "Integrate in \\( y \\). \\( (3 + y^2) - (2 - y^2) = 1 + 2y^2 > 0 \\) always, so \\( x = 3 + y^2 \\) is right of \\( x = 2 - y^2 \\).\n\n\\( A = \\int_{-2}^{1} (1 + 2y^2) dy = \\left[y + \\frac{2y^3}{3}\\right]_{-2}^{1} = \\left(1 + \\frac{2}{3}\\right) - \\left(-2 - \\frac{16}{3}\\right) = \\frac{5}{3} + \\frac{22}{3} = \\frac{27}{3} = 9 \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( x = y^2 - y - 6\\( and \\)x = 2y + 4 \\)",
+        "answer": "\\( \\frac{343}{6} \\)",
+        "solution": "Integrate in \\( y \\). \\( y^2 - y - 6 = 2y + 4 \\Rightarrow y^2 - 3y - 10 = 0 \\Rightarrow (y-5)(y+2) = 0 \\), so \\( y = -2, 5 \\).\n\nAt \\( y = 0 \\): parabola \\( = -6 \\), line \\( = 4 \\) → line right of parabola throughout.\n\n\\( A = \\int_{-2}^{5} [(2y + 4) - (y^2 - y - 6)] dy = \\int_{-2}^{5} (-y^2 + 3y + 10) dy = \\left[-\\frac{y^3}{3} + \\frac{3y^2}{2} + 10y\\right]_{-2}^{5} = \\left(-\\frac{125}{3} + \\frac{75}{2} + 50\\right) - \\left(\\frac{8}{3} + 6 - 20\\right) = -\\frac{125}{3} + \\frac{75}{2} + 50 - \\frac{8}{3} + 14 = -\\frac{133}{3} + \\frac{75}{2} + 64 \\).\n\nCommon denominator \\( 6 \\): \\( -\\frac{266}{6} + \\frac{225}{6} + \\frac{384}{6} = \\frac{343}{6} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\[ \\( y = x\\sqrt{x^2 + 1} \\), \\( y = e^{-\\frac{1}{2}x} \\), \\( x = -3 \\) and the \\( y \\)-axis. \\]",
+        "answer": "\\( 2 e^{3/2} + \\frac{10\\sqrt{10}}{3} - \\frac{7}{3} \\)",
+        "solution": "On \\( [-3, 0] \\), \\( y = x \\sqrt{x^2 + 1} \\leq 0 \\) (since \\( x \\leq 0 \\)) and \\( y = e^{-x/2} > 0 \\), so the exponential is above.\n\n\\( A = \\int_{-3}^{0} \\left[e^{-x/2} - x \\sqrt{x^2 + 1}\\right] dx \\).\n\n\\( \\int e^{-x/2} dx = -2 e^{-x/2} \\).\n\\( \\int x \\sqrt{x^2 + 1} dx \\): \\( u = x^2 + 1 \\), \\( du = 2x dx \\), \\( = \\frac{1}{3}(x^2 + 1)^{3/2} \\).\n\nAntiderivative: \\( -2 e^{-x/2} - \\frac{1}{3}(x^2 + 1)^{3/2} \\). Evaluate \\( -3 \\) to \\( 0 \\):\n\\( = \\left(-2 - \\frac{1}{3}\\right) - \\left(-2 e^{3/2} - \\frac{(10)^{3/2}}{3}\\right) = -\\frac{7}{3} + 2 e^{3/2} + \\frac{10\\sqrt{10}}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( y = 4x + 3\\( , \\)y = 6 - x - 2x^2\\( , \\)x = -4\\( and \\)x = 2 \\)",
+        "answer": "\\( \\frac{343}{12} \\)",
+        "solution": "Curves \\( y = 4x + 3 \\) and \\( y = 6 - x - 2x^2 \\) intersect: \\( 2x^2 + 5x - 3 = 0 \\Rightarrow x = \\frac{1}{2}, -3 \\).\n\nAt \\( x = -4 \\): line \\( = -13 \\), parabola \\( = -22 \\) → line above.\nAt \\( x = 0 \\): line \\( = 3 \\), parabola \\( = 6 \\) → parabola above.\nAt \\( x = 2 \\): line \\( = 11 \\), parabola \\( = -4 \\) → line above.\n\n\\( A = \\int_{-4}^{-3} [(4x+3) - (6-x-2x^2)] dx + \\int_{-3}^{1/2} [(6-x-2x^2) - (4x+3)] dx + \\int_{1/2}^{2} [(4x+3) - (6-x-2x^2)] dx = \\int_{-4}^{-3} (2x^2 + 5x - 3) dx + \\int_{-3}^{1/2} (-2x^2 - 5x + 3) dx + \\int_{1/2}^{2} (2x^2 + 5x - 3) dx \\).\n\nAntiderivative of \\( (2x^2 + 5x - 3) \\): \\( F(x) = \\frac{2x^3}{3} + \\frac{5x^2}{2} - 3x \\).\n\nFirst piece: \\( F(-3) - F(-4) = \\left(-18 + \\frac{45}{2} + 9\\right) - \\left(-\\frac{128}{3} + 40 + 12\\right) = \\frac{27}{2} - \\frac{28}{3} = \\frac{25}{6} \\).\n\nMiddle piece: \\( -[F(1/2) - F(-3)] \\).\n\\( F(1/2) = \\frac{1}{12} + \\frac{5}{8} - \\frac{3}{2} = -\\frac{19}{24} \\).\n\\( F(-3) = \\frac{27}{2} = \\frac{324}{24} \\).\n\\( F(1/2) - F(-3) = -\\frac{343}{24} \\).\n\\( A_2 = \\frac{343}{24} \\).\n\nThird piece: \\( F(2) - F(1/2) = \\left(\\frac{16}{3} + 10 - 6\\right) - \\left(-\\frac{19}{24}\\right) = \\frac{81}{8} \\).\n\nTotal: \\( \\frac{25}{6} + \\frac{343}{24} + \\frac{81}{8} = \\frac{100}{24} + \\frac{343}{24} + \\frac{243}{24} = \\frac{686}{24} = \\frac{343}{12} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( y = \\frac{1}{x + 2}\\( , \\)y = (x + 2)^2\\( , \\)x = -\\frac{3}{2}\\( , \\)x = 1 \\)",
+        "answer": "\\( \\frac{67}{8} + \\ln(2/3) \\)",
+        "solution": "Curves \\( y = \\frac{1}{x+2} \\) and \\( y = (x+2)^2 \\) intersect: \\( (x+2)^3 = 1 \\Rightarrow x = -1 \\).\n\nAt \\( x = -\\frac{3}{2} \\): \\( \\frac{1}{1/2} = 2 \\) vs \\( (\\frac{1}{2})^2 = \\frac{1}{4} \\) → \\( \\frac{1}{x+2} \\) above.\nAt \\( x = 0 \\): \\( \\frac{1}{2} \\) vs \\( 4 \\) → \\( (x+2)^2 \\) above.\n\n\\( A = \\int_{-3/2}^{-1} \\left[\\frac{1}{x+2} - (x+2)^2\\right] dx + \\int_{-1}^{1} \\left[(x+2)^2 - \\frac{1}{x+2}\\right] dx = \\left[\\ln|x+2| - \\frac{(x+2)^3}{3}\\right]_{-3/2}^{-1} + \\left[\\frac{(x+2)^3}{3} - \\ln|x+2|\\right]_{-1}^{1} = \\left[\\left(0 - \\frac{1}{3}\\right) - \\left(\\ln(1/2) - \\frac{1}{24}\\right)\\right] + \\left[\\left(9 - \\ln 3\\right) - \\left(\\frac{1}{3} - 0\\right)\\right] = -\\frac{1}{3} - \\ln(1/2) + \\frac{1}{24} + 9 - \\ln 3 - \\frac{1}{3} = 9 - \\frac{2}{3} + \\frac{1}{24} + \\ln 2 - \\ln 3 = \\frac{201}{24} + \\ln(2/3) = \\frac{67}{8} + \\ln(2/3) \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( x = y^2 + 1\\( , \\)x = 5\\( , \\)y = -3\\( and \\)y = 3 \\)",
+        "answer": "\\( \\frac{46}{3} \\)",
+        "solution": "Integrate in \\( y \\). \\( x = y^2 + 1 = 5 \\Rightarrow y = \\pm 2 \\).\n\nOn \\( (-2, 2) \\), \\( 5 > y^2 + 1 \\); outside this on \\( (-3, -2) \\) and \\( (2, 3) \\), \\( y^2 + 1 > 5 \\).\n\n\\( A = \\int_{-3}^{-2} (y^2 - 4) dy + \\int_{-2}^{2} (4 - y^2) dy + \\int_{2}^{3} (y^2 - 4) dy \\).\n\nBy symmetry, two outer pieces equal. Outer (one side): \\( \\left[\\frac{y^3}{3} - 4y\\right]_2^3 = (9 - 12) - \\left(\\frac{8}{3} - 8\\right) = -3 + \\frac{16}{3} = \\frac{7}{3} \\).\n\nMiddle (even, twice \\( 0 \\) to \\( 2 \\)): \\( 2\\left[4y - \\frac{y^3}{3}\\right]_0^2 = 2\\left(8 - \\frac{8}{3}\\right) = \\frac{32}{3} \\).\n\nTotal: \\( 2\\left(\\frac{7}{3}\\right) + \\frac{32}{3} = \\frac{14}{3} + \\frac{32}{3} = \\frac{46}{3} \\)."
+      },
+      {
+        "prompt": "Find the area of the region bounded by the given curves.",
+        "problem": "\\( x = e^{1 + 2y}\\( , \\)x = e^{1 - y}\\( , \\)y = -2\\( and \\)y = 1 \\)",
+        "answer": "\\( \\frac{3 e^3}{2} + \\frac{e^{-3}}{2} - 3e + 1 \\)",
+        "solution": "Curves \\( x = e^{1+2y} \\) and \\( x = e^{1-y} \\) intersect: \\( 1 + 2y = 1 - y \\Rightarrow y = 0 \\).\n\nAt \\( y = -2 \\): \\( e^{-3} \\) vs \\( e^3 \\) → \\( e^{1-y} \\) right.\nAt \\( y = 1 \\): \\( e^3 \\) vs \\( 1 \\) → \\( e^{1+2y} \\) right.\n\n\\( A = \\int_{-2}^{0} [e^{1-y} - e^{1+2y}] dy + \\int_{0}^{1} [e^{1+2y} - e^{1-y}] dy \\).\n\nAntiderivatives: \\( \\int e^{1-y} dy = -e^{1-y} \\); \\( \\int e^{1+2y} dy = \\frac{e^{1+2y}}{2} \\).\n\nFirst: \\( \\left[-e^{1-y} - \\frac{e^{1+2y}}{2}\\right]_{-2}^{0} = \\left(-e - \\frac{e}{2}\\right) - \\left(-e^3 - \\frac{e^{-3}}{2}\\right) = -\\frac{3e}{2} + e^3 + \\frac{e^{-3}}{2} \\).\n\nSecond: \\( \\left[\\frac{e^{1+2y}}{2} + e^{1-y}\\right]_0^1 = \\left(\\frac{e^3}{2} + 1\\right) - \\left(\\frac{e}{2} + e\\right) = \\frac{e^3}{2} + 1 - \\frac{3e}{2} \\).\n\nTotal: \\( \\frac{3e^3}{2} + \\frac{e^{-3}}{2} - 3e + 1 \\)."
+      }
+    ]
+  },
+  "6.2": {
+    "id": "6.2",
+    "title": "Volumes of Revolution: Disks and Washers",
+    "sectionId": "",
+    "chapter": "Applications of the Integral (Calc I review)",
+    "chapterNum": 6,
+    "unit": 2,
+    "unitTitle": "Volumes of Revolution and Work",
+    "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcI/VolumeWithRings.aspx",
+    "problems": [
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = x^2 \\) about the \\( x \\)-axis on \\( [0,1] \\).",
+        "answer": "\\( \\frac{\\pi}{5} \\)",
+        "solution": "Revolving \\( f(x) = x^2 \\) about the \\( x \\)-axis on \\( [0,1] \\). Use the disk method.\n\n\\[ V = \\pi \\int_0^1 (x^2)^2 dx = \\pi \\int_0^1 x^4 dx = \\pi \\cdot \\frac{x^5}{5} \\Big|_0^1 = \\frac{\\pi}{5}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Find the volume of the solid formed by revolving the region between \\( f(x) = x^2 \\), \\( g(x) = x^3 \\) about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{2\\pi}{35} \\)",
+        "solution": "We are revolving the region between \\( f(x) = x^2 \\) and \\( g(x) = x^3 \\) about the \\( x \\)-axis.\n\nStep 1: Find where the curves intersect.\n  \\( x^2 = x^3 \\Rightarrow x^2 - x^3 = 0 \\Rightarrow x^2(1 - x) = 0 \\Rightarrow x = 0 \\) or \\( x = 1 \\)\n\nStep 2: Determine which function is on top.\n  On \\( [0, 1] \\), check \\( x = 0.5 \\): \\( f(0.5) = 0.25 \\), \\( g(0.5) = 0.125 \\). So \\( x^2 > x^3 \\) on this interval.\n  Since we are revolving about the \\( x \\)-axis, \\( x^2 \\) is the outer radius and \\( x^3 \\) is the inner radius.\n\nStep 3: Set up the washer integral.\n  \\[ V = \\pi \\int_0^1 [(x^2)^2 - (x^3)^2] dx = \\pi \\int_0^1 [x^4 - x^6] dx \\]\n\nStep 4: Evaluate.\n  \\[ = \\pi \\left[\\frac{x^5}{5} - \\frac{x^7}{7}\\right]_0^1 = \\pi \\left(\\frac{1}{5} - \\frac{1}{7}\\right) = \\pi \\left(\\frac{7}{35} - \\frac{5}{35}\\right) = \\frac{2\\pi}{35} \\]\n\nWait — let me recompute. \\( \\frac{1}{5} - \\frac{1}{7} = \\frac{7}{35} - \\frac{5}{35} = \\frac{2}{35} \\). So \\( V = \\frac{2\\pi}{35} \\).\n\nCorrecting the answer: \\( V = \\frac{2\\pi}{35} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( x \\)-axis on \\( [1,4] \\). \\]",
+        "answer": "\\( \\frac{15\\pi}{2} \\)",
+        "solution": "Revolving \\( f(x) = \\sqrt{x} \\) about the \\( x \\)-axis on \\( [1,4] \\). Disk method.\n\n\\[ V = \\pi \\int_1^4 (\\sqrt{x})^2 dx = \\pi \\int_1^4 x \\, dx = \\pi \\cdot \\frac{x^2}{2} \\Big|_1^4 = \\pi\\left(8 - \\frac{1}{2}\\right) = \\frac{15\\pi}{2}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Find the volume of the solid formed by revolving the region between \\( f(x) = x^2 \\), \\( g(x) = x \\) about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{2\\pi}{15} \\)",
+        "solution": "Region between \\( f(x) = x^2 \\) and \\( g(x) = x \\), revolved about the \\( x \\)-axis.\n\nStep 1: Intersect at \\( x = 0, 1 \\). On \\( [0,1] \\), \\( x \\geq x^2 \\), so outer radius = \\( x \\), inner radius = \\( x^2 \\).\n\nStep 2: Washer method.\n  \\[ V = \\pi \\int_0^1 [x^2 - (x^2)^2] dx = \\pi \\int_0^1 (x^2 - x^4) dx = \\pi\\left[\\frac{x^3}{3} - \\frac{x^5}{5}\\right]_0^1 = \\pi\\left(\\frac{1}{3} - \\frac{1}{5}\\right) = \\frac{2\\pi}{15}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{4-x^2} \\) about the \\( y \\)-axis on \\( [0,2] \\). \\]",
+        "answer": "\\( \\frac{16\\pi}{3} \\)",
+        "solution": "Revolving \\( f(x) = \\sqrt{4 - x^2} \\) (upper half of circle of radius \\( 2 \\)) about the \\( y \\)-axis on \\( [0,2] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^2 x \\sqrt{4 - x^2} \\, dx. \\]\n\nLet \\( u = 4 - x^2 \\), \\( du = -2x \\, dx \\). Bounds: \\( x=0 \\Rightarrow u=4 \\), \\( x=2 \\Rightarrow u=0 \\).\n  \\[ V = 2\\pi \\cdot \\left(-\\frac{1}{2}\\right) \\int_4^0 \\sqrt{u} \\, du = \\pi \\int_0^4 \\sqrt{u} \\, du = \\pi \\cdot \\frac{2}{3} u^{3/2} \\Big|_0^4 = \\frac{2\\pi}{3}(8) = \\frac{16\\pi}{3}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = x^{1/3} \\) about the \\( y \\)-axis on \\( [0,1] \\).",
+        "answer": "\\( \\frac{6\\pi}{7} \\)",
+        "solution": "Revolving \\( f(x) = x^{1/3} \\) about the \\( y \\)-axis on \\( [0,1] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^1 x \\cdot x^{1/3} dx = 2\\pi \\int_0^1 x^{4/3} dx = 2\\pi \\cdot \\frac{3}{7} x^{7/3} \\Big|_0^1 = \\frac{6\\pi}{7}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Find the volume of the solid formed by revolving the region between \\( f(x) = 2x^2 \\), \\( y=0 \\), \\( x=2 \\) about the line \\( y=8 \\).",
+        "answer": "\\( \\frac{896\\pi}{15} \\)",
+        "solution": "Region bounded by \\( y = 2x^2 \\), \\( y = 0 \\), \\( x = 2 \\), revolved about \\( y = 8 \\). The region sits below the line \\( y = 8 \\).\n\nStep 1: At \\( x = 2 \\), \\( 2x^2 = 8 \\), so the curve meets \\( y = 8 \\) at \\( x = 2 \\). The region spans \\( x \\in [0, 2] \\).\n\nStep 2: Washer method with horizontal axis \\( y = 8 \\).\n  Outer radius (from \\( y = 0 \\) up to \\( y = 8 \\)) = \\( 8 \\).\n  Inner radius (from \\( y = 2x^2 \\) up to \\( y = 8 \\)) = \\( 8 - 2x^2 \\).\n\nStep 3: \\[ V = \\pi \\int_0^2 [8^2 - (8 - 2x^2)^2] dx = \\pi \\int_0^2 [64 - (64 - 32x^2 + 4x^4)] dx = \\pi \\int_0^2 (32x^2 - 4x^4) dx = \\pi\\left[\\frac{32x^3}{3} - \\frac{4x^5}{5}\\right]_0^2 = \\pi\\left(\\frac{256}{3} - \\frac{128}{5}\\right) = \\pi\\left(\\frac{1280}{15} - \\frac{384}{15}\\right) = \\frac{896\\pi}{15}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Do the previous problem about the line \\( x=4 \\).",
+        "answer": "\\( \\frac{80\\pi}{3} \\)",
+        "solution": "Same region (\\( y = 2x^2 \\), \\( y = 0 \\), \\( x = 2 \\)) revolved about \\( x = 4 \\). Use shells (vertical axis).\n\nShell at \\( x \\): radius = \\( 4 - x \\), height = \\( 2x^2 \\), bounds \\( [0, 2] \\).\n\n\\[ V = 2\\pi \\int_0^2 (4 - x)(2x^2) dx = 2\\pi \\int_0^2 (8x^2 - 2x^3) dx = 2\\pi\\left[\\frac{8x^3}{3} - \\frac{x^4}{2}\\right]_0^2 = 2\\pi\\left[\\frac{64}{3} - 8\\right] = 2\\pi\\left[\\frac{64}{3} - \\frac{24}{3}\\right] = \\frac{80\\pi}{3}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "\\[ Rotate the region bounded by \\( y = \\sqrt x \\), \\( y = 3 \\) and the \\( y \\)-axis about the \\( y \\)-axis. \\]",
+        "answer": "\\( \\frac{243\\pi}{5} \\)",
+        "solution": "Region: \\( y = \\sqrt{x} \\), \\( y = 3 \\), \\( y \\)-axis. In \\( y \\)-coordinates: \\( y \\in [0, 3] \\), \\( x \\in [0, y^2] \\).\n\nRevolve about \\( y \\)-axis. Disks (in \\( y \\)): radius = \\( y^2 \\).\n\n\\[ V = \\pi \\int_0^3 (y^2)^2 dy = \\pi \\int_0^3 y^4 dy = \\pi \\cdot \\frac{y^5}{5} \\Big|_0^3 = \\frac{243\\pi}{5}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( y = 7 - x^2 \\), \\( x =  - 2 \\), \\( x = 2 \\) and the \\( x \\)-axis about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{2012\\pi}{15} \\)",
+        "solution": "\\( y = 7 - x^2 \\) on \\( [-2, 2] \\) is positive (\\( 3 \\) at endpoints, \\( 7 \\) at center). Disks about \\( x \\)-axis:\n\n\\[ V = \\pi \\int_{-2}^{2} (7 - x^2)^2 dx = 2\\pi \\int_0^2 (49 - 14 x^2 + x^4) dx \\]\n\\[ = 2\\pi\\left[49 x - \\frac{14 x^3}{3} + \\frac{x^5}{5}\\right]_0^2 = 2\\pi\\left[98 - \\frac{112}{3} + \\frac{32}{5}\\right]. \\]\n\nCommon denominator 15: \\( \\frac{1470}{15} - \\frac{560}{15} + \\frac{96}{15} = \\frac{1006}{15} \\). \\[ V = 2\\pi \\cdot \\frac{1006}{15} = \\frac{2012\\pi}{15}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( x = y^2 - 6y + 10 \\) and \\( x = 5 \\) about the \\( y \\)-axis.",
+        "answer": "\\( \\frac{1088\\pi}{15} \\)",
+        "solution": "Curves \\( x = y^2 - 6y + 10 \\) and \\( x = 5 \\) intersect: \\( y^2 - 6y + 5 = 0 \\), \\( y = 1, 5 \\). Parabola has vertex \\( (1, 3) \\), opens right; on \\( (1, 5) \\) it lies left of \\( x = 5 \\).\n\nRevolve about \\( y \\)-axis. Washers (in \\( y \\)): outer = \\( 5 \\), inner = \\( y^2 - 6y + 10 \\).\n\n\\[ V = \\pi \\int_1^5 [25 - (y^2 - 6y + 10)^2] dy. \\]\n\nLet \\( p = y^2 - 6y + 10 \\). Expand \\( p^2 = y^4 - 12 y^3 + 56 y^2 - 120 y + 100 \\).\n  \\[ 25 - p^2 = -y^4 + 12 y^3 - 56 y^2 + 120 y - 75. \\]\n\nAntiderivative: \\( -\\frac{y^5}{5} + 3 y^4 - \\frac{56 y^3}{3} + 60 y^2 - 75 y \\).\n\nAt \\( y = 5 \\): \\( -625 + 1875 - \\frac{7000}{3} + 1500 - 375 = 2375 - \\frac{7000}{3} = \\frac{7125}{3} - \\frac{7000}{3} = \\frac{125}{3} \\).\nAt \\( y = 1 \\): \\( -\\frac{1}{5} + 3 - \\frac{56}{3} + 60 - 75 = -\\frac{1}{5} - \\frac{56}{3} - 12 \\). Common denom 15: \\( -\\frac{3}{15} - \\frac{280}{15} - \\frac{180}{15} = -\\frac{463}{15} \\).\n\nDifference: \\( \\frac{125}{3} - \\left(-\\frac{463}{15}\\right) = \\frac{625}{15} + \\frac{463}{15} = \\frac{1088}{15} \\).\n\n\\[ V = \\frac{1088\\pi}{15}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( y = 2x^2 \\) and \\( y = x^3 \\) about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{256\\pi}{35} \\)",
+        "solution": "\\( y = 2x^2 \\) and \\( y = x^3 \\) intersect: \\( x^2(x - 2) = 0 \\), \\( x = 0, 2 \\). On \\( [0, 2] \\), \\( 2x^2 \\geq x^3 \\) (at \\( x = 1 \\): \\( 2 > 1 \\)).\n\nRevolve about \\( x \\)-axis. Washers: outer = \\( 2x^2 \\), inner = \\( x^3 \\).\n\n\\[ V = \\pi \\int_0^2 [(2x^2)^2 - (x^3)^2] dx = \\pi \\int_0^2 (4 x^4 - x^6) dx = \\pi\\left[\\frac{4 x^5}{5} - \\frac{x^7}{7}\\right]_0^2 \\]\n\\[ = \\pi\\left[\\frac{128}{5} - \\frac{128}{7}\\right] = 128 \\pi \\left(\\frac{1}{5} - \\frac{1}{7}\\right) = 128 \\pi \\cdot \\frac{2}{35} = \\frac{256 \\pi}{35}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( y = 6e^{ - 2x} \\) and \\( y = 6 + 4x - 2x^2 \\) between \\( x = 0 \\) and \\( x = 1 \\)  about the line \\( y =  - 2 \\).",
+        "answer": "\\( \\frac{\\pi(135 + 180 e^2 + 937 e^4)}{15 e^4} \\approx 201.86 \\)",
+        "solution": "At \\( x = 0 \\) both equal \\( 6 \\). At \\( x = 1 \\), the polynomial \\( 6 + 4x - 2x^2 = 8 \\), the exponential \\( 6 e^{-2} \\approx 0.81 \\). So polynomial above on \\( (0, 1] \\).\n\nRevolve about \\( y = -2 \\). Washers (in \\( x \\)):\n  Outer radius = \\( (6 + 4x - 2x^2) + 2 = 8 + 4x - 2x^2 \\).\n  Inner radius = \\( 6 e^{-2x} + 2 \\).\n\n\\[ V = \\pi \\int_0^1 [(8 + 4x - 2x^2)^2 - (6 e^{-2x} + 2)^2] dx. \\]\n\nThis integral is messy but elementary. SymPy gives \\[ V = \\frac{\\pi(135 + 180 e^2 + 937 e^4)}{15 e^4} \\approx 201.86. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( y = 10 - 6x + x^2 \\), \\( y =  - 10 + 6x - x^2 \\), \\( x = 1 \\) and \\( x = 5 \\) about the line \\( y = 8 \\).",
+        "answer": "\\( \\frac{896\\pi}{3} \\)",
+        "solution": "Curves \\( y = 10 - 6x + x^2 \\) and \\( y = -10 + 6x - x^2 \\) are reflections through \\( y = 0 \\); on \\( [1, 5] \\) the first stays positive (vertex \\( (3, 1) \\)) and the second negative (vertex \\( (3, -1) \\)). They never intersect (discriminant < 0).\n\nRevolve about \\( y = 8 \\) (above the region). Washers:\n  Outer radius (from lower curve to \\( y = 8 \\)) = \\( 8 - (-10 + 6x - x^2) = 18 - 6x + x^2 \\).\n  Inner radius (from upper curve to \\( y = 8 \\)) = \\( 8 - (10 - 6x + x^2) = -2 + 6x - x^2 \\).\n\n\\[ V = \\pi \\int_1^5 [(18 - 6x + x^2)^2 - (-2 + 6x - x^2)^2] dx. \\]\n\nUse difference of squares: \\( a^2 - b^2 = (a - b)(a + b) \\).\n  \\[ a - b = (18 - 6x + x^2) - (-2 + 6x - x^2) = 20 - 12x + 2 x^2. \\]\n  \\[ a + b = 16. \\text{(Constant!)} \\]\n\nSo integrand = \\( 16(20 - 12x + 2x^2) = 320 - 192 x + 32 x^2 \\).\n\n\\[ V = \\pi \\int_1^5 (320 - 192 x + 32 x^2) dx = \\pi\\left[320 x - 96 x^2 + \\frac{32 x^3}{3}\\right]_1^5 \\]\n\\[ = \\pi\\left[\\left(1600 - 2400 + \\frac{4000}{3}\\right) - \\left(320 - 96 + \\frac{32}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\left(-800 + \\frac{4000}{3}\\right) - \\left(224 + \\frac{32}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\left(-\\frac{2400}{3} + \\frac{4000}{3}\\right) - \\left(\\frac{672}{3} + \\frac{32}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\frac{1600}{3} - \\frac{704}{3}\\right] = \\frac{896\\pi}{3}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( x = y^2 - 4 \\) and \\( x = 6 - 3y \\) about the line \\( x = 24 \\).",
+        "answer": "\\( \\frac{31556\\pi}{15} \\)",
+        "solution": "Same region as PP-992 (intersect \\( y = -5, 2 \\)). Revolve about \\( x = 24 \\) (vertical, right of region).\n\nUse washers (in \\( y \\)), since slicing horizontally gives annular washers about \\( x = 24 \\):\n  Outer radius (from leftmost \\( x = y^2 - 4 \\) to \\( x = 24 \\)) = \\( 24 - (y^2 - 4) = 28 - y^2 \\).\n  Inner radius (from \\( x = 6 - 3y \\) to \\( x = 24 \\)) = \\( 24 - (6 - 3y) = 18 + 3y \\).\n\n\\[ V = \\pi \\int_{-5}^{2} [(28 - y^2)^2 - (18 + 3y)^2] dy. \\]\n\nExpand: \\( (28 - y^2)^2 = y^4 - 56 y^2 + 784 \\). \\( (18 + 3y)^2 = 9 y^2 + 108 y + 324 \\).\n  Difference: \\( y^4 - 65 y^2 - 108 y + 460 \\).\n\n\\[ \\int_{-5}^{2} (y^4 - 65 y^2 - 108 y + 460) dy = \\left[\\frac{y^5}{5} - \\frac{65 y^3}{3} - 54 y^2 + 460 y\\right]_{-5}^{2} \\]\n\\[ = \\left(\\frac{32}{5} - \\frac{520}{3} - 216 + 920\\right) - \\left(-625 + \\frac{8125}{3} - 1350 - 2300\\right) \\]\n\\[ = \\left(\\frac{32}{5} - \\frac{520}{3} + 704\\right) - \\left(-4275 + \\frac{8125}{3}\\right). \\]\n\nCommon denominator 15:\n  Upper: \\( \\frac{96}{15} - \\frac{2600}{15} + \\frac{10560}{15} = \\frac{8056}{15} \\).\n  Lower: \\( -\\frac{64125}{15} + \\frac{40625}{15} = -\\frac{23500}{15} \\).\n  Difference: \\( \\frac{8056}{15} - \\left(-\\frac{23500}{15}\\right) = \\frac{31556}{15} \\).\n\n\\[ V = \\frac{31556 \\pi}{15}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
+        "problem": "Rotate the region bounded by \\( y = 2x + 1 \\), \\( x = 4 \\) and \\( y = 3 \\) about the line \\( x =  - 4 \\).",
+        "answer": "\\( 126\\pi \\)",
+        "solution": "Same triangle as PP-991: \\( x \\in [1, 4] \\), \\( y \\in [3, 2x + 1] \\). Revolve about \\( x = -4 \\) (vertical line left of region). Shells (in \\( x \\)):\n  Radius = \\( x + 4 \\). Height = \\( (2x + 1) - 3 = 2x - 2 \\).\n\n\\[ V = 2\\pi \\int_1^4 (x + 4)(2x - 2) dx = 2\\pi \\int_1^4 (2 x^2 + 6 x - 8) dx \\]\n\\[ = 2\\pi\\left[\\frac{2 x^3}{3} + 3 x^2 - 8 x\\right]_1^4 = 2\\pi\\left[\\left(\\frac{128}{3} + 48 - 32\\right) - \\left(\\frac{2}{3} + 3 - 8\\right)\\right] \\]\n\\[ = 2\\pi\\left[\\left(\\frac{128}{3} + 16\\right) - \\left(\\frac{2}{3} - 5\\right)\\right] = 2\\pi\\left[\\frac{126}{3} + 21\\right] = 2\\pi[42 + 21] = 2\\pi \\cdot 63 = 126\\pi. \\]"
+      }
+    ]
+  },
+  "6.3": {
+    "id": "6.3",
+    "title": "Volumes of Revolution: Shells",
+    "sectionId": "",
+    "chapter": "Applications of the Integral (Calc I review)",
+    "chapterNum": 6,
+    "unit": 2,
+    "unitTitle": "Volumes of Revolution and Work",
+    "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcI/VolumeWithCylinder.aspx",
+    "problems": [
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( y \\)-axis on \\( [0,4] \\). \\]",
+        "answer": "\\( \\frac{128\\pi}{5} \\)",
+        "solution": "Revolving \\( f(x) = \\sqrt{x} \\) about the \\( y \\)-axis on \\( [0,4] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^4 x \\cdot \\sqrt{x} \\, dx = 2\\pi \\int_0^4 x^{3/2} dx = 2\\pi \\cdot \\frac{2}{5} x^{5/2} \\Big|_0^4 = \\frac{4\\pi}{5}(32) = \\frac{128\\pi}{5}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = 1-x \\) about the \\( y \\)-axis on \\( [0,1] \\).",
+        "answer": "\\( \\frac{\\pi}{3} \\)",
+        "solution": "Revolving \\( f(x) = 1 - x \\) about the \\( y \\)-axis on \\( [0,1] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^1 x(1 - x) dx = 2\\pi \\int_0^1 (x - x^2) dx = 2\\pi\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = 2\\pi\\left(\\frac{1}{2} - \\frac{1}{3}\\right) = \\frac{\\pi}{3}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Do the previous about the \\( x \\)-axis. Must determine the new interval.",
+        "answer": "\\( \\frac{\\pi}{3} \\)",
+        "solution": "Previous problem: \\( y = 1 - x \\), \\( x \\in [0,1] \\), now revolved about the \\( x \\)-axis.\n\nStep 1: Determine the new interval. Since \\( y \\) ranges from \\( 0 \\) to \\( 1 \\) as \\( x \\) goes \\( 0 \\) to \\( 1 \\), we can integrate in \\( x \\) on \\( [0,1] \\) (disks) or in \\( y \\) on \\( [0,1] \\) (shells).\n\nStep 2: Disk method. \\[ V = \\pi \\int_0^1 (1 - x)^2 dx. \\]\n  Let \\( u = 1 - x \\), \\( du = -dx \\). \\[ = -\\pi \\int_1^0 u^2 du = \\pi \\int_0^1 u^2 du = \\frac{\\pi}{3}. \\]\n\nCheck via shells in \\( y \\): \\( x = 1 - y \\), \\[ V = 2\\pi \\int_0^1 y(1 - y) dy = 2\\pi\\left(\\frac{1}{2} - \\frac{1}{3}\\right) = \\frac{\\pi}{3}. \\] Matches."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Do problem 2 about the \\( x \\)-axis. Must determine the new interval.",
+        "answer": "\\( \\frac{\\pi(e^2 - 1)}{2} \\)",
+        "solution": "Problem 2 (H-002): region under \\( f(x) = e^x \\) on \\( [0,1] \\), now revolved about the \\( x \\)-axis.\n\nStep 1: The new interval in \\( y \\) is \\( [1, e] \\) (since \\( e^x \\) goes from \\( 1 \\) to \\( e \\) on \\( [0,1] \\)); equivalently, integrate in \\( x \\) on \\( [0,1] \\) by disks.\n\nStep 2: Disk method. \\[ V = \\pi \\int_0^1 (e^x)^2 dx = \\pi \\int_0^1 e^{2x} dx = \\pi \\cdot \\frac{e^{2x}}{2} \\Big|_0^1 = \\frac{\\pi(e^2 - 1)}{2}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Find the volume of the solid formed by revolving the region between \\( f(x) = x^3 \\), \\( y=0 \\), \\( x=2 \\) about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{128\\pi}{7} \\)",
+        "solution": "Region bounded by \\( y = x^3 \\), \\( y = 0 \\), \\( x = 2 \\) revolved about the \\( x \\)-axis. Disk method.\n\n\\[ V = \\pi \\int_0^2 (x^3)^2 dx = \\pi \\int_0^2 x^6 dx = \\pi \\cdot \\frac{x^7}{7} \\Big|_0^2 = \\frac{128\\pi}{7}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Do the previous about the \\( y \\)-axis.",
+        "answer": "\\( \\frac{64\\pi}{5} \\)",
+        "solution": "Same region (\\( y = x^3 \\), \\( y = 0 \\), \\( x = 2 \\)) revolved about the \\( y \\)-axis. Use shells.\n\n\\[ V = 2\\pi \\int_0^2 x \\cdot x^3 dx = 2\\pi \\int_0^2 x^4 dx = 2\\pi \\cdot \\frac{x^5}{5} \\Big|_0^2 = 2\\pi \\cdot \\frac{32}{5} = \\frac{64\\pi}{5}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Do problem 5 about the line \\( x=4 \\).",
+        "answer": "\\( \\frac{17\\pi}{30} \\)",
+        "solution": "Problem 5 (H-005): region between \\( y = x^2 \\) and \\( y = x^3 \\) on \\( [0,1] \\), revolved about \\( x = 4 \\).\n\nOn \\( [0,1] \\), \\( x^2 \\geq x^3 \\). Use shells (radius = \\( 4 - x \\), height = \\( x^2 - x^3 \\)).\n\n\\[ V = 2\\pi \\int_0^1 (4 - x)(x^2 - x^3) dx = 2\\pi \\int_0^1 (4x^2 - 4x^3 - x^3 + x^4) dx = 2\\pi \\int_0^1 (4x^2 - 5x^3 + x^4) dx = 2\\pi\\left[\\frac{4x^3}{3} - \\frac{5x^4}{4} + \\frac{x^5}{5}\\right]_0^1 = 2\\pi\\left[\\frac{4}{3} - \\frac{5}{4} + \\frac{1}{5}\\right] = 2\\pi\\left[\\frac{80 - 75 + 12}{60}\\right] = 2\\pi \\cdot \\frac{17}{60} = \\frac{17\\pi}{30}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Do problem 5 about the line \\( y=-2 \\).",
+        "answer": "\\( \\frac{41\\pi}{105} \\)",
+        "solution": "Problem 5 (H-005): region between \\( y = x^2 \\) and \\( y = x^3 \\) on \\( [0,1] \\), now revolved about \\( y = -2 \\).\n\n\\( y = -2 \\) is below the region. Washer method:\n  Outer radius (from \\( y = x^2 \\) down to \\( y = -2 \\)) = \\( x^2 + 2 \\).\n  Inner radius (from \\( y = x^3 \\) down to \\( y = -2 \\)) = \\( x^3 + 2 \\).\n\n\\[ V = \\pi \\int_0^1 [(x^2 + 2)^2 - (x^3 + 2)^2] dx = \\pi \\int_0^1 [(x^4 + 4x^2 + 4) - (x^6 + 4x^3 + 4)] dx = \\pi \\int_0^1 (x^4 + 4x^2 - x^6 - 4x^3) dx = \\pi\\left[\\frac{x^5}{5} + \\frac{4x^3}{3} - \\frac{x^7}{7} - x^4\\right]_0^1 = \\pi\\left[\\frac{1}{5} + \\frac{4}{3} - \\frac{1}{7} - 1\\right]. \\]\n\nCommon denominator \\( 105 \\): \\( \\frac{21}{105} + \\frac{140}{105} - \\frac{15}{105} - \\frac{105}{105} = \\frac{41}{105} \\). So \\( V = \\frac{41\\pi}{105} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Find the volume of a pyramid of height \\( h \\) whose base is an equilateral triangle of length \\( L \\).",
+        "answer": "\\( \\frac{\\sqrt{3} L^2 h}{12} \\)",
+        "solution": "Set up coordinates with apex at \\( z = 0 \\) and base at \\( z = h \\). By similar triangles, the cross-section at height \\( z \\) is an equilateral triangle with side \\( s(z) = L \\cdot \\frac{z}{h} \\).\n\nArea of equilateral triangle of side \\( s \\): \\( A(z) = \\frac{\\sqrt{3}}{4} s^2 = \\frac{\\sqrt{3}}{4} \\frac{L^2 z^2}{h^2} \\).\n\n\\( V = \\int_0^h A(z) dz = \\frac{\\sqrt{3} L^2}{4 h^2} \\int_0^h z^2 dz = \\frac{\\sqrt{3} L^2}{4 h^2} \\cdot \\frac{h^3}{3} = \\frac{\\sqrt{3} L^2 h}{12} \\).\n\nCheck: matches the general pyramid formula \\( V = \\frac{1}{3} \\cdot \\text{base area} \\cdot h \\) with base area \\( \\frac{\\sqrt{3}}{4} L^2 \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Find the volume of the solid whose base is a disk of radius \\( r \\) and whose cross-sections are squares.  See figure below to see a sketch of the cross-sections. ![](MoreVolume_Files/image001.gif)",
+        "answer": "\\( \\frac{16 r^3}{3} \\)",
+        "solution": "Place the disk in the \\( xy \\)-plane with center at the origin: \\( x^2 + y^2 \\leq r^2 \\). Cross-sections perpendicular to (say) the \\( x \\)-axis are squares.\n\nAt position \\( x \\), the chord length in \\( y \\) is \\( 2\\sqrt{r^2 - x^2} \\), which is the side of the square.\n\n\\( A(x) = (2\\sqrt{r^2 - x^2})^2 = 4(r^2 - x^2) \\).\n\n\\( V = \\int_{-r}^{r} 4(r^2 - x^2) dx = 4\\left[r^2 x - \\frac{x^3}{3}\\right]_{-r}^{r} = 4 \\cdot 2\\left(r^3 - \\frac{r^3}{3}\\right) = 8 \\cdot \\frac{2 r^3}{3} = \\frac{16 r^3}{3} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Find the volume of the solid whose base is the region bounded by \\( x = 2 - y^2 \\) and \\( x = y^2 - 2 \\) and whose cross-sections are isosceles triangles with the base perpendicular to the \\( y \\)-axis and the angle between the base and the two sides of equal length is \\( \\frac{\\pi}{4} \\). See figure below to see a sketch of the cross-sections. ![](MoreVolume_Files/image002.gif) \\]",
+        "answer": "\\( \\frac{64\\sqrt{2}}{15} \\)",
+        "solution": "Base bounded by \\( x = 2 - y^2 \\) and \\( x = y^2 - 2 \\) (intersect at \\( y = \\pm \\sqrt{2} \\)). At each \\( y \\), width of base is \\( b(y) = (2 - y^2) - (y^2 - 2) = 4 - 2y^2 \\).\n\nCross-section is an isosceles triangle with base \\( b \\) perpendicular to \\( y \\)-axis, and the angle between the base and the equal sides is \\( \\frac{\\pi}{4} \\).\n\nHeight of the triangle: with apex angle... actually, the angle at each base endpoint is \\( \\frac{\\pi}{4} \\), so the altitude \\( h \\) satisfies \\( \\tan(\\frac{\\pi}{4}) = \\frac{h}{b/2} \\Rightarrow h = \\frac{b}{2} \\).\n\nArea: \\( A(y) = \\frac{1}{2} b h = \\frac{1}{2} b \\left(\\frac{b}{2}\\right) = \\frac{b^2}{4} = \\frac{(4 - 2y^2)^2}{4} = (2 - y^2)^2 \\).\n\n\\( V = \\int_{-\\sqrt{2}}^{\\sqrt{2}} (2 - y^2)^2 dy = 2 \\int_0^{\\sqrt{2}} (4 - 4y^2 + y^4) dy = 2\\left[4y - \\frac{4y^3}{3} + \\frac{y^5}{5}\\right]_0^{\\sqrt{2}} = 2\\left[4\\sqrt{2} - \\frac{4}{3}(2\\sqrt{2}) + \\frac{1}{5}(4\\sqrt{2})\\right] = 2 \\sqrt{2} \\left[4 - \\frac{8}{3} + \\frac{4}{5}\\right] = 2\\sqrt{2} \\cdot \\frac{60 - 40 + 12}{15} = 2\\sqrt{2} \\cdot \\frac{32}{15} = \\frac{64 \\sqrt{2}}{15} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Find the volume of a wedge cut out of a \"cylinder\" whose base is the region bounded by \\( y = \\sqrt{4 - x} \\), \\( x = -4 \\) and the \\( x \\)-axis. The angle between the top and bottom of the wedge is \\( \\frac{\\pi}{3} \\). See the figure below for a sketch of the \"cylinder\" and the wedge (the positive \\( x \\)-axis and positive \\( y \\)-axis are shown in the sketch – they are just in a different orientation). ![](MoreVolume_Files/image003.gif) \\]",
+        "answer": "\\( 16 \\sqrt{3} \\)",
+        "solution": "Base is bounded by \\( y = \\sqrt{4 - x} \\), \\( x = -4 \\), and the \\( x \\)-axis. The curve \\( y = \\sqrt{4 - x} \\) runs from \\( (-4, \\sqrt{8}) \\) down to \\( (4, 0) \\).\n\nCross-section perpendicular to \\( x \\)-axis: the wedge has angle \\( \\frac{\\pi}{3} \\) between top and bottom faces, so each vertical slice is a right triangle with leg \\( = \\) base width \\( \\sqrt{4 - x} \\) (the \\( y \\)-extent of the base region) and other leg \\( = \\sqrt{4 - x} \\cdot \\tan(\\frac{\\pi}{3}) = \\sqrt{4 - x} \\cdot \\sqrt{3} \\).\n\n\\( A(x) = \\frac{1}{2} \\sqrt{4 - x} \\cdot \\sqrt{3} \\sqrt{4 - x} = \\frac{\\sqrt{3}}{2}(4 - x) \\).\n\n\\( V = \\frac{\\sqrt{3}}{2} \\int_{-4}^{4} (4 - x) dx = \\frac{\\sqrt{3}}{2}\\left[4x - \\frac{x^2}{2}\\right]_{-4}^{4} = \\frac{\\sqrt{3}}{2}\\left[(16 - 8) - (-16 - 8)\\right] = \\frac{\\sqrt{3}}{2}(32) = 16 \\sqrt{3} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Rotate the region bounded by \\( x = (y - 2)^2 \\), the \\( x \\)-axis and the \\( y \\)-axis about the \\( x \\)-axis.",
+        "answer": "\\( \\frac{8\\pi}{3} \\)",
+        "solution": "Region: \\( x = (y-2)^2 \\) with \\( y \\)-axis (\\( x = 0 \\)) and \\( x \\)-axis (\\( y = 0 \\)). The curve passes through \\( (4, 0) \\) and \\( (0, 2) \\). Region is bounded by the curve, the segment from \\( (0, 0) \\) to \\( (4, 0) \\), and the segment from \\( (0, 0) \\) to \\( (0, 2) \\).\n\nRevolve about the \\( x \\)-axis. Use cylindrical shells (horizontal strips):\nShell at height \\( y \\): radius \\( = y \\), height \\( = (y-2)^2 \\), thickness \\( dy \\). Bounds: \\( y \\in [0, 2] \\).\n\n\\( V = 2\\pi \\int_0^2 y(y-2)^2 dy = 2\\pi \\int_0^2 (y^3 - 4y^2 + 4y) dy = 2\\pi\\left[\\frac{y^4}{4} - \\frac{4y^3}{3} + 2y^2\\right]_0^2 = 2\\pi\\left[4 - \\frac{32}{3} + 8\\right] = 2\\pi\\left[12 - \\frac{32}{3}\\right] = 2\\pi \\cdot \\frac{4}{3} = \\frac{8\\pi}{3} \\).\n\nCheck by disks (in \\( x \\)): solving for \\( y \\) on the lower branch, \\( y = 2 - \\sqrt{x} \\). \\( V = \\pi \\int_0^4 (2 - \\sqrt{x})^2 dx = \\pi\\left[4x - \\frac{8}{3} x^{3/2} + \\frac{x^2}{2}\\right]_0^4 = \\pi\\left[16 - \\frac{64}{3} + 8\\right] = \\frac{8\\pi}{3} \\). Matches."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Rotate the region bounded by \\( y = \\frac{1}{x} \\), \\( x = \\frac{1}{2} \\), \\( x = 4 \\)and the \\( x \\)-axis about the \\( y \\)-axis. \\]",
+        "answer": "\\( 7\\pi \\)",
+        "solution": "Region: \\( y = \\frac{1}{x} \\), \\( x = \\frac{1}{2} \\), \\( x = 4 \\), \\( x \\)-axis. Revolve about \\( y \\)-axis. Shells:\nRadius \\( = x \\), height \\( = \\frac{1}{x} \\), bounds \\( \\left[\\frac{1}{2}, 4\\right] \\).\n\n\\( V = 2\\pi \\int_{1/2}^{4} x \\cdot \\frac{1}{x} dx = 2\\pi \\int_{1/2}^{4} dx = 2\\pi \\cdot \\left(4 - \\frac{1}{2}\\right) = 2\\pi \\cdot \\frac{7}{2} = 7\\pi \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( y \\)-axis. For this problem assume that \\( x \\geq 0 \\). \\]",
+        "answer": "\\( \\frac{128\\pi}{15} \\)",
+        "solution": "\\( y = 4x \\) and \\( y = x^3 \\) (\\( x \\geq 0 \\)) intersect: \\( 4x = x^3 \\Rightarrow x = 0 \\) or \\( x = 2 \\). On \\( [0, 2] \\), \\( 4x \\geq x^3 \\) (at \\( x = 1 \\): \\( 4 > 1 \\)).\n\nRevolve about \\( y \\)-axis. Shells: radius \\( = x \\), height \\( = 4x - x^3 \\).\n\n\\( V = 2\\pi \\int_0^2 x(4x - x^3) dx = 2\\pi \\int_0^2 (4x^2 - x^4) dx = 2\\pi\\left[\\frac{4x^3}{3} - \\frac{x^5}{5}\\right]_0^2 = 2\\pi\\left[\\frac{32}{3} - \\frac{32}{5}\\right] = 2\\pi \\cdot 32 \\left(\\frac{1}{3} - \\frac{1}{5}\\right) = 64\\pi \\cdot \\frac{2}{15} = \\frac{128\\pi}{15} \\)."
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( x \\)-axis. For this problem assume that \\( x \\ge 0 \\). \\]",
+        "answer": "\\( \\frac{512\\pi}{21} \\)",
+        "solution": "Same region as PP-989, but revolve about x-axis. Use washers (in \\( x \\)):\n  Outer radius = \\( 4x \\), inner radius = \\( x^3 \\).\n\n\\[ V = \\pi \\int_0^2 [(4x)^2 - (x^3)^2] dx = \\pi \\int_0^2 (16 x^2 - x^6) dx = \\pi\\left[\\frac{16 x^3}{3} - \\frac{x^7}{7}\\right]_0^2 \\]\n\\[ = \\pi\\left[\\frac{128}{3} - \\frac{128}{7}\\right] = 128 \\pi \\left(\\frac{1}{3} - \\frac{1}{7}\\right) = 128 \\pi \\cdot \\frac{4}{21} = \\frac{512 \\pi}{21}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Rotate the region bounded by \\( y = 2x + 1 \\), \\( y = 3 \\) and \\( x = 4 \\) about the line \\( y = 10 \\).",
+        "answer": "\\( 90\\pi \\)",
+        "solution": "Region: \\( y = 2x + 1 \\), \\( y = 3 \\), \\( x = 4 \\). Line and \\( y = 3 \\) meet at \\( x = 1 \\). Region: \\( x \\in [1, 4] \\), \\( y \\in [3, 2x + 1] \\) (at \\( x = 4 \\), \\( y \\) goes up to \\( 9 \\)).\n\nRevolve about \\( y = 10 \\) (above region). Washers (in \\( x \\)):\n  Outer radius (from \\( y = 3 \\) up to \\( y = 10 \\)) = \\( 7 \\).\n  Inner radius (from \\( y = 2x + 1 \\) up to \\( y = 10 \\)) = \\( 9 - 2x \\).\n\n\\[ V = \\pi \\int_1^4 [49 - (9 - 2x)^2] dx = \\pi \\int_1^4 [49 - (81 - 36x + 4x^2)] dx \\]\n\\[ = \\pi \\int_1^4 (-32 + 36x - 4x^2) dx = \\pi\\left[-32 x + 18 x^2 - \\frac{4 x^3}{3}\\right]_1^4 \\]\n\\[ = \\pi\\left[\\left(-128 + 288 - \\frac{256}{3}\\right) - \\left(-32 + 18 - \\frac{4}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\left(160 - \\frac{256}{3}\\right) - \\left(-14 - \\frac{4}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\left(\\frac{480}{3} - \\frac{256}{3}\\right) - \\left(-\\frac{42}{3} - \\frac{4}{3}\\right)\\right] \\]\n\\[ = \\pi\\left[\\frac{224}{3} + \\frac{46}{3}\\right] = \\pi \\cdot \\frac{270}{3} = 90\\pi. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Rotate the region bounded by \\( x = y^2 - 4 \\) and \\( x = 6 - 3y \\) about the line \\( y =  - 8 \\).",
+        "answer": "\\( \\frac{4459\\pi}{6} \\)",
+        "solution": "Curves \\( x = y^2 - 4 \\) and \\( x = 6 - 3y \\) intersect: \\( y^2 - 4 = 6 - 3y \\Rightarrow y^2 + 3y - 10 = 0 \\Rightarrow (y+5)(y-2) = 0 \\), \\( y = -5, 2 \\).\n\nAt \\( y = 0 \\): \\( -4 \\) vs \\( 6 \\to 6 - 3y \\) is right. So on \\( (-5, 2) \\), \\( 6 - 3y > y^2 - 4 \\).\n\nRevolve about \\( y = -8 \\) (horizontal line below region). Use shells (horizontal strips):\n  Shell radius = \\( y - (-8) = y + 8 \\). Shell height = \\( (6 - 3y) - (y^2 - 4) = 10 - 3y - y^2 \\).\n\n\\[ V = 2\\pi \\int_{-5}^{2} (y + 8)(10 - 3y - y^2) dy. \\]\n\nExpand: \\( (y + 8)(10 - 3y - y^2) = 10 y - 3 y^2 - y^3 + 80 - 24 y - 8 y^2 = -y^3 - 11 y^2 - 14 y + 80 \\).\n\n\\[ \\int_{-5}^{2} (-y^3 - 11 y^2 - 14 y + 80) dy = \\left[-\\frac{y^4}{4} - \\frac{11 y^3}{3} - 7 y^2 + 80 y\\right]_{-5}^{2} \\]\n\\[ = \\left(-4 - \\frac{88}{3} - 28 + 160\\right) - \\left(-\\frac{625}{4} + \\frac{1375}{3} - 175 - 400\\right) \\]\n\\[ = \\left(128 - \\frac{88}{3}\\right) - \\left(-\\frac{625}{4} + \\frac{1375}{3} - 575\\right). \\]\n\nCompute pieces with common denominator 12:\n  \\( \\left(128 - \\frac{88}{3}\\right) = \\frac{1536}{12} - \\frac{352}{12} = \\frac{1184}{12} \\).\n  \\( -\\frac{625}{4} = -\\frac{1875}{12} \\); \\( \\frac{1375}{3} = \\frac{5500}{12} \\); \\( -575 = -\\frac{6900}{12} \\). Sum = \\( \\frac{-1875 + 5500 - 6900}{12} = -\\frac{3275}{12} \\).\n\nDifference: \\( \\frac{1184}{12} - \\left(-\\frac{3275}{12}\\right) = \\frac{4459}{12} \\).\n\n\\[ V = 2\\pi \\cdot \\frac{4459}{12} = \\frac{4459 \\pi}{6}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "Rotate the region bounded by \\( y = x^2 - 6x + 9 \\) and \\( y =  - x^2 + 6x - 1 \\) about the line \\( x = 8 \\).",
+        "answer": "\\( \\frac{640\\pi}{3} \\)",
+        "solution": "Curves \\( y = (x-3)^2 \\) and \\( y = -(x-3)^2 + 8 \\) intersect: \\( (x-3)^2 = -(x-3)^2 + 8 \\Rightarrow 2(x-3)^2 = 8 \\Rightarrow x = 1, 5 \\).\n\nOn \\( (1, 5) \\), \\( y_{\\text{top}} = -x^2 + 6x - 1 \\geq y_{\\text{bot}} = (x-3)^2 \\) (at \\( x = 3 \\): \\( 8 \\) vs \\( 0 \\)).\n\nRevolve about \\( x = 8 \\) (vertical line right of region). Use shells:\n  Radius = \\( 8 - x \\). Height = \\( (-x^2 + 6x - 1) - (x-3)^2 = -2x^2 + 12 x - 10 \\).\n\n\\[ V = 2\\pi \\int_1^5 (8 - x)(-2 x^2 + 12 x - 10) dx. \\]\n\nExpand: \\( (8 - x)(-2 x^2 + 12 x - 10) = -16 x^2 + 96 x - 80 + 2 x^3 - 12 x^2 + 10 x = 2 x^3 - 28 x^2 + 106 x - 80 \\).\n\n\\[ \\int_1^5 (2 x^3 - 28 x^2 + 106 x - 80) dx = \\left[\\frac{x^4}{2} - \\frac{28 x^3}{3} + 53 x^2 - 80 x\\right]_1^5 \\]\n\\[ = \\left(\\frac{625}{2} - \\frac{3500}{3} + 1325 - 400\\right) - \\left(\\frac{1}{2} - \\frac{28}{3} + 53 - 80\\right) \\]\n\\[ = \\left(\\frac{625}{2} - \\frac{3500}{3} + 925\\right) - \\left(\\frac{1}{2} - \\frac{28}{3} - 27\\right). \\]\n\nWith common denominator 6: \\( \\left(\\frac{1875}{6} - \\frac{7000}{6} + \\frac{5550}{6}\\right) - \\left(\\frac{3}{6} - \\frac{56}{6} - \\frac{162}{6}\\right) \\)\n  \\[ = \\frac{425}{6} - \\left(-\\frac{215}{6}\\right) = \\frac{640}{6} = \\frac{320}{3}. \\]\n\n\\[ V = 2\\pi \\cdot \\frac{320}{3} = \\frac{640 \\pi}{3}. \\]"
+      },
+      {
+        "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
+        "problem": "\\[ Rotate the region bounded by \\( \\displaystyle y = \\frac{e^{\\frac{1}{2}x}}{x + 2} \\), \\( \\displaystyle y = 5 - \\frac{1}{4}x \\), \\( x = - 1 \\) and \\( x = 6 \\) about the line \\( x = - 2 \\). \\]",
+        "answer": "\\( 4\\pi\\left(\\frac{196}{3} + e^{-1/2} - e^3\\right) \\approx 576.22 \\)",
+        "solution": "On \\( [-1, 6] \\), the line \\( y = 5 - \\frac{x}{4} \\) stays above \\( y = \\frac{e^{x/2}}{x+2} \\) (check at boundaries: at \\( x=-1 \\), \\( 5.25 \\) vs \\( \\approx 0.61 \\); at \\( x=6 \\), \\( 3.5 \\) vs \\( \\approx 2.51 \\)).\n\nRevolve about \\( x = -2 \\) (vertical line left of region). Use shells:\n  Radius = \\( x - (-2) = x + 2 \\). Height = \\( \\left(5 - \\frac{x}{4}\\right) - \\frac{e^{x/2}}{x + 2} \\).\n\n\\[ V = 2\\pi \\int_{-1}^{6} (x + 2)\\left[\\left(5 - \\frac{x}{4}\\right) - \\frac{e^{x/2}}{x + 2}\\right] dx \\]\n\\[ = 2\\pi \\int_{-1}^{6} \\left[(x + 2)\\left(5 - \\frac{x}{4}\\right) - e^{x/2}\\right] dx. \\]\n\nPolynomial part: \\( (x + 2)\\left(5 - \\frac{x}{4}\\right) = 5x - \\frac{x^2}{4} + 10 - \\frac{x}{2} = -\\frac{x^2}{4} + \\frac{9x}{2} + 10 \\).\n  \\[ \\int_{-1}^{6} \\left(-\\frac{x^2}{4} + \\frac{9x}{2} + 10\\right) dx = \\left[-\\frac{x^3}{12} + \\frac{9 x^2}{4} + 10 x\\right]_{-1}^{6} \\]\n  \\[ = (-18 + 81 + 60) - \\left(\\frac{1}{12} + \\frac{9}{4} - 10\\right) = 123 - \\left(\\frac{1}{12} + \\frac{27}{12} - \\frac{120}{12}\\right) = 123 + \\frac{92}{12} = 123 + \\frac{23}{3} = \\frac{392}{3}. \\]\n\nExponential: \\( \\int_{-1}^{6} e^{x/2} dx = 2[e^{x/2}]_{-1}^{6} = 2(e^3 - e^{-1/2}) \\).\n\n\\[ V = 2\\pi\\left[\\frac{392}{3} - 2 e^3 + 2 e^{-1/2}\\right] = \\frac{784\\pi}{3} - 4\\pi e^3 + 4\\pi e^{-1/2}. \\]\n\nNumerically: \\( V \\approx 821.05 - 252.83 + 7.62 \\approx 576.22 \\)."
+      }
+    ]
+  },
+  "6.4": {
+    "id": "6.4",
+    "title": "Work",
+    "sectionId": "",
+    "chapter": "Applications of the Integral (Calc I review)",
+    "chapterNum": 6,
+    "unit": 2,
+    "unitTitle": "Volumes of Revolution and Work",
+    "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcI/Work.aspx",
+    "problems": [
+      {
+        "prompt": "Solve the following work problem.",
+        "problem": "\\[ A force of \\( F(x) = x^2 - \\cos(3x) + 2 \\), \\( x \\) is in meters, acts on an object. What is the work required to move the object from \\( x = 3 \\) to \\( x = 7 \\)? \\]",
+        "answer": "\\( \\frac{340}{3} + \\frac{\\sin 9 - \\sin 21}{3} \\)",
+        "solution": "Work = \\( \\int_a^b F(x) dx \\).\n\n\\[ W = \\int_3^7 [x^2 - \\cos(3x) + 2] dx = \\left[\\frac{x^3}{3} - \\frac{\\sin(3x)}{3} + 2x\\right]_3^7 \\]\n\\[ = \\left(\\frac{343}{3} - \\frac{\\sin(21)}{3} + 14\\right) - \\left(9 - \\frac{\\sin(9)}{3} + 6\\right) \\]\n\\[ = \\frac{343}{3} + 14 - 15 - \\frac{\\sin(21)}{3} + \\frac{\\sin(9)}{3} \\]\n\\[ = \\frac{343}{3} - 1 + \\frac{\\sin 9 - \\sin 21}{3} \\]\n\\[ = \\frac{340}{3} + \\frac{\\sin 9 - \\sin 21}{3}. \\]"
+      },
+      {
+        "prompt": "Solve the following work problem.",
+        "problem": "A spring has a natural length of 18 inches and a force of 20 lbs is required to stretch and hold the spring to a length of 24 inches.  What is the work required to stretch the spring from a length of 21 inches to a length of 26 inches?",
+        "answer": "\\[ \\( \\frac{275}{3} \\) in-lb \\]",
+        "solution": "Hooke's law: \\( F = k x \\) where \\( x \\) is the displacement from natural length.\n\nFrom the data: 20 lb stretches by \\( 24 - 18 = 6 \\) in, so \\( k = \\frac{20}{6} = \\frac{10}{3} \\) lb/in.\n\nStretching from 21 in to 26 in corresponds to \\( x \\) going from 3 in to 8 in.\n\n\\[ W = \\int_3^8 \\frac{10}{3} x \\, dx = \\frac{10}{3} \\cdot \\left[\\frac{x^2}{2}\\right]_3^8 = \\frac{10}{3} \\cdot \\frac{64 - 9}{2} = \\frac{10}{3} \\cdot \\frac{55}{2} = \\frac{550}{6} = \\frac{275}{3} \\text{ in-lb} \\approx 91.67 \\text{ in-lb}. \\]"
+      },
+      {
+        "prompt": "Solve the following work problem.",
+        "problem": "A cable with mass ½ kg/meter is lifting a load of 150 kg that is initially at the bottom of a 50 meter shaft.  How much work is required to lift the load ¼ of the way up the shaft?",
+        "answer": "\\[ \\( \\frac{336875}{16} \\) J = 21054.6875 J (using \\( g = 9.8 \\) m/s\\( ^2 \\)) \\]",
+        "solution": "Let \\( y \\) be the distance the load has been lifted (so \\( y \\) goes from 0 to 12.5 m, i.e., 1/4 of 50 m).\n\nAt lift \\( y \\), the cable still hanging below the top is \\( (50 - y) \\) m, with mass \\( \\frac{1}{2}(50 - y) \\) kg. Plus the 150-kg load.\n\nTotal mass to lift: \\( 150 + \\frac{50 - y}{2} \\) kg. Force needed: \\( \\left[150 + \\frac{50 - y}{2}\\right] g \\), with \\( g = 9.8 \\) m/s\\( ^2 \\).\n\n\\[ W = \\int_0^{25/2} \\left[150 + \\frac{50 - y}{2}\\right] \\cdot 9.8 \\, dy. \\]\n\nAntiderivative (without \\( g \\)): \\( 150 y + 25 y - \\frac{y^2}{4} = 175 y - \\frac{y^2}{4} \\).\n\nEvaluate at \\( y = \\frac{25}{2} \\): \\( 175 \\cdot \\frac{25}{2} - \\frac{(25/2)^2}{4} = 2187.5 - \\frac{625}{16} = \\frac{35000}{16} - \\frac{625}{16} = \\frac{34375}{16} \\).\n\n\\[ W = 9.8 \\cdot \\frac{34375}{16} = \\frac{336875}{16} \\approx 21054.69 \\text{ J}. \\]"
+      },
+      {
+        "prompt": "Solve the following work problem.",
+        "problem": "A tank of water is 15 feet long and has a cross section in the shape of an equilateral triangle with sides 2 feet long (point of the triangle points directly down).  The tank is filled with water to a depth of 9 inches.  Determine the amount of work needed to pump all of the water to the top of the tank.  Assume that the density of the water is 62 lb/ft\\( ^3 \\).",
+        "answer": "\\[ \\( \\frac{4185}{8} - \\frac{1395 \\sqrt{3}}{16} \\approx 372.11 \\) ft-lb \\]",
+        "solution": "The triangular cross-section (equilateral, side 2 ft, point down) has total height \\( \\sqrt{3} \\) ft. Let \\( h \\) = height above the bottom point.\n\nAt height \\( h \\), the width of the triangle is \\( w(h) = \\frac{2}{\\sqrt{3}} h \\) (linearly from 0 at the bottom to 2 at the top).\n\nA horizontal slab at height \\( h \\) has volume \\( dV = w(h) \\cdot 15 \\cdot dh = \\frac{30}{\\sqrt{3}} h \\, dh \\).\n\nWeight: \\( 62 \\cdot dV \\). Distance to lift to top of tank: \\( \\sqrt{3} - h \\).\n\nWater fills \\( h \\in [0, \\frac{3}{4}] \\). Work:\n\n\\[ W = \\int_0^{3/4} 62 \\cdot \\frac{30}{\\sqrt{3}} h \\cdot (\\sqrt{3} - h) dh \\]\n\\[ = \\frac{1860}{\\sqrt{3}} \\int_0^{3/4} (\\sqrt{3} h - h^2) dh \\]\n\\[ = \\frac{1860}{\\sqrt{3}} \\left[\\frac{\\sqrt{3} h^2}{2} - \\frac{h^3}{3}\\right]_0^{3/4} \\]\n\\[ = \\frac{1860}{\\sqrt{3}} \\cdot \\left[\\frac{\\sqrt{3} \\cdot 9}{32} - \\frac{27}{192}\\right] \\]\n\\[ = \\frac{1860}{\\sqrt{3}} \\cdot \\left[\\frac{9\\sqrt{3}}{32} - \\frac{9}{64}\\right] \\]\n\\[ = 1860 \\cdot \\frac{9}{32} - 1860 \\cdot \\frac{9}{64 \\sqrt{3}} \\]\n\\[ = \\frac{16740}{32} - \\frac{16740}{64 \\sqrt{3}}. \\]\n\nSimplify: \\( \\frac{16740}{32} = \\frac{4185}{8} \\). And \\( \\frac{16740}{64\\sqrt{3}} = \\frac{16740\\sqrt{3}}{192} = \\frac{1395\\sqrt{3}}{16} \\).\n\n\\[ W = \\frac{4185}{8} - \\frac{1395 \\sqrt{3}}{16} \\approx 523.12 - 151.01 \\approx 372.11 \\text{ ft-lb}. \\]"
+      }
+    ]
+  },
   "7.1": {
     "id": "7.1",
     "title": "Integration by Parts",
     "sectionId": "IntegrationByParts",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 3,
+    "unitTitle": "Integration by Parts and Trig Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx",
     "problems": [
       {
@@ -135,6 +635,8 @@
     "sectionId": "IntegralsWithTrig",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 3,
+    "unitTitle": "Integration by Parts and Trig Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegralsWithTrig.aspx",
     "problems": [
       {
@@ -253,6 +755,8 @@
     "sectionId": "TrigSubstitutions",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 4,
+    "unitTitle": "Trig Substitution and Partial Fractions",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/TrigSubstitutions.aspx",
     "problems": [
       {
@@ -353,6 +857,8 @@
     "sectionId": "PartialFractions",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 4,
+    "unitTitle": "Trig Substitution and Partial Fractions",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx",
     "problems": [
       {
@@ -471,6 +977,8 @@
     "sectionId": "IntegralsWithRoots",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 4,
+    "unitTitle": "Trig Substitution and Partial Fractions",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegralsWithRoots.aspx",
     "problems": [
       {
@@ -571,6 +1079,8 @@
     "sectionId": "IntegralsWithQuadratics",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 4,
+    "unitTitle": "Trig Substitution and Partial Fractions",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegralsWithQuadratics.aspx",
     "problems": [
       {
@@ -671,6 +1181,8 @@
     "sectionId": "IntegrationStrategy",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 5,
+    "unitTitle": "Integration Strategy and Improper Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationStrategy.aspx",
     "problems": [
       {
@@ -801,6 +1313,8 @@
     "sectionId": "ImproperIntegrals",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 5,
+    "unitTitle": "Integration Strategy and Improper Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ImproperIntegrals.aspx",
     "problems": [
       {
@@ -919,6 +1433,8 @@
     "sectionId": "ImproperIntegralsCompTest",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 5,
+    "unitTitle": "Integration Strategy and Improper Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ImproperIntegralsCompTest.aspx",
     "problems": [
       {
@@ -1019,6 +1535,8 @@
     "sectionId": "ApproximatingDefIntegrals",
     "chapter": "Integration Techniques",
     "chapterNum": 7,
+    "unit": 5,
+    "unitTitle": "Integration Strategy and Improper Integrals",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ApproximatingDefIntegrals.aspx",
     "problems": [
       {
@@ -1119,6 +1637,8 @@
     "sectionId": "ArcLength",
     "chapter": "Applications of Integrals",
     "chapterNum": 8,
+    "unit": 6,
+    "unitTitle": "Applications of Integration",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ArcLength.aspx",
     "problems": [
       {
@@ -1237,6 +1757,8 @@
     "sectionId": "SurfaceArea",
     "chapter": "Applications of Integrals",
     "chapterNum": 8,
+    "unit": 6,
+    "unitTitle": "Applications of Integration",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/SurfaceArea.aspx",
     "problems": [
       {
@@ -1337,6 +1859,8 @@
     "sectionId": "CenterOfMass",
     "chapter": "Applications of Integrals",
     "chapterNum": 8,
+    "unit": 6,
+    "unitTitle": "Applications of Integration",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/CenterOfMass.aspx",
     "problems": [
       {
@@ -1437,6 +1961,8 @@
     "sectionId": "HydrostaticPressure",
     "chapter": "Applications of Integrals",
     "chapterNum": 8,
+    "unit": 6,
+    "unitTitle": "Applications of Integration",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/HydrostaticPressure.aspx",
     "problems": [
       {
@@ -1549,6 +2075,8 @@
     "sectionId": "Probability",
     "chapter": "Applications of Integrals",
     "chapterNum": 8,
+    "unit": 6,
+    "unitTitle": "Applications of Integration",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/Probability.aspx",
     "problems": [
       {
@@ -1667,6 +2195,8 @@
     "sectionId": "ParametricEqn",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 8,
+    "unitTitle": "Parametric Equations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ParametricEqn.aspx",
     "problems": [
       {
@@ -1773,6 +2303,8 @@
     "sectionId": "ParaTangent",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 8,
+    "unitTitle": "Parametric Equations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ParaTangent.aspx",
     "problems": [
       {
@@ -1873,6 +2405,8 @@
     "sectionId": "ParaArea",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 8,
+    "unitTitle": "Parametric Equations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ParaArea.aspx",
     "problems": [
       {
@@ -1973,6 +2507,8 @@
     "sectionId": "ParaArcLength",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 8,
+    "unitTitle": "Parametric Equations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ParaArcLength.aspx",
     "problems": [
       {
@@ -2073,6 +2609,8 @@
     "sectionId": "ParaSurfaceArea",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 8,
+    "unitTitle": "Parametric Equations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ParaSurfaceArea.aspx",
     "problems": [
       {
@@ -2173,6 +2711,8 @@
     "sectionId": "PolarCoordinates",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PolarCoordinates.aspx",
     "problems": [
       {
@@ -2291,6 +2831,8 @@
     "sectionId": "PolarTangents",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PolarTangents.aspx",
     "problems": [
       {
@@ -2391,6 +2933,8 @@
     "sectionId": "PolarArea",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PolarArea.aspx",
     "problems": [
       {
@@ -2491,6 +3035,8 @@
     "sectionId": "PolarArcLength",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PolarArcLength.aspx",
     "problems": [
       {
@@ -2591,6 +3137,8 @@
     "sectionId": "PolarSurfaceArea",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PolarSurfaceArea.aspx",
     "problems": [
       {
@@ -2691,6 +3239,8 @@
     "sectionId": "ArcLength_SurfaceArea",
     "chapter": "Parametric Equations & Polar Coordinates",
     "chapterNum": 9,
+    "unit": 9,
+    "unitTitle": "Polar Coordinates",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ArcLength_SurfaceArea.aspx",
     "problems": [
       {
@@ -2791,6 +3341,8 @@
     "sectionId": "Sequences",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 10,
+    "unitTitle": "Sequences and Series Foundations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/Sequences.aspx",
     "problems": [
       {
@@ -2873,6 +3425,8 @@
     "sectionId": "MoreSequences",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 10,
+    "unitTitle": "Sequences and Series Foundations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/MoreSequences.aspx",
     "problems": [
       {
@@ -2943,6 +3497,8 @@
     "sectionId": "Series_Basics",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 10,
+    "unitTitle": "Sequences and Series Foundations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/Series_Basics.aspx",
     "problems": [
       {
@@ -3013,6 +3569,8 @@
     "sectionId": "ConvergenceOfSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 10,
+    "unitTitle": "Sequences and Series Foundations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/ConvergenceOfSeries.aspx",
     "problems": [
       {
@@ -3083,6 +3641,8 @@
     "sectionId": "Series_Special",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 10,
+    "unitTitle": "Sequences and Series Foundations",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/Series_Special.aspx",
     "problems": [
       {
@@ -3165,6 +3725,8 @@
     "sectionId": "IntegralTest",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/IntegralTest.aspx",
     "problems": [
       {
@@ -3235,6 +3797,8 @@
     "sectionId": "SeriesCompTest",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/SeriesCompTest.aspx",
     "problems": [
       {
@@ -3317,6 +3881,8 @@
     "sectionId": "AlternatingSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/AlternatingSeries.aspx",
     "problems": [
       {
@@ -3387,6 +3953,8 @@
     "sectionId": "AbsoluteConvergence",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/AbsoluteConvergence.aspx",
     "problems": [
       {
@@ -3457,6 +4025,8 @@
     "sectionId": "RatioTest",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/RatioTest.aspx",
     "problems": [
       {
@@ -3551,6 +4121,8 @@
     "sectionId": "RootTest",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/RootTest.aspx",
     "problems": [
       {
@@ -3621,6 +4193,8 @@
     "sectionId": "SeriesStrategy",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 11,
+    "unitTitle": "Convergence Tests",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/SeriesStrategy.aspx",
     "problems": [
       {
@@ -3703,6 +4277,8 @@
     "sectionId": "EstimatingSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/EstimatingSeries.aspx",
     "problems": [
       {
@@ -3761,6 +4337,8 @@
     "sectionId": "PowerSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PowerSeries.aspx",
     "problems": [
       {
@@ -3837,6 +4415,8 @@
     "sectionId": "PowerSeriesandFunctions",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/PowerSeriesandFunctions.aspx",
     "problems": [
       {
@@ -3907,6 +4487,8 @@
     "sectionId": "TaylorSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/TaylorSeries.aspx",
     "problems": [
       {
@@ -4013,6 +4595,8 @@
     "sectionId": "TaylorSeriesApps",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/TaylorSeriesApps.aspx",
     "problems": [
       {
@@ -4083,6 +4667,8 @@
     "sectionId": "BinomialSeries",
     "chapter": "Sequences & Series",
     "chapterNum": 10,
+    "unit": 12,
+    "unitTitle": "Power Series and Taylor Series",
     "notesUrl": "https://tutorial.math.lamar.edu/Classes/CalcII/BinomialSeries.aspx",
     "problems": [
       {
