@@ -72,24 +72,61 @@ def paul_url_for(section_id, section_num):
     return f'https://tutorial.math.lamar.edu/Classes/CalcII/{section_id}.aspx'
 
 
-def strip_math_delimiters(text):
-    """Convert \\( ... \\) and \\[ ... \\] and $...$ to plain LaTeX for KaTeX inline/display.
+def collapse_display_math(text):
+    """Collapse internal whitespace in every \\[ ... \\] and \\( ... \\) block
+    to a single space.
 
-    The batting cage HTML wraps each problem with \\( \\) / \\[ \\] via KaTeX
-    auto-render, so the problems.json content should be raw LaTeX (no delimiters).
+    The batting cage's solution renderer replaces raw \\n with <br> BEFORE
+    handing off to KaTeX auto-render, which breaks multi-line display-math
+    blocks because KaTeX can't span HTML tags. Single-line blocks render fine.
     """
-    # Drop the outer $...$ or \(...\) wrappers if the text is a single math expression
+    def _collapse(m):
+        inner = m.group(1)
+        inner = re.sub(r'\s+', ' ', inner).strip()
+        return m.group(0)[:2] + ' ' + inner + ' ' + m.group(0)[-2:]
+    # Display: \[ ... \]
+    text = re.sub(r'\\\[(.*?)\\\]', _collapse, text, flags=re.DOTALL)
+    # Inline: \( ... \)  — collapse just in case
+    text = re.sub(r'\\\((.*?)\\\)', _collapse, text, flags=re.DOTALL)
+    return text
+
+
+def normalize_problem_or_answer(text):
+    """Return text formatted for the app's renderMathInElement path.
+
+    The app renders problem + answer via KaTeX auto-render, which scans for
+    \\(...\\) (inline) and \\[...\\] (display) delimiters. Our MD source has
+    three patterns:
+      1. Pure math wrapped: '\\( \\int x e^{3x} \\, dx \\)'   → already OK
+      2. Pure math bare:    '\\int x e^{3x} \\, dx'           → wrap in \\[...\\]
+      3. Prose + inline:    'Find the Maclaurin series for \\( f(x) = ... \\).'
+                                                              → already OK (inline math rendered, prose as text)
+
+    We rewrite bare math into a display block so KaTeX auto-render picks it up.
+    """
     text = text.strip()
-    # If the text is exactly wrapped in a single delimiter pair, strip it
-    patterns = [
-        (r'^\\\((.*)\\\)$', r'\1'),
-        (r'^\$\$(.*)\$\$$', r'\1'),
-        (r'^\$(.*)\$$', r'\1'),
-    ]
-    for p, r in patterns:
-        m = re.match(p, text, re.DOTALL)
-        if m:
-            return m.group(1).strip()
+    # Drop legacy $...$ / $$...$$ wrappers in favor of \(...\) / \[...\]
+    # (single expression only; don't touch mid-sentence $ if any)
+    m = re.match(r'^\$\$(.*)\$\$$', text, re.DOTALL)
+    if m:
+        return '\\[ ' + re.sub(r'\s+', ' ', m.group(1)).strip() + ' \\]'
+    m = re.match(r'^\$(.*)\$$', text, re.DOTALL)
+    if m:
+        return '\\( ' + m.group(1).strip() + ' \\)'
+    # If the text contains no \( or \[ delimiters, decide whether it's bare
+    # math (wrap in \[...\]) or plain prose (leave as-is).
+    if '\\(' not in text and '\\[' not in text:
+        # Count runs of 4+ alphabetic characters. Two or more such runs means
+        # the content is prose (e.g., "rectangular plate submerged"), not math.
+        word_runs = re.findall(r'[A-Za-z]{4,}', text)
+        has_backslash_command = bool(re.search(r'\\[a-zA-Z]+', text))
+        if has_backslash_command or len(word_runs) < 2:
+            # Pure math or a math-like short expression. Wrap as display.
+            return '\\[ ' + re.sub(r'\s+', ' ', text).strip() + ' \\]'
+        # Prose. Leave as-is so KaTeX auto-render treats it as plain text.
+        return text
+    # Already has delimiters (either pure-math wrapped or prose+inline math);
+    # leave as-is.
     return text
 
 
@@ -139,15 +176,18 @@ def parse_md_file(path):
             answer_text = sol_ans[1].strip() if len(sol_ans) > 1 else ''
             # Strip trailing --- and trailing newlines
             answer_text = re.sub(r'\n---.*$', '', answer_text, flags=re.DOTALL).strip()
-            # Strip outer delimiters from problem and answer (they're single-math content)
-            problem_clean = strip_math_delimiters(problem_text)
-            answer_clean = strip_math_delimiters(answer_text)
-            # Solution stays as mixed prose + math (with \( \) and \[ \] inline)
+            # Normalize problem and answer so the app's renderMathInElement
+            # path handles every pattern (bare math, wrapped math, prose+math).
+            problem_clean = normalize_problem_or_answer(problem_text)
+            answer_clean = normalize_problem_or_answer(answer_text)
+            # Solution: collapse multi-line display math to single line so the
+            # app's \n→<br> replacement doesn't break KaTeX auto-render.
+            solution_clean = collapse_display_math(solution_text)
             problems.append({
                 'prompt': default_prompt_for_section(sec_num, sec_title),
                 'problem': problem_clean,
                 'answer': answer_clean,
-                'solution': solution_text,
+                'solution': solution_clean,
             })
 
         sections_out.append({

@@ -1079,10 +1079,17 @@ function showProblem() {
   const promptEl = document.getElementById('problem-prompt');
   promptEl.textContent = item.prompt || '';
 
-  // Render problem
+  // Render problem (supports prose+math and pure math; see build_problems.py
+  // normalize_problem_or_answer for the source format contract).
   const probEl = document.getElementById('problem-display');
-  probEl.innerHTML = '';
-  katex.render(item.problem, probEl, { displayMode: true, throwOnError: false });
+  probEl.innerHTML = (item.problem || '').replace(/\n/g, '<br>');
+  renderMathInElement(probEl, {
+    delimiters: [
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false
+  });
 
   // Reset state
   state.revealed = false;
@@ -1139,10 +1146,16 @@ function revealAnswer() {
     state.firstProblemSeen = true;
   }
 
-  // Render answer
+  // Render answer (same format contract as problem)
   const ansEl = document.getElementById('answer-display');
-  ansEl.innerHTML = '';
-  katex.render(item.answer, ansEl, { displayMode: true, throwOnError: false });
+  ansEl.innerHTML = (item.answer || '').replace(/\n/g, '<br>');
+  renderMathInElement(ansEl, {
+    delimiters: [
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false
+  });
 
   // Prepare solution
   const solEl = document.getElementById('solution-content');
