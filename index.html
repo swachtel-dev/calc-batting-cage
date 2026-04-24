@@ -906,133 +906,9 @@
 
 <script>
 // ========================= PROBLEM DATA =========================
-const SECTIONS = {
-  "7.1": {
-    id: "7.1", title: "Integration by Parts",
-    chapter: "Integration Techniques", chapterNum: 7,
-    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx",
-    problems: [
-      {
-        prompt: "Evaluate the following integral using integration by parts.",
-        problem: "\\int x e^{3x} \\, dx",
-        answer: "\\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C",
-        solution: "We need to use integration by parts, which says \\( \\int u\\,dv = uv - \\int v\\,du \\).\n\n<b>Step 1: Choose u and dv.</b> We want to pick \\( u \\) as the part that gets simpler when we differentiate it, and \\( dv \\) as the part we can integrate. Here, \\( x \\) gets simpler when differentiated (it becomes 1), so:\n\n\\[ u = x \\qquad dv = e^{3x}\\,dx \\]\n\n<b>Step 2: Find du and v.</b> Differentiate \\( u \\) and integrate \\( dv \\):\n\n\\[ du = dx \\qquad v = \\int e^{3x}\\,dx = \\frac{1}{3}e^{3x} \\]\n\n(We get \\( v = \\tfrac{1}{3}e^{3x} \\) because the chain rule gives us a factor of 3 when differentiating \\( e^{3x} \\), so we need \\( \\tfrac{1}{3} \\) to compensate.)\n\n<b>Step 3: Apply the integration by parts formula.</b>\n\n\\[ \\int x e^{3x}\\,dx = uv - \\int v\\,du = \\frac{x}{3}e^{3x} - \\int \\frac{1}{3}e^{3x}\\,dx \\]\n\n<b>Step 4: Evaluate the remaining integral.</b> The integral \\( \\int \\frac{1}{3}e^{3x}\\,dx \\) is straightforward:\n\n\\[ \\int \\frac{1}{3}e^{3x}\\,dx = \\frac{1}{3} \\cdot \\frac{1}{3}e^{3x} = \\frac{1}{9}e^{3x} \\]\n\n<b>Step 5: Combine everything.</b>\n\n\\[ \\int x e^{3x}\\,dx = \\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C \\]"
-      },
-      {
-        prompt: "Evaluate the following integral using integration by parts.",
-        problem: "\\int x \\sin(5x) \\, dx",
-        answer: "-\\frac{x}{5}\\cos(5x) + \\frac{1}{25}\\sin(5x) + C",
-        solution: "We use integration by parts: \\( \\int u\\,dv = uv - \\int v\\,du \\).\n\n<b>Step 1: Choose u and dv.</b> Let \\( u = x \\) (because its derivative is simpler: just 1) and \\( dv = \\sin(5x)\\,dx \\) (because we know how to integrate sine).\n\n<b>Step 2: Find du and v.</b>\n\n\\[ du = dx \\qquad v = \\int \\sin(5x)\\,dx = -\\frac{1}{5}\\cos(5x) \\]\n\n(The antiderivative of \\( \\sin(5x) \\) is \\( -\\tfrac{1}{5}\\cos(5x) \\) because when you differentiate \\( -\\tfrac{1}{5}\\cos(5x) \\), the chain rule gives you \\( -\\tfrac{1}{5} \\cdot (-\\sin(5x)) \\cdot 5 = \\sin(5x) \\).)\n\n<b>Step 3: Apply the formula.</b>\n\n\\[ \\int x \\sin(5x)\\,dx = x \\cdot \\left(-\\frac{1}{5}\\cos(5x)\\right) - \\int \\left(-\\frac{1}{5}\\cos(5x)\\right)dx \\]\n\n\\[ = -\\frac{x}{5}\\cos(5x) + \\frac{1}{5}\\int \\cos(5x)\\,dx \\]\n\n<b>Step 4: Evaluate the remaining integral.</b>\n\n\\[ \\int \\cos(5x)\\,dx = \\frac{1}{5}\\sin(5x) \\]\n\nSo: \\( \\frac{1}{5} \\cdot \\frac{1}{5}\\sin(5x) = \\frac{1}{25}\\sin(5x) \\)\n\n<b>Step 5: Combine.</b>\n\n\\[ \\int x \\sin(5x)\\,dx = -\\frac{x}{5}\\cos(5x) + \\frac{1}{25}\\sin(5x) + C \\]"
-      },
-      {
-        prompt: "Evaluate the following integral. (Hint: think about what to choose for u and dv.)",
-        problem: "\\int \\ln(3x) \\, dx",
-        answer: "x\\ln(3x) - x + C",
-        solution: "This one is a little tricky because there is no obvious \\( dv \\). The key insight: we can write the integrand as \\( \\ln(3x) \\cdot 1 \\), and let \\( dv = dx \\).\n\n<b>Step 1: Choose u and dv.</b>\n\n\\[ u = \\ln(3x) \\qquad dv = dx \\]\n\nWhy? Because we know the derivative of \\( \\ln(3x) \\), and \\( dv = dx \\) integrates trivially.\n\n<b>Step 2: Find du and v.</b>\n\n\\[ du = \\frac{1}{3x} \\cdot 3\\,dx = \\frac{1}{x}\\,dx \\qquad v = x \\]\n\n(We used the chain rule to differentiate \\( \\ln(3x) \\): the derivative of \\( \\ln(\\text{stuff}) \\) is \\( \\frac{1}{\\text{stuff}} \\cdot (\\text{stuff})' \\), so \\( \\frac{1}{3x} \\cdot 3 = \\frac{1}{x} \\).)\n\n<b>Step 3: Apply the formula \\( \\int u\\,dv = uv - \\int v\\,du \\).</b>\n\n\\[ \\int \\ln(3x)\\,dx = x \\cdot \\ln(3x) - \\int x \\cdot \\frac{1}{x}\\,dx = x\\ln(3x) - \\int 1\\,dx \\]\n\n<b>Step 4: Evaluate.</b>\n\n\\[ \\int 1\\,dx = x \\]\n\n<b>Step 5: Final answer.</b>\n\n\\[ \\int \\ln(3x)\\,dx = x\\ln(3x) - x + C \\]"
-      }
-    ]
-  },
-  "7.4": {
-    id: "7.4", title: "Partial Fractions",
-    chapter: "Integration Techniques", chapterNum: 7,
-    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx",
-    problems: [
-      {
-        prompt: "Evaluate the following integral using partial fraction decomposition.",
-        problem: "\\int \\frac{1}{x^2 - 4}\\,dx",
-        answer: "\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right| + C",
-        solution: "<b>Step 1: Factor the denominator.</b> We recognize \\( x^2 - 4 \\) as a difference of squares:\n\n\\[ x^2 - 4 = (x-2)(x+2) \\]\n\n<b>Step 2: Set up the partial fraction decomposition.</b> Since both factors are linear (degree 1) and distinct, we write:\n\n\\[ \\frac{1}{(x-2)(x+2)} = \\frac{A}{x-2} + \\frac{B}{x+2} \\]\n\n<b>Step 3: Solve for A and B.</b> Multiply both sides by \\( (x-2)(x+2) \\):\n\n\\[ 1 = A(x+2) + B(x-2) \\]\n\nThis must hold for all \\( x \\). The fastest way to find \\( A \\) and \\( B \\) is to plug in strategic values:\n\n- Set \\( x = 2 \\): \\( 1 = A(4) + B(0) \\), so \\( A = \\frac{1}{4} \\)\n- Set \\( x = -2 \\): \\( 1 = A(0) + B(-4) \\), so \\( B = -\\frac{1}{4} \\)\n\n<b>Step 4: Rewrite and integrate.</b>\n\n\\[ \\int \\frac{1}{x^2-4}\\,dx = \\int \\left( \\frac{1/4}{x-2} - \\frac{1/4}{x+2} \\right) dx \\]\n\n\\[ = \\frac{1}{4}\\ln|x-2| - \\frac{1}{4}\\ln|x+2| + C \\]\n\n<b>Step 5: Simplify using log rules.</b> Since \\( \\ln a - \\ln b = \\ln\\frac{a}{b} \\):\n\n\\[ = \\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right| + C \\]"
-      },
-      {
-        prompt: "Evaluate the following integral using partial fraction decomposition.",
-        problem: "\\int \\frac{3}{x(x^2 + 4)}\\,dx",
-        answer: "\\frac{3}{4}\\ln|x| - \\frac{3}{8}\\ln(x^2+4) + C",
-        solution: "<b>Step 1: Identify the factor types.</b> The denominator has a linear factor \\( x \\) and an irreducible quadratic \\( x^2 + 4 \\) (it has no real roots because \\( x^2 + 4 > 0 \\) for all \\( x \\)).\n\n<b>Step 2: Set up the decomposition.</b> For a linear factor, use \\( \\frac{A}{x} \\). For an irreducible quadratic, use \\( \\frac{Bx + C}{x^2 + 4} \\):\n\n\\[ \\frac{3}{x(x^2+4)} = \\frac{A}{x} + \\frac{Bx+C}{x^2+4} \\]\n\n<b>Step 3: Solve for A, B, C.</b> Multiply both sides by \\( x(x^2+4) \\):\n\n\\[ 3 = A(x^2+4) + (Bx+C)(x) \\]\n\n\\[ 3 = Ax^2 + 4A + Bx^2 + Cx \\]\n\n\\[ 3 = (A+B)x^2 + Cx + 4A \\]\n\nMatch coefficients on both sides:\n- \\( x^2 \\) terms: \\( A + B = 0 \\)\n- \\( x^1 \\) terms: \\( C = 0 \\)\n- Constant terms: \\( 4A = 3 \\), so \\( A = \\frac{3}{4} \\)\n\nFrom \\( A + B = 0 \\): \\( B = -\\frac{3}{4} \\).\n\n<b>Step 4: Rewrite and integrate.</b>\n\n\\[ \\int \\frac{3}{x(x^2+4)}\\,dx = \\int \\frac{3/4}{x}\\,dx + \\int \\frac{-\\frac{3}{4}x}{x^2+4}\\,dx \\]\n\nThe first integral is \\( \\frac{3}{4}\\ln|x| \\).\n\nFor the second integral, notice the numerator \\( x \\) is (up to a constant) the derivative of \\( x^2 + 4 \\). Specifically, if we let \\( w = x^2 + 4 \\), then \\( dw = 2x\\,dx \\):\n\n\\[ \\int \\frac{-\\frac{3}{4}x}{x^2+4}\\,dx = -\\frac{3}{4} \\cdot \\frac{1}{2} \\int \\frac{dw}{w} = -\\frac{3}{8}\\ln|w| = -\\frac{3}{8}\\ln(x^2+4) \\]\n\n(We can drop the absolute value because \\( x^2 + 4 > 0 \\) always.)\n\n<b>Step 5: Final answer.</b>\n\n\\[ \\frac{3}{4}\\ln|x| - \\frac{3}{8}\\ln(x^2+4) + C \\]"
-      },
-      {
-        prompt: "Evaluate the following integral. Note: the degree of the numerator equals the degree of the denominator.",
-        problem: "\\int \\frac{x^2+2}{x^2-9}\\,dx",
-        answer: "x + \\frac{11}{6}\\ln\\left|\\frac{x-3}{x+3}\\right| + C",
-        solution: "<b>Step 1: Polynomial long division.</b> Before doing partial fractions, we need the degree of the numerator to be strictly less than the degree of the denominator. Here both are degree 2, so we divide:\n\n\\[ \\frac{x^2+2}{x^2-9} = 1 + \\frac{(x^2+2) - (x^2-9)}{x^2-9} = 1 + \\frac{11}{x^2-9} \\]\n\n(We subtracted: \\( (x^2+2) - 1 \\cdot (x^2-9) = x^2 + 2 - x^2 + 9 = 11 \\).)\n\n<b>Step 2: Factor the remaining denominator.</b>\n\n\\[ x^2 - 9 = (x-3)(x+3) \\]\n\n<b>Step 3: Partial fraction decomposition of the remainder.</b>\n\n\\[ \\frac{11}{(x-3)(x+3)} = \\frac{A}{x-3} + \\frac{B}{x+3} \\]\n\nMultiply through by \\( (x-3)(x+3) \\): \\( 11 = A(x+3) + B(x-3) \\)\n\n- Set \\( x = 3 \\): \\( 11 = 6A \\), so \\( A = \\frac{11}{6} \\)\n- Set \\( x = -3 \\): \\( 11 = -6B \\), so \\( B = -\\frac{11}{6} \\)\n\n<b>Step 4: Integrate each piece.</b>\n\n\\[ \\int \\left(1 + \\frac{11/6}{x-3} - \\frac{11/6}{x+3}\\right)dx \\]\n\n\\[ = x + \\frac{11}{6}\\ln|x-3| - \\frac{11}{6}\\ln|x+3| + C \\]\n\n<b>Step 5: Simplify.</b>\n\n\\[ = x + \\frac{11}{6}\\ln\\left|\\frac{x-3}{x+3}\\right| + C \\]"
-      }
-    ]
-  },
-  "10.1": {
-    id: "10.1", title: "Sequences",
-    chapter: "Series & Sequences", chapterNum: 10,
-    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/Sequences.aspx",
-    problems: [
-      {
-        prompt: "Write out the first five terms of the following sequence.",
-        problem: "\\left\\{ \\frac{3n}{n+2} \\right\\}_{n=1}^{\\infty}",
-        answer: "1,\\; \\tfrac{3}{2},\\; \\tfrac{9}{5},\\; 2,\\; \\tfrac{15}{7}",
-        solution: "To find the first five terms, we plug in \\( n = 1, 2, 3, 4, 5 \\) into the formula \\( a_n = \\frac{3n}{n+2} \\).\n\n<b>n = 1:</b> \\( a_1 = \\frac{3(1)}{1+2} = \\frac{3}{3} = 1 \\)\n\n<b>n = 2:</b> \\( a_2 = \\frac{3(2)}{2+2} = \\frac{6}{4} = \\frac{3}{2} \\)\n\n<b>n = 3:</b> \\( a_3 = \\frac{3(3)}{3+2} = \\frac{9}{5} \\) (this doesn't simplify further)\n\n<b>n = 4:</b> \\( a_4 = \\frac{3(4)}{4+2} = \\frac{12}{6} = 2 \\)\n\n<b>n = 5:</b> \\( a_5 = \\frac{3(5)}{5+2} = \\frac{15}{7} \\)\n\nSo the first five terms are \\( 1,\\; \\frac{3}{2},\\; \\frac{9}{5},\\; 2,\\; \\frac{15}{7} \\)."
-      },
-      {
-        prompt: "Determine whether the following sequence converges or diverges. If it converges, find the limit.",
-        problem: "\\left\\{ \\frac{5n^2+3}{2n^2-1} \\right\\}",
-        answer: "\\text{Converges to } \\frac{5}{2}",
-        solution: "To find the limit of a rational sequence (polynomial over polynomial) as \\( n \\to \\infty \\), we divide every term in the numerator and denominator by the highest power of \\( n \\) that appears.\n\n<b>Step 1: Identify the highest power.</b> Both numerator and denominator have \\( n^2 \\) as their highest-degree term.\n\n<b>Step 2: Divide top and bottom by \\( n^2 \\).</b>\n\n\\[ \\frac{5n^2+3}{2n^2-1} = \\frac{5n^2/n^2 + 3/n^2}{2n^2/n^2 - 1/n^2} = \\frac{5 + 3/n^2}{2 - 1/n^2} \\]\n\n<b>Step 3: Take the limit.</b> As \\( n \\to \\infty \\), the terms \\( 3/n^2 \\) and \\( 1/n^2 \\) both go to 0:\n\n\\[ \\lim_{n \\to \\infty} \\frac{5 + 3/n^2}{2 - 1/n^2} = \\frac{5 + 0}{2 - 0} = \\frac{5}{2} \\]\n\nSince the limit exists and is finite, the sequence <b>converges to \\( \\frac{5}{2} \\)</b>.\n\n(General rule: when the numerator and denominator have the same degree, the limit is the ratio of the leading coefficients.)"
-      },
-      {
-        prompt: "Determine whether the following sequence converges or diverges. If it converges, find the limit.",
-        problem: "\\left\\{ \\frac{(-1)^n}{n^2} \\right\\}",
-        answer: "\\text{Converges to } 0",
-        solution: "This sequence alternates in sign because of the \\( (-1)^n \\) factor. The terms are \\( -1, \\frac{1}{4}, -\\frac{1}{9}, \\frac{1}{16}, \\ldots \\)\n\n<b>Step 1: Use the Absolute Value Theorem.</b> This theorem says: if \\( |a_n| \\to 0 \\), then \\( a_n \\to 0 \\). (This only works when the limit is 0.)\n\n<b>Step 2: Compute the absolute value.</b>\n\n\\[ \\left| \\frac{(-1)^n}{n^2} \\right| = \\frac{|(-1)^n|}{n^2} = \\frac{1}{n^2} \\]\n\n<b>Step 3: Take the limit of the absolute value.</b>\n\n\\[ \\lim_{n \\to \\infty} \\frac{1}{n^2} = 0 \\]\n\nSince \\( |a_n| \\to 0 \\), by the Absolute Value Theorem, \\( a_n \\to 0 \\) as well.\n\nThe sequence <b>converges to 0</b>."
-      }
-    ]
-  },
-  "10.7": {
-    id: "10.7", title: "Comparison & Limit Comparison Tests",
-    chapter: "Series & Sequences", chapterNum: 10,
-    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/SeriesCompTest.aspx",
-    problems: [
-      {
-        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
-        problem: "\\sum_{n=1}^{\\infty} \\frac{2^n}{3^n + 1}",
-        answer: "\\text{Converges (Comparison Test)}",
-        solution: "<b>Strategy:</b> The series looks similar to a geometric series with ratio \\( \\frac{2}{3} \\). We will try the (Direct) Comparison Test.\n\n<b>Step 1: Find a suitable comparison series.</b> Notice that for all \\( n \\geq 1 \\):\n\n\\[ 3^n + 1 > 3^n \\]\n\nSince the denominator is bigger, the fraction is smaller:\n\n\\[ \\frac{2^n}{3^n + 1} < \\frac{2^n}{3^n} = \\left(\\frac{2}{3}\\right)^n \\]\n\n<b>Step 2: Check that the comparison series converges.</b> The series \\( \\sum_{n=1}^{\\infty} \\left(\\frac{2}{3}\\right)^n \\) is a geometric series with ratio \\( r = \\frac{2}{3} \\). Since \\( |r| = \\frac{2}{3} < 1 \\), this geometric series converges.\n\n<b>Step 3: Apply the Comparison Test.</b> We showed:\n- \\( 0 \\leq \\frac{2^n}{3^n+1} \\leq \\left(\\frac{2}{3}\\right)^n \\) for all \\( n \\geq 1 \\)\n- \\( \\sum \\left(\\frac{2}{3}\\right)^n \\) converges\n\nBy the Comparison Test, since our series is term-by-term less than or equal to a convergent series, <b>the series converges</b>."
-      },
-      {
-        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
-        problem: "\\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{n^2 + 3}",
-        answer: "\\text{Converges (Limit Comparison Test)}",
-        solution: "<b>Strategy:</b> For large \\( n \\), the \\( +3 \\) in the denominator becomes negligible, so \\( \\frac{\\sqrt{n}}{n^2+3} \\approx \\frac{\\sqrt{n}}{n^2} = \\frac{1}{n^{3/2}} \\). This suggests using the Limit Comparison Test (LCT) with a \\( p \\)-series.\n\n<b>Step 1: Choose the comparison series.</b> Let \\( b_n = \\frac{1}{n^{3/2}} \\).\n\n<b>Step 2: Compute the limit.</b>\n\n\\[ L = \\lim_{n \\to \\infty} \\frac{a_n}{b_n} = \\lim_{n \\to \\infty} \\frac{\\sqrt{n}/(n^2+3)}{1/n^{3/2}} \\]\n\nSimplify by multiplying top and bottom:\n\n\\[ = \\lim_{n \\to \\infty} \\frac{\\sqrt{n} \\cdot n^{3/2}}{n^2+3} = \\lim_{n \\to \\infty} \\frac{n^{1/2} \\cdot n^{3/2}}{n^2+3} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2+3} \\]\n\nDivide top and bottom by \\( n^2 \\):\n\n\\[ = \\lim_{n \\to \\infty} \\frac{1}{1 + 3/n^2} = \\frac{1}{1+0} = 1 \\]\n\n<b>Step 3: Apply the LCT.</b> Since \\( L = 1 \\), which is positive and finite (\\( 0 < L < \\infty \\)), the two series either both converge or both diverge.\n\n<b>Step 4: Determine whether the comparison series converges.</b> \\( \\sum \\frac{1}{n^{3/2}} \\) is a \\( p \\)-series with \\( p = \\frac{3}{2} > 1 \\), so it converges.\n\nTherefore, by the Limit Comparison Test, <b>the original series converges</b>."
-      },
-      {
-        prompt: "Determine whether the following series converges or diverges. State which test you use and why.",
-        problem: "\\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2}",
-        answer: "\\text{Converges (Comparison Test)}",
-        solution: "<b>Strategy:</b> The \\( \\sin^2(n) \\) term bounces around, but it is always bounded. That suggests using the Direct Comparison Test.\n\n<b>Step 1: Find a bound for the numerator.</b> For any real number \\( n \\):\n\n\\[ 0 \\leq \\sin^2(n) \\leq 1 \\]\n\nThis is because \\( -1 \\leq \\sin(n) \\leq 1 \\), so \\( 0 \\leq \\sin^2(n) \\leq 1 \\).\n\n<b>Step 2: Build the comparison inequality.</b> Dividing by \\( n^2 \\) (which is positive):\n\n\\[ 0 \\leq \\frac{\\sin^2(n)}{n^2} \\leq \\frac{1}{n^2} \\]\n\n<b>Step 3: Check the comparison series.</b> \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^2} \\) is a \\( p \\)-series with \\( p = 2 > 1 \\), so it converges. (This is a famous result; its sum is \\( \\frac{\\pi^2}{6} \\).)\n\n<b>Step 4: Apply the Comparison Test.</b> Since \\( 0 \\leq \\frac{\\sin^2(n)}{n^2} \\leq \\frac{1}{n^2} \\) and \\( \\sum \\frac{1}{n^2} \\) converges, the Comparison Test tells us <b>the series converges</b>."
-      }
-    ]
-  },
-  "11.1": {
-    id: "11.1", title: "Vectors \u2014 The Basics",
-    chapter: "Vectors & 3D Space", chapterNum: 11,
-    notesUrl: "https://tutorial.math.lamar.edu/Classes/CalcII/Vectors_Basics.aspx",
-    problems: [
-      {
-        prompt: "Find the vector from point P to point Q, and compute its magnitude.",
-        problem: "P = (1,5), \\quad Q = (4,-2)",
-        answer: "\\vec{v} = \\langle 3, -7 \\rangle,\\quad \\|\\vec{v}\\| = \\sqrt{58}",
-        solution: "<b>Step 1: Find the vector from P to Q.</b> To get the vector from one point to another, subtract the coordinates of the starting point from the ending point:\n\n\\[ \\vec{v} = Q - P = \\langle 4 - 1,\\; -2 - 5 \\rangle = \\langle 3, -7 \\rangle \\]\n\nThis means: go 3 units in the \\( x \\)-direction and \\( -7 \\) units (i.e., 7 units down) in the \\( y \\)-direction.\n\n<b>Step 2: Compute the magnitude.</b> The magnitude (or length) of a vector \\( \\langle a, b \\rangle \\) is given by:\n\n\\[ \\|\\vec{v}\\| = \\sqrt{a^2 + b^2} \\]\n\nPlugging in:\n\n\\[ \\|\\vec{v}\\| = \\sqrt{3^2 + (-7)^2} = \\sqrt{9 + 49} = \\sqrt{58} \\]\n\n\\( \\sqrt{58} \\approx 7.62 \\), so the distance from \\( P \\) to \\( Q \\) is about 7.62 units."
-      },
-      {
-        prompt: "Determine whether the following vector is a unit vector. Show your work.",
-        problem: "\\vec{u} = \\left\\langle \\tfrac{2}{3},\\, \\tfrac{1}{3},\\, \\tfrac{2}{3} \\right\\rangle",
-        answer: "\\text{Yes}",
-        solution: "A <b>unit vector</b> is a vector whose magnitude equals exactly 1.\n\n<b>Step 1: Compute the magnitude.</b> For a 3D vector \\( \\langle a, b, c \\rangle \\), the magnitude is \\( \\sqrt{a^2 + b^2 + c^2} \\).\n\n\\[ \\|\\vec{u}\\| = \\sqrt{\\left(\\frac{2}{3}\\right)^2 + \\left(\\frac{1}{3}\\right)^2 + \\left(\\frac{2}{3}\\right)^2} \\]\n\n<b>Step 2: Square each component.</b>\n\n\\[ = \\sqrt{\\frac{4}{9} + \\frac{1}{9} + \\frac{4}{9}} \\]\n\n<b>Step 3: Add the fractions.</b>\n\n\\[ = \\sqrt{\\frac{4 + 1 + 4}{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1 \\]\n\nSince the magnitude is 1, <b>yes, this is a unit vector</b>."
-      },
-      {
-        prompt: "Find the magnitude of the following vector.",
-        problem: "\\vec{v} = \\langle 5, -12 \\rangle",
-        answer: "13",
-        solution: "<b>Step 1: Recall the magnitude formula.</b> For a 2D vector \\( \\vec{v} = \\langle a, b \\rangle \\):\n\n\\[ \\|\\vec{v}\\| = \\sqrt{a^2 + b^2} \\]\n\nThis comes from the Pythagorean theorem: the vector is the hypotenuse of a right triangle with legs \\( a \\) and \\( b \\).\n\n<b>Step 2: Plug in the components.</b>\n\n\\[ \\|\\vec{v}\\| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} \\]\n\n<b>Step 3: Compute.</b>\n\n\\[ = \\sqrt{169} = 13 \\]\n\n(If you recognize the Pythagorean triple 5-12-13, you can see the answer immediately. Other common triples to know: 3-4-5, 8-15-17.)"
-      }
-    ]
-  }
-};
+// Inline SECTIONS block removed 2026-04-24. Data now loaded from problems.json
+// at runtime (see loadProblems() below). Use build_problems.py to regenerate.
+const SECTIONS = {};
 
 // ========================= APP STATE =========================
 const state = {
@@ -1051,9 +927,31 @@ const state = {
 
 // ========================= INIT =========================
 document.addEventListener('DOMContentLoaded', () => {
-  renderSectionList();
-  document.addEventListener('keydown', handleKeyboard);
+  loadProblems().then(() => {
+    renderSectionList();
+    document.addEventListener('keydown', handleKeyboard);
+  }).catch(err => {
+    console.error('Failed to load problems.json', err);
+    const container = document.getElementById('section-list');
+    if (container) container.innerHTML = '<div style="padding:20px;color:var(--red)">Failed to load problems. Check console.</div>';
+  });
 });
+
+async function loadProblems() {
+  // Fetch the external problems.json. The inline `SECTIONS` const below is
+  // retained as a fallback (for file:// loads where fetch may block, or
+  // offline opens); problems.json wins when it loads successfully.
+  try {
+    const r = await fetch('problems.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    // Clear the inline fallback and replace with the loaded data
+    for (const k of Object.keys(SECTIONS)) delete SECTIONS[k];
+    Object.assign(SECTIONS, data);
+  } catch (e) {
+    console.warn('Using inline fallback SECTIONS (fetch failed):', e.message);
+  }
+}
 
 function renderSectionList() {
   const container = document.getElementById('section-list');
