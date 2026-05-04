@@ -11,7 +11,7 @@
     "problems": [
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ Find the area under \\( f(x) = \\cos x \\) on \\( [0, \\pi/2] \\). \\]",
+        "problem": "Find the area under \\( f(x) = \\cos x \\) on \\( [0, \\pi/2] \\).",
         "answer": "\\( 1 \\)",
         "solution": "This is a definite integral. \\[ \\int_0^{\\pi/2} \\cos x \\, dx = \\sin x \\Big|_0^{\\pi/2} = \\sin(\\pi/2) - \\sin(0) = 1 - 0 = 1. \\]"
       },
@@ -42,126 +42,126 @@
       {
         "prompt": "Find the area of the region bounded by the given curves.",
         "problem": "Find the area between \\( f(x) = x \\), \\( g(x) = x^3 \\).",
-        "answer": "\\( \\frac{1}{2} \\)",
-        "solution": "Step 1: Intersections. \\( x = x^3 \\Rightarrow x(x^2-1) = 0 \\Rightarrow x = -1, 0, 1 \\).\n\nStep 2: The region is symmetric about the origin, and on \\( [0,1] \\), \\( x \\geq x^3 \\).\n\nStep 3: \\[ A = 2 \\int_0^1 (x - x^3) dx = 2\\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_0^1 = 2\\left(\\frac{1}{2} - \\frac{1}{4}\\right) = \\frac{1}{2}. \\]"
+        "answer": "\\( \\frac{1}{4} \\)",
+        "solution": "On \\( [0, 1] \\), \\( x \\ge x^3 \\) (test \\( x=1/2 \\): \\( 1/2 > 1/8 \\)). \\( A = \\int_0^1 (x - x^3)\\,dx = [\\tfrac{x^2}{2} - \\tfrac{x^4}{4}]_0^1 = \\tfrac{1}{2} - \\tfrac{1}{4} = \\tfrac{1}{4} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
         "problem": "Find the area between \\( f(x) = e^x \\), \\( g(x) = x \\).",
-        "answer": "\\[ \\( e - \\frac{3}{2} \\) (assuming interval \\( [0,1] \\)) \\]",
-        "solution": "Note: \\( e^x > x \\) for all real \\( x \\), so the curves never intersect. We assume the standard interval \\( [0,1] \\).\n\nOn \\( [0,1] \\), \\( e^x \\geq x \\).\n\n\\[ A = \\int_0^1 (e^x - x) dx = \\left[e^x - \\frac{x^2}{2}\\right]_0^1 = \\left(e - \\frac{1}{2}\\right) - (1 - 0) = e - \\frac{3}{2}. \\]"
+        "answer": "\\( e^2 - 3 \\)",
+        "solution": "On \\( [0, 2] \\), \\( e^x \\ge x \\) throughout (test \\( x=2 \\): \\( e^2 \\approx 7.39 > 2 \\)). \\( A = \\int_0^2 (e^x - x)\\,dx = [e^x - \\tfrac{x^2}{2}]_0^2 = (e^2 - 2) - (1 - 0) = e^2 - 3 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ Find the area between \\( f(x) = \\sqrt{x} \\), \\( g(x) = x \\). \\]",
+        "problem": "Find the area between \\( f(x) = \\sqrt{x} \\), \\( g(x) = x \\).",
         "answer": "\\( \\frac{1}{6} \\)",
         "solution": "Step 1: Intersections. \\( \\sqrt{x} = x \\Rightarrow x = x^2 \\Rightarrow x(x-1) = 0 \\Rightarrow x = 0, 1 \\).\n\nStep 2: On \\( [0,1] \\), \\( \\sqrt{x} \\geq x \\) (check \\( x = \\frac{1}{4} \\): sqrt = \\( \\frac{1}{2} \\), \\( x = \\frac{1}{4} \\)).\n\nStep 3: \\[ A = \\int_0^1 (\\sqrt{x} - x) dx = \\left[\\frac{2x^{3/2}}{3} - \\frac{x^2}{2}\\right]_0^1 = \\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}. \\]"
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {x^3} + 2 \\), \\( y = 1 \\) and \\( x = 2 \\). \\]",
+        "problem": "\\( y = {x^3} + 2 \\), \\( y = 1 \\) and \\( x = 2 \\).",
         "answer": "\\( \\frac{27}{4} \\)",
         "solution": "Find intersections. \\( y = x^3 + 2 \\) meets \\( y = 1 \\) when \\( x^3 + 2 = 1 \\), so \\( x = -1 \\). The region is bounded on the right by \\( x = 2 \\).\n\nOn \\( [-1, 2] \\), \\( x^3 + 2 \\geq 1 \\) (the curve is above the line).\n\n\\( A = \\int_{-1}^{2} [(x^3 + 2) - 1] dx = \\int_{-1}^{2} (x^3 + 1) dx = [\\frac{x^4}{4} + x]_{-1}^{2} = (4 + 2) - (\\frac{1}{4} - 1) = 6 + \\frac{3}{4} = \\frac{27}{4} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {x^2} - 6x + 10 \\) and \\( y = 5 \\). \\]",
+        "problem": "\\( y = {x^2} - 6x + 10 \\) and \\( y = 5 \\).",
         "answer": "\\( \\frac{32}{3} \\)",
         "solution": "Intersections: \\( x^2 - 6x + 10 = 5 \\Rightarrow x^2 - 6x + 5 = 0 \\Rightarrow (x-1)(x-5) = 0 \\), so \\( x = 1, 5 \\).\n\nThe parabola has vertex at \\( x = 3 \\) with \\( y = 1 \\), so on \\( (1, 5) \\) the line \\( y = 5 \\) is above the parabola.\n\n\\( A = \\int_1^5 [5 - (x^2 - 6x + 10)] dx = \\int_1^5 (-x^2 + 6x - 5) dx = [-\\frac{x^3}{3} + 3x^2 - 5x]_1^5 = (-\\frac{125}{3} + 75 - 25) - (-\\frac{1}{3} + 3 - 5) = -\\frac{124}{3} + 52 = \\frac{32}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {x^2} - 6x + 10 \\), \\( x = 1 \\), \\( x = 5 \\) and the x-axis. \\]",
+        "problem": "\\( y = {x^2} - 6x + 10 \\), \\( x = 1 \\), \\( x = 5 \\) and the x-axis.",
         "answer": "\\( \\frac{28}{3} \\)",
         "solution": "Since the parabola \\( y = x^2 - 6x + 10 \\) has vertex \\( (3, 1) \\), it stays above the x-axis on \\( [1, 5] \\).\n\n\\( A = \\int_1^5 (x^2 - 6x + 10) dx = [\\frac{x^3}{3} - 3x^2 + 10x]_1^5 = (\\frac{125}{3} - 75 + 50) - (\\frac{1}{3} - 3 + 10) = \\frac{124}{3} - 32 = \\frac{28}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = {y^2} + 2y + 4 \\) and \\( x = 4 \\). \\]",
+        "problem": "\\( x = {y^2} + 2y + 4 \\) and \\( x = 4 \\).",
         "answer": "\\( \\frac{4}{3} \\)",
         "solution": "Integrate with respect to \\( y \\). Intersections: \\( y^2 + 2y + 4 = 4 \\Rightarrow y^2 + 2y = 0 \\Rightarrow y = 0, -2 \\).\n\nOn \\( (-2, 0) \\), the parabola \\( x = y^2 + 2y + 4 \\) is left of \\( x = 4 \\) (e.g., at \\( y = -1 \\): \\( x = 3 < 4 \\)).\n\n\\( A = \\int_{-2}^{0} [4 - (y^2 + 2y + 4)] dy = \\int_{-2}^{0} (-y^2 - 2y) dy = [-\\frac{y^3}{3} - y^2]_{-2}^{0} = 0 - (\\frac{8}{3} - 4) = \\frac{4}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = 5 - \\sqrt x \\), \\( x = 1 \\), \\( x = 4 \\) and the x-axis. \\]",
+        "problem": "\\( y = 5 - \\sqrt x \\), \\( x = 1 \\), \\( x = 4 \\) and the x-axis.",
         "answer": "\\( \\frac{31}{3} \\)",
         "solution": "On \\( [1, 4] \\), \\( y = 5 - \\sqrt{x} \\) is positive (\\( 5 - 2 = 3 \\) at \\( x = 4 \\)).\n\n\\( A = \\int_1^4 (5 - \\sqrt{x}) dx = [5x - \\frac{2}{3} x^{3/2}]_1^4 = (20 - \\frac{16}{3}) - (5 - \\frac{2}{3}) = 15 - \\frac{14}{3} = \\frac{31}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = {{\\bf{e}}^y} \\), \\( x = 1 \\), \\( y = 1 \\) and \\( y = 2 \\). \\]",
+        "problem": "\\( x = {{\\bf{e}}^y} \\), \\( x = 1 \\), \\( y = 1 \\) and \\( y = 2 \\).",
         "answer": "\\( e^2 - e - 1 \\)",
         "solution": "Integrate with respect to \\( y \\) on \\( [1, 2] \\). Since \\( e^y > 1 \\) for \\( y \\geq 1 \\), the curve \\( x = e^y \\) is to the right of \\( x = 1 \\).\n\n\\( A = \\int_1^2 (e^y - 1) dy = [e^y - y]_1^2 = (e^2 - 2) - (e - 1) = e^2 - e - 1 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = 4y - {y^2} \\) and the y-axis. \\]",
+        "problem": "\\( x = 4y - {y^2} \\) and the y-axis.",
         "answer": "\\( \\frac{32}{3} \\)",
         "solution": "\\( x = 4y - y^2 \\) meets \\( x = 0 \\) when \\( y(4 - y) = 0 \\), so \\( y = 0, 4 \\). The parabola opens left and is positive on \\( (0, 4) \\).\n\n\\( A = \\int_0^4 (4y - y^2) dy = [2y^2 - \\frac{y^3}{3}]_0^4 = 32 - \\frac{64}{3} = \\frac{32}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {x^2} + 2x + 4 \\), \\( y = 3x + 6 \\), \\( x = - 3 \\) and \\( x = 3 \\). \\]",
+        "problem": "\\( y = {x^2} + 2x + 4 \\), \\( y = 3x + 6 \\), \\( x = - 3 \\) and \\( x = 3 \\).",
         "answer": "\\( 15 \\)",
         "solution": "Curves intersect when \\( x^2 + 2x + 4 = 3x + 6 \\Rightarrow x^2 - x - 2 = 0 \\Rightarrow (x-2)(x+1) = 0 \\), so \\( x = -1, 2 \\).\n\nTest signs across \\( [-3, 3] \\):\n  At \\( x = -2 \\): parabola \\( = 4 \\), line \\( = 0 \\) \\( \\Rightarrow \\) parabola above.\n  At \\( x = 0 \\): parabola \\( = 4 \\), line \\( = 6 \\) \\( \\Rightarrow \\) line above.\n  At \\( x = 3 \\): parabola \\( = 19 \\), line \\( = 15 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_{-3}^{-1} (x^2 - x - 2) dx + \\int_{-1}^{2} (-x^2 + x + 2) dx + \\int_{2}^{3} (x^2 - x - 2) dx \\).\n\nAntiderivative of \\( (x^2 - x - 2) \\): \\( G(x) = \\frac{x^3}{3} - \\frac{x^2}{2} - 2x \\).\n\nFirst: \\( G(-1) - G(-3) = (-\\frac{1}{3} - \\frac{1}{2} + 2) - (-9 - \\frac{9}{2} + 6) = \\frac{7}{6} - (-\\frac{15}{2}) = \\frac{7}{6} + \\frac{45}{6} = \\frac{52}{6} = \\frac{26}{3} \\).\nMiddle: \\( -[G(2) - G(-1)] = -[(\\frac{8}{3} - 2 - 4) - (-\\frac{1}{3} - \\frac{1}{2} + 2)] = -[-\\frac{10}{3} - \\frac{7}{6}] = \\frac{10}{3} + \\frac{7}{6} = \\frac{27}{6} = \\frac{9}{2} \\).\nThird: \\( G(3) - G(2) = (9 - \\frac{9}{2} - 6) - (\\frac{8}{3} - 2 - 4) = -\\frac{3}{2} - (-\\frac{10}{3}) = -\\frac{9}{6} + \\frac{20}{6} = \\frac{11}{6} \\).\n\nTotal: \\( \\frac{26}{3} + \\frac{9}{2} + \\frac{11}{6} = \\frac{52}{6} + \\frac{27}{6} + \\frac{11}{6} = \\frac{90}{6} = 15 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = 6y - {y^2} \\), \\( x = 2y \\), \\( y = - 2 \\) and \\( y = 5 \\). \\]",
+        "problem": "\\( x = 6y - {y^2} \\), \\( x = 2y \\), \\( y = - 2 \\) and \\( y = 5 \\).",
         "answer": "\\( \\frac{71}{3} \\)",
         "solution": "Integrate in \\( y \\). Curves \\( x = 6y - y^2 \\) and \\( x = 2y \\) intersect when \\( 6y - y^2 = 2y \\Rightarrow y(4 - y) = 0 \\), \\( y = 0, 4 \\).\n\nTest signs across \\( [-2, 5] \\):\n  At \\( y = -1 \\): parabola \\( = -7 \\), line \\( = -2 \\) \\( \\Rightarrow \\) line right of parabola.\n  At \\( y = 2 \\): parabola \\( = 8 \\), line \\( = 4 \\) \\( \\Rightarrow \\) parabola right.\n  At \\( y = 4.5 \\): parabola \\( = 6.75 \\), line \\( = 9 \\) \\( \\Rightarrow \\) line right.\n\n\\( A = \\int_{-2}^{0} [2y - (6y - y^2)] dy + \\int_{0}^{4} [(6y - y^2) - 2y] dy + \\int_{4}^{5} [2y - (6y - y^2)] dy = \\int_{-2}^{0} (y^2 - 4y) dy + \\int_{0}^{4} (4y - y^2) dy + \\int_{4}^{5} (y^2 - 4y) dy = [\\frac{y^3}{3} - 2y^2]_{-2}^{0} = 0 - (-\\frac{8}{3} - 8) = \\frac{32}{3} \\). Middle: \\( [2y^2 - \\frac{y^3}{3}]_0^4 = 32 - \\frac{64}{3} = \\frac{32}{3} \\). Last: \\( [\\frac{y^3}{3} - 2y^2]_4^5 = (\\frac{125}{3} - 50) - (\\frac{64}{3} - 32) = -\\frac{25}{3} + (-\\frac{64}{3} + 32) \\) wait: \\( \\frac{125}{3} - 50 = -\\frac{25}{3} \\); \\( \\frac{64}{3} - 32 = -\\frac{32}{3} \\); difference \\( = -\\frac{25}{3} - (-\\frac{32}{3}) = \\frac{7}{3} \\).\n\nTotal: \\( \\frac{32}{3} + \\frac{32}{3} + \\frac{7}{3} = \\frac{71}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {x^2} + 8 \\), \\( y = 3{x^2} \\), \\( x = - 3 \\) and \\( x = 4 \\). \\]",
+        "problem": "\\( y = {x^2} + 8 \\), \\( y = 3{x^2} \\), \\( x = - 3 \\) and \\( x = 4 \\).",
         "answer": "\\( \\frac{142}{3} \\)",
         "solution": "Curves \\( y = x^2 + 8 \\) and \\( y = 3x^2 \\) intersect when \\( 2x^2 = 8 \\), \\( x = \\pm 2 \\).\n\nOn \\( (-2, 2) \\): \\( x^2 + 8 > 3x^2 \\) (e.g., at \\( x = 0 \\), \\( 8 > 0 \\)).\nOn \\( (-3, -2) \\) and \\( (2, 4) \\): \\( 3x^2 > x^2 + 8 \\).\n\n\\( A = \\int_{-3}^{-2} (3x^2 - (x^2+8)) dx + \\int_{-2}^{2} ((x^2+8) - 3x^2) dx + \\int_{2}^{4} (3x^2 - (x^2+8)) dx = \\int_{-3}^{-2} (2x^2 - 8) dx + \\int_{-2}^{2} (8 - 2x^2) dx + \\int_{2}^{4} (2x^2 - 8) dx = [\\frac{2x^3}{3} - 8x]_{-3}^{-2} + [8x - \\frac{2x^3}{3}]_{-2}^{2} + [\\frac{2x^3}{3} - 8x]_{2}^{4} \\).\n\nFirst: \\( (-\\frac{16}{3} + 16) - (-18 + 24) = \\frac{32}{3} - 6 = \\frac{14}{3} \\).\nSecond (even integrand, twice 0 to 2): \\( 2[16 - \\frac{16}{3}] = 2 \\cdot \\frac{32}{3} = \\frac{64}{3} \\).\nThird: \\( (\\frac{128}{3} - 32) - (\\frac{16}{3} - 16) = \\frac{32}{3} - (-\\frac{32}{3}) = \\frac{64}{3} \\).\n\nTotal: \\( \\frac{14}{3} + \\frac{64}{3} + \\frac{64}{3} = \\frac{142}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = {y^2} \\), \\( x = {y^3} \\) and \\( y = 2 \\). \\]",
+        "problem": "\\( x = {y^2} \\), \\( x = {y^3} \\) and \\( y = 2 \\).",
         "answer": "\\( \\frac{3}{2} \\)",
         "solution": "Integrate in \\( y \\). \\( x = y^2 \\) and \\( x = y^3 \\) intersect when \\( y = 0, 1 \\). On \\( [0, 1] \\), \\( y^2 \\geq y^3 \\); on \\( [1, 2] \\), \\( y^3 \\geq y^2 \\).\n\n\\( A = \\int_0^1 (y^2 - y^3) dy + \\int_1^2 (y^3 - y^2) dy = [\\frac{y^3}{3} - \\frac{y^4}{4}]_0^1 + [\\frac{y^4}{4} - \\frac{y^3}{3}]_1^2 = (\\frac{1}{3} - \\frac{1}{4}) + [(4 - \\frac{8}{3}) - (\\frac{1}{4} - \\frac{1}{3})] = \\frac{1}{12} + \\frac{4}{3} + \\frac{1}{12} = \\frac{2}{12} + \\frac{4}{3} = \\frac{1}{6} + \\frac{4}{3} = \\frac{1}{6} + \\frac{8}{6} = \\frac{9}{6} = \\frac{3}{2} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( \\displaystyle y = \\frac{7}{x} \\), \\( \\displaystyle y = \\frac{1}{x} - 3 \\), \\( x = - 1 \\) and \\( x = - 4 \\). \\]",
+        "problem": "\\( \\displaystyle y = \\frac{7}{x} \\), \\( \\displaystyle y = \\frac{1}{x} - 3 \\), \\( x = - 1 \\) and \\( x = - 4 \\).",
         "answer": "\\( 3 \\)",
         "solution": "Curves intersect: \\( \\frac{7}{x} = \\frac{1}{x} - 3 \\Rightarrow \\frac{6}{x} = -3 \\Rightarrow x = -2 \\).\n\nTest on \\( x \\) in \\( [-4, -1] \\):\n  At \\( x = -3 \\): \\( \\frac{7}{x} \\approx -2.33 \\), \\( \\frac{1}{x} - 3 \\approx -3.33 \\) \\( \\Rightarrow \\) \\( \\frac{7}{x} \\) above.\n  At \\( x = -1.5 \\): \\( \\frac{7}{x} \\approx -4.67 \\), \\( \\frac{1}{x} - 3 \\approx -3.67 \\) \\( \\Rightarrow \\) \\( \\frac{1}{x} - 3 \\) above.\n\n\\( A = \\int_{-4}^{-2} [\\frac{7}{x} - (\\frac{1}{x} - 3)] dx + \\int_{-2}^{-1} [(\\frac{1}{x} - 3) - \\frac{7}{x}] dx = \\int_{-4}^{-2} (\\frac{6}{x} + 3) dx + \\int_{-2}^{-1} (-\\frac{6}{x} - 3) dx = [6 \\ln|x| + 3x]_{-4}^{-2} + [-6 \\ln|x| - 3x]_{-2}^{-1} = (6 \\ln 2 - 6) - (6 \\ln 4 - 12) + (0 + 3) - (-6 \\ln 2 + 6) = 6 \\ln 2 - 6 - 12 \\ln 2 + 12 + 3 + 6 \\ln 2 - 6 = (6 - 12 + 6) \\ln 2 + (-6 + 12 + 3 - 6) = 0 + 3 = 3 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = 2{x^2} + 1 \\), \\( y = 7 - x \\), \\( x = 4 \\) and the y-axis. \\]",
+        "problem": "\\( y = 2{x^2} + 1 \\), \\( y = 7 - x \\), \\( x = 4 \\) and the y-axis.",
         "answer": "\\( \\frac{455}{12} \\)",
         "solution": "Curves \\( y = 2x^2 + 1 \\) and \\( y = 7 - x \\) intersect: \\( 2x^2 + x - 6 = 0 \\Rightarrow x = \\frac{3}{2} \\) (and \\( -2 \\), outside interval). On \\( [0, 4] \\), split at \\( x = \\frac{3}{2} \\).\n\nAt \\( x = 0 \\): parabola \\( = 1 \\), line \\( = 7 \\) \\( \\Rightarrow \\) line above.\nAt \\( x = 2 \\): parabola \\( = 9 \\), line \\( = 5 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_0^{3/2} [(7 - x) - (2x^2 + 1)] dx + \\int_{3/2}^{4} [(2x^2 + 1) - (7 - x)] dx = \\int_0^{3/2} (6 - x - 2x^2) dx + \\int_{3/2}^{4} (2x^2 + x - 6) dx \\).\n\nFirst: \\( [6x - \\frac{x^2}{2} - \\frac{2x^3}{3}]_0^{3/2} = 9 - \\frac{9}{8} - \\frac{9}{4} = \\frac{72}{8} - \\frac{9}{8} - \\frac{18}{8} = \\frac{45}{8} \\).\nSecond: \\( [\\frac{2x^3}{3} + \\frac{x^2}{2} - 6x]_{3/2}^{4} = (\\frac{128}{3} + 8 - 24) - (\\frac{9}{4} + \\frac{9}{8} - 9) = (\\frac{128}{3} - 16) - (\\frac{9}{4} + \\frac{9}{8} - 9) = \\frac{80}{3} - (-\\frac{45}{8}) = \\frac{80}{3} + \\frac{45}{8} = \\frac{640}{24} + \\frac{135}{24} = \\frac{775}{24} \\).\n\nTotal: \\( \\frac{45}{8} + \\frac{775}{24} = \\frac{135}{24} + \\frac{775}{24} = \\frac{910}{24} = \\frac{455}{12} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( \\displaystyle y = \\sin \\left( {\\frac{1}{2}x} \\right) \\), \\( y = 3 + \\cos \\left( {2x} \\right) \\), \\( x = 0 \\) and \\( x = \\frac{\\pi }{4} \\). \\]",
+        "problem": "\\( \\displaystyle y = \\sin \\left( {\\frac{1}{2}x} \\right) \\), \\( y = 3 + \\cos \\left( {2x} \\right) \\), \\( x = 0 \\) and \\( x = \\frac{\\pi }{4} \\).",
         "answer": "\\( \\frac{3\\pi}{4} + \\sqrt{2 + \\sqrt{2}} - \\frac{3}{2} \\)",
         "solution": "On \\( [0, \\frac{\\pi}{4}] \\), \\( 3 + \\cos(2x) \\) is in \\( [3, 4] \\) and \\( \\sin(\\frac{x}{2}) \\) is in \\( [0, \\sin(\\frac{\\pi}{8})] \\) \\( \\approx [0, 0.38] \\).\n\nSo \\( 3 + \\cos(2x) > \\sin(\\frac{x}{2}) \\) on the interval.\n\n\\( A = \\int_0^{\\pi/4} [(3 + \\cos(2x)) - \\sin(\\frac{x}{2})] dx = [3x + \\frac{\\sin(2x)}{2} + 2\\cos(\\frac{x}{2})]_0^{\\pi/4} = (\\frac{3\\pi}{4} + \\frac{\\sin(\\pi/2)}{2} + 2\\cos(\\frac{\\pi}{8})) - (0 + 0 + 2) = \\frac{3\\pi}{4} + \\frac{1}{2} + 2\\cos(\\frac{\\pi}{8}) - 2 \\).\n\nUsing \\( \\cos(\\frac{\\pi}{8}) = \\frac{\\sqrt{2 + \\sqrt{2}}}{2} \\): \\( A = \\frac{3\\pi}{4} + \\sqrt{2 + \\sqrt{2}} - \\frac{3}{2} \\).\n\nNumerically \\( \\approx 2.356 + 1.848 - 1.5 \\approx 2.704 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = \\sqrt {2y + 6} \\), \\( x = y - 1 \\), \\( y = 1 \\) and \\( y = 6 \\). \\]",
+        "problem": "\\( x = \\sqrt {2y + 6} \\), \\( x = y - 1 \\), \\( y = 1 \\) and \\( y = 6 \\).",
         "answer": "\\( \\frac{235}{6} - \\frac{70\\sqrt{2}}{3} \\)",
         "solution": "Integrate in \\( y \\). Curves \\( x = \\sqrt{2y + 6} \\) and \\( x = y - 1 \\) intersect: square \\( \\Rightarrow 2y + 6 = y^2 - 2y + 1 \\Rightarrow y^2 - 4y - 5 = 0 \\Rightarrow (y-5)(y+1) = 0 \\), so \\( y = 5 \\) (the \\( y = -1 \\) root is extraneous).\n\nAt \\( y = 1 \\): \\( \\sqrt{8} \\approx 2.83 \\) vs \\( 0 \\) \\( \\Rightarrow \\) \\( \\sqrt{2y+6} \\) right.\nAt \\( y = 6 \\): \\( \\sqrt{18} \\approx 4.24 \\) vs \\( 5 \\) \\( \\Rightarrow \\) \\( y - 1 \\) right.\n\n\\( A = \\int_1^5 [\\sqrt{2y + 6} - (y - 1)] dy + \\int_5^6 [(y - 1) - \\sqrt{2y + 6}] dy \\).\n\nFor \\( \\int \\sqrt{2y + 6} dy \\): substitute \\( u = 2y + 6 \\), \\( du = 2 dy \\): \\( = \\frac{1}{3} (2y + 6)^{3/2} \\).\n\nFirst integral: \\( [\\frac{1}{3}(2y+6)^{3/2} - \\frac{y^2}{2} + y]_1^5 = (\\frac{1}{3}(16)^{3/2} - \\frac{25}{2} + 5) - (\\frac{1}{3}(8)^{3/2} - \\frac{1}{2} + 1) = (\\frac{64}{3} - \\frac{15}{2}) - (\\frac{16\\sqrt{2}}{3} + \\frac{1}{2}) = \\frac{64}{3} - \\frac{16\\sqrt{2}}{3} - 8 \\).\n\nSecond: \\( [\\frac{y^2}{2} - y - \\frac{1}{3}(2y+6)^{3/2}]_5^6 = (18 - 6 - \\frac{1}{3}(18)^{3/2}) - (\\frac{25}{2} - 5 - \\frac{1}{3}(16)^{3/2}) = (12 - 18\\sqrt{2}) - (\\frac{15}{2} - \\frac{64}{3}) = 12 - 18\\sqrt{2} + \\frac{64}{3} - \\frac{15}{2} \\).\n\nSum: \\( \\frac{64}{3} - \\frac{16\\sqrt{2}}{3} - 8 + 12 - 18\\sqrt{2} + \\frac{64}{3} - \\frac{15}{2} = \\frac{128}{3} - \\frac{16\\sqrt{2}}{3} - 54\\sqrt{2}/3 + 4 - \\frac{15}{2} = \\frac{128}{3} - \\frac{70\\sqrt{2}}{3} + (8 - 15)/2 = \\frac{128}{3} - \\frac{70\\sqrt{2}}{3} - \\frac{7}{2} = \\frac{256}{6} - \\frac{21}{6} - \\frac{70\\sqrt{2}}{3} = \\frac{235}{6} - \\frac{70\\sqrt{2}}{3} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = 2 - {{\\bf{e}}^{2 - x}} \\), \\( y = {x^2} - 4x + 7 \\), \\( x = 3 \\) and the y-axis. Note : These functions do not intersect. \\]",
+        "problem": "\\( y = 2 - {{\\bf{e}}^{2 - x}} \\), \\( y = {x^2} - 4x + 7 \\), \\( x = 3 \\) and the y-axis. Note : These functions do not intersect.",
         "answer": "\\( e^2 - e^{-1} + 6 \\)",
         "solution": "As noted, the curves do not intersect. On \\( [0, 3] \\):\n  At \\( x = 0 \\): \\( 2 - e^2 \\approx -5.39 \\) vs \\( 7 \\) \\( \\Rightarrow \\) parabola above.\n  At \\( x = 3 \\): \\( 2 - e^{-1} \\approx 1.63 \\) vs \\( 4 \\) \\( \\Rightarrow \\) parabola above.\n\n\\( A = \\int_0^3 [(x^2 - 4x + 7) - (2 - e^{2-x})] dx = \\int_0^3 (x^2 - 4x + 5 + e^{2-x}) dx \\).\n\nAntiderivative: \\( \\frac{x^3}{3} - 2x^2 + 5x - e^{2-x} \\).\n\nEvaluate: \\( (9 - 18 + 15 - e^{-1}) - (0 - 0 + 0 - e^2) = (6 - e^{-1}) - (-e^2) = e^2 - e^{-1} + 6 \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = {{\\bf{e}}^{2x - 1}} \\), \\( y = {{\\bf{e}}^{5 - x}} \\), \\( x = 0 \\) and \\( x = 3 \\). \\]",
+        "problem": "\\( y = {{\\bf{e}}^{2x - 1}} \\), \\( y = {{\\bf{e}}^{5 - x}} \\), \\( x = 0 \\) and \\( x = 3 \\).",
         "answer": "\\( \\frac{e^2}{2}(e^6 - 6e^2 + 2 + e^{-2})/e \\)",
         "solution": "Curves \\( y = e^{2x-1} \\) and \\( y = e^{5-x} \\) intersect: \\( 2x - 1 = 5 - x \\Rightarrow x = 2 \\).\n\nAt \\( x = 0 \\): \\( e^{-1} \\approx 0.37 \\) vs \\( e^5 \\approx 148 \\) \\( \\Rightarrow \\) \\( e^{5-x} \\) above.\nAt \\( x = 3 \\): \\( e^5 \\) vs \\( e^2 \\) \\( \\Rightarrow \\) \\( e^{2x-1} \\) above.\n\n\\( A = \\int_0^2 (e^{5-x} - e^{2x-1}) dx + \\int_2^3 (e^{2x-1} - e^{5-x}) dx \\).\n\nAntiderivatives: \\( \\int e^{5-x} dx = -e^{5-x} \\); \\( \\int e^{2x-1} dx = \\frac{e^{2x-1}}{2} \\).\n\nFirst: \\( [-e^{5-x} - \\frac{e^{2x-1}}{2}]_0^2 = (-e^3 - \\frac{e^3}{2}) - (-e^5 - \\frac{e^{-1}}{2}) = -\\frac{3e^3}{2} + e^5 + \\frac{e^{-1}}{2} \\).\n\nSecond: \\( [\\frac{e^{2x-1}}{2} + e^{5-x}]_2^3 = (\\frac{e^5}{2} + e^2) - (\\frac{e^3}{2} + e^3) = \\frac{e^5}{2} + e^2 - \\frac{3e^3}{2} \\).\n\nTotal: \\( e^5 + \\frac{e^5}{2} - 3e^3 + e^2 + \\frac{e^{-1}}{2} = \\frac{3e^5}{2} - 3e^3 + e^2 + \\frac{1}{2e} \\)."
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( x = \\cos \\left( {\\pi y} \\right) \\), \\( x = 3 \\), \\( y = 0 \\) and \\( y = 4 \\). \\]",
+        "problem": "\\( x = \\cos \\left( {\\pi y} \\right) \\), \\( x = 3 \\), \\( y = 0 \\) and \\( y = 4 \\).",
         "answer": "\\( 12 \\)",
         "solution": "On \\( [0, 4] \\), \\( x = \\cos(\\pi y) \\) is in \\( [-1, 1] \\) and \\( x = 3 \\) is to the right.\n\n\\( A = \\int_0^4 [3 - \\cos(\\pi y)] dy = [3y - \\frac{\\sin(\\pi y)}{\\pi}]_0^4 = 12 - 0 - 0 = 12 \\).\n\n(The \\( \\sin(\\pi y) \\) term vanishes at \\( y = 0 \\) and \\( y = 4 \\) since both are integers.)"
       },
@@ -191,7 +191,7 @@
       },
       {
         "prompt": "Find the area of the region bounded by the given curves.",
-        "problem": "\\[ \\( y = x\\sqrt{x^2 + 1} \\), \\( y = e^{-\\frac{1}{2}x} \\), \\( x = -3 \\) and the \\( y \\)-axis. \\]",
+        "problem": "\\( y = x\\sqrt{x^2 + 1} \\), \\( y = e^{-\\frac{1}{2}x} \\), \\( x = -3 \\) and the \\( y \\)-axis.",
         "answer": "\\( 2 e^{3/2} + \\frac{10\\sqrt{10}}{3} - \\frac{7}{3} \\)",
         "solution": "On \\( [-3, 0] \\), \\( y = x \\sqrt{x^2 + 1} \\leq 0 \\) (since \\( x \\leq 0 \\)) and \\( y = e^{-x/2} > 0 \\), so the exponential is above.\n\n\\( A = \\int_{-3}^{0} \\left[e^{-x/2} - x \\sqrt{x^2 + 1}\\right] dx \\).\n\n\\( \\int e^{-x/2} dx = -2 e^{-x/2} \\).\n\\( \\int x \\sqrt{x^2 + 1} dx \\): \\( u = x^2 + 1 \\), \\( du = 2x dx \\), \\( = \\frac{1}{3}(x^2 + 1)^{3/2} \\).\n\nAntiderivative: \\( -2 e^{-x/2} - \\frac{1}{3}(x^2 + 1)^{3/2} \\). Evaluate \\( -3 \\) to \\( 0 \\):\n\\( = \\left(-2 - \\frac{1}{3}\\right) - \\left(-2 e^{3/2} - \\frac{(10)^{3/2}}{3}\\right) = -\\frac{7}{3} + 2 e^{3/2} + \\frac{10\\sqrt{10}}{3} \\)."
       },
@@ -245,7 +245,7 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
-        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( x \\)-axis on \\( [1,4] \\). \\]",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( x \\)-axis on \\( [1,4] \\).",
         "answer": "\\( \\frac{15\\pi}{2} \\)",
         "solution": "Revolving \\( f(x) = \\sqrt{x} \\) about the \\( x \\)-axis on \\( [1,4] \\). Disk method.\n\n\\[ V = \\pi \\int_1^4 (\\sqrt{x})^2 dx = \\pi \\int_1^4 x \\, dx = \\pi \\cdot \\frac{x^2}{2} \\Big|_1^4 = \\pi\\left(8 - \\frac{1}{2}\\right) = \\frac{15\\pi}{2}. \\]"
       },
@@ -257,7 +257,7 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
-        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{4-x^2} \\) about the \\( y \\)-axis on \\( [0,2] \\). \\]",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{4-x^2} \\) about the \\( y \\)-axis on \\( [0,2] \\).",
         "answer": "\\( \\frac{16\\pi}{3} \\)",
         "solution": "Revolving \\( f(x) = \\sqrt{4 - x^2} \\) (upper half of circle of radius \\( 2 \\)) about the \\( y \\)-axis on \\( [0,2] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^2 x \\sqrt{4 - x^2} \\, dx. \\]\n\nLet \\( u = 4 - x^2 \\), \\( du = -2x \\, dx \\). Bounds: \\( x=0 \\Rightarrow u=4 \\), \\( x=2 \\Rightarrow u=0 \\).\n  \\[ V = 2\\pi \\cdot \\left(-\\frac{1}{2}\\right) \\int_4^0 \\sqrt{u} \\, du = \\pi \\int_0^4 \\sqrt{u} \\, du = \\pi \\cdot \\frac{2}{3} u^{3/2} \\Big|_0^4 = \\frac{2\\pi}{3}(8) = \\frac{16\\pi}{3}. \\]"
       },
@@ -265,7 +265,7 @@
         "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
         "problem": "Find the volume of the solid formed by revolving \\( f(x) = x^{1/3} \\) about the \\( y \\)-axis on \\( [0,1] \\).",
         "answer": "\\( \\frac{6\\pi}{7} \\)",
-        "solution": "Revolving \\( f(x) = x^{1/3} \\) about the \\( y \\)-axis on \\( [0,1] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^1 x \\cdot x^{1/3} dx = 2\\pi \\int_0^1 x^{4/3} dx = 2\\pi \\cdot \\frac{3}{7} x^{7/3} \\Big|_0^1 = \\frac{6\\pi}{7}. \\]"
+        "solution": "Disk/washer about the y-axis. Convert to y-form: \\( y = x^{1/3} \\implies x = y^{3} \\). On \\( 0 \\le x \\le 1 \\) the region is bounded outside by \\( x = 1 \\) and inside by \\( x = y^{3} \\), with \\( y \\) running from \\( 0 \\) to \\( 1 \\). Washer formula: \\( V = \\pi \\int_{0}^{1} \\left[1^{2} - (y^{3})^{2}\\right]\\,dy = \\pi \\int_{0}^{1} (1 - y^{6})\\,dy = \\pi \\left(1 - \\tfrac{1}{7}\\right) = \\tfrac{6\\pi}{7} \\)."
       },
       {
         "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
@@ -281,7 +281,7 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the disk or washer method.",
-        "problem": "\\[ Rotate the region bounded by \\( y = \\sqrt x \\), \\( y = 3 \\) and the \\( y \\)-axis about the \\( y \\)-axis. \\]",
+        "problem": "Rotate the region bounded by \\( y = \\sqrt x \\), \\( y = 3 \\) and the \\( y \\)-axis about the \\( y \\)-axis.",
         "answer": "\\( \\frac{243\\pi}{5} \\)",
         "solution": "Region: \\( y = \\sqrt{x} \\), \\( y = 3 \\), \\( y \\)-axis. In \\( y \\)-coordinates: \\( y \\in [0, 3] \\), \\( x \\in [0, y^2] \\).\n\nRevolve about \\( y \\)-axis. Disks (in \\( y \\)): radius = \\( y^2 \\).\n\n\\[ V = \\pi \\int_0^3 (y^2)^2 dy = \\pi \\int_0^3 y^4 dy = \\pi \\cdot \\frac{y^5}{5} \\Big|_0^3 = \\frac{243\\pi}{5}. \\]"
       },
@@ -341,7 +341,7 @@
     "problems": [
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( y \\)-axis on \\( [0,4] \\). \\]",
+        "problem": "Find the volume of the solid formed by revolving \\( f(x) = \\sqrt{x} \\) about the \\( y \\)-axis on \\( [0,4] \\).",
         "answer": "\\( \\frac{128\\pi}{5} \\)",
         "solution": "Revolving \\( f(x) = \\sqrt{x} \\) about the \\( y \\)-axis on \\( [0,4] \\). Use shells.\n\n\\[ V = 2\\pi \\int_0^4 x \\cdot \\sqrt{x} \\, dx = 2\\pi \\int_0^4 x^{3/2} dx = 2\\pi \\cdot \\frac{2}{5} x^{5/2} \\Big|_0^4 = \\frac{4\\pi}{5}(32) = \\frac{128\\pi}{5}. \\]"
       },
@@ -401,13 +401,13 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Find the volume of the solid whose base is the region bounded by \\( x = 2 - y^2 \\) and \\( x = y^2 - 2 \\) and whose cross-sections are isosceles triangles with the base perpendicular to the \\( y \\)-axis and the angle between the base and the two sides of equal length is \\( \\frac{\\pi}{4} \\). See figure below to see a sketch of the cross-sections. ![](MoreVolume_Files/image002.gif) \\]",
+        "problem": "Find the volume of the solid whose base is the region bounded by \\( x = 2 - y^2 \\) and \\( x = y^2 - 2 \\) and whose cross-sections are isosceles triangles with the base perpendicular to the \\( y \\)-axis and the angle between the base and the two sides of equal length is \\( \\frac{\\pi}{4} \\). See figure below to see a sketch of the cross-sections. ![](MoreVolume_Files/image002.gif)",
         "answer": "\\( \\frac{64\\sqrt{2}}{15} \\)",
         "solution": "Base bounded by \\( x = 2 - y^2 \\) and \\( x = y^2 - 2 \\) (intersect at \\( y = \\pm \\sqrt{2} \\)). At each \\( y \\), width of base is \\( b(y) = (2 - y^2) - (y^2 - 2) = 4 - 2y^2 \\).\n\nCross-section is an isosceles triangle with base \\( b \\) perpendicular to \\( y \\)-axis, and the angle between the base and the equal sides is \\( \\frac{\\pi}{4} \\).\n\nHeight of the triangle: with apex angle... actually, the angle at each base endpoint is \\( \\frac{\\pi}{4} \\), so the altitude \\( h \\) satisfies \\( \\tan(\\frac{\\pi}{4}) = \\frac{h}{b/2} \\Rightarrow h = \\frac{b}{2} \\).\n\nArea: \\( A(y) = \\frac{1}{2} b h = \\frac{1}{2} b \\left(\\frac{b}{2}\\right) = \\frac{b^2}{4} = \\frac{(4 - 2y^2)^2}{4} = (2 - y^2)^2 \\).\n\n\\( V = \\int_{-\\sqrt{2}}^{\\sqrt{2}} (2 - y^2)^2 dy = 2 \\int_0^{\\sqrt{2}} (4 - 4y^2 + y^4) dy = 2\\left[4y - \\frac{4y^3}{3} + \\frac{y^5}{5}\\right]_0^{\\sqrt{2}} = 2\\left[4\\sqrt{2} - \\frac{4}{3}(2\\sqrt{2}) + \\frac{1}{5}(4\\sqrt{2})\\right] = 2 \\sqrt{2} \\left[4 - \\frac{8}{3} + \\frac{4}{5}\\right] = 2\\sqrt{2} \\cdot \\frac{60 - 40 + 12}{15} = 2\\sqrt{2} \\cdot \\frac{32}{15} = \\frac{64 \\sqrt{2}}{15} \\)."
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Find the volume of a wedge cut out of a \"cylinder\" whose base is the region bounded by \\( y = \\sqrt{4 - x} \\), \\( x = -4 \\) and the \\( x \\)-axis. The angle between the top and bottom of the wedge is \\( \\frac{\\pi}{3} \\). See the figure below for a sketch of the \"cylinder\" and the wedge (the positive \\( x \\)-axis and positive \\( y \\)-axis are shown in the sketch – they are just in a different orientation). ![](MoreVolume_Files/image003.gif) \\]",
+        "problem": "Find the volume of a wedge cut out of a \"cylinder\" whose base is the region bounded by \\( y = \\sqrt{4 - x} \\), \\( x = -4 \\) and the \\( x \\)-axis. The angle between the top and bottom of the wedge is \\( \\frac{\\pi}{3} \\). See the figure below for a sketch of the \"cylinder\" and the wedge (the positive \\( x \\)-axis and positive \\( y \\)-axis are shown in the sketch – they are just in a different orientation). ![](MoreVolume_Files/image003.gif)",
         "answer": "\\( 16 \\sqrt{3} \\)",
         "solution": "Base is bounded by \\( y = \\sqrt{4 - x} \\), \\( x = -4 \\), and the \\( x \\)-axis. The curve \\( y = \\sqrt{4 - x} \\) runs from \\( (-4, \\sqrt{8}) \\) down to \\( (4, 0) \\).\n\nCross-section perpendicular to \\( x \\)-axis: the wedge has angle \\( \\frac{\\pi}{3} \\) between top and bottom faces, so each vertical slice is a right triangle with leg \\( = \\) base width \\( \\sqrt{4 - x} \\) (the \\( y \\)-extent of the base region) and other leg \\( = \\sqrt{4 - x} \\cdot \\tan(\\frac{\\pi}{3}) = \\sqrt{4 - x} \\cdot \\sqrt{3} \\).\n\n\\( A(x) = \\frac{1}{2} \\sqrt{4 - x} \\cdot \\sqrt{3} \\sqrt{4 - x} = \\frac{\\sqrt{3}}{2}(4 - x) \\).\n\n\\( V = \\frac{\\sqrt{3}}{2} \\int_{-4}^{4} (4 - x) dx = \\frac{\\sqrt{3}}{2}\\left[4x - \\frac{x^2}{2}\\right]_{-4}^{4} = \\frac{\\sqrt{3}}{2}\\left[(16 - 8) - (-16 - 8)\\right] = \\frac{\\sqrt{3}}{2}(32) = 16 \\sqrt{3} \\)."
       },
@@ -419,19 +419,19 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Rotate the region bounded by \\( y = \\frac{1}{x} \\), \\( x = \\frac{1}{2} \\), \\( x = 4 \\)and the \\( x \\)-axis about the \\( y \\)-axis. \\]",
+        "problem": "Rotate the region bounded by \\( y = \\frac{1}{x} \\), \\( x = \\frac{1}{2} \\), \\( x = 4 \\)and the \\( x \\)-axis about the \\( y \\)-axis.",
         "answer": "\\( 7\\pi \\)",
         "solution": "Region: \\( y = \\frac{1}{x} \\), \\( x = \\frac{1}{2} \\), \\( x = 4 \\), \\( x \\)-axis. Revolve about \\( y \\)-axis. Shells:\nRadius \\( = x \\), height \\( = \\frac{1}{x} \\), bounds \\( \\left[\\frac{1}{2}, 4\\right] \\).\n\n\\( V = 2\\pi \\int_{1/2}^{4} x \\cdot \\frac{1}{x} dx = 2\\pi \\int_{1/2}^{4} dx = 2\\pi \\cdot \\left(4 - \\frac{1}{2}\\right) = 2\\pi \\cdot \\frac{7}{2} = 7\\pi \\)."
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( y \\)-axis. For this problem assume that \\( x \\geq 0 \\). \\]",
+        "problem": "Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( y \\)-axis. For this problem assume that \\( x \\geq 0 \\).",
         "answer": "\\( \\frac{128\\pi}{15} \\)",
         "solution": "\\( y = 4x \\) and \\( y = x^3 \\) (\\( x \\geq 0 \\)) intersect: \\( 4x = x^3 \\Rightarrow x = 0 \\) or \\( x = 2 \\). On \\( [0, 2] \\), \\( 4x \\geq x^3 \\) (at \\( x = 1 \\): \\( 4 > 1 \\)).\n\nRevolve about \\( y \\)-axis. Shells: radius \\( = x \\), height \\( = 4x - x^3 \\).\n\n\\( V = 2\\pi \\int_0^2 x(4x - x^3) dx = 2\\pi \\int_0^2 (4x^2 - x^4) dx = 2\\pi\\left[\\frac{4x^3}{3} - \\frac{x^5}{5}\\right]_0^2 = 2\\pi\\left[\\frac{32}{3} - \\frac{32}{5}\\right] = 2\\pi \\cdot 32 \\left(\\frac{1}{3} - \\frac{1}{5}\\right) = 64\\pi \\cdot \\frac{2}{15} = \\frac{128\\pi}{15} \\)."
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( x \\)-axis. For this problem assume that \\( x \\ge 0 \\). \\]",
+        "problem": "Rotate the region bounded by \\( y = 4x \\) and \\( y = x^3 \\) about the \\( x \\)-axis. For this problem assume that \\( x \\ge 0 \\).",
         "answer": "\\( \\frac{512\\pi}{21} \\)",
         "solution": "Same region as PP-989, but revolve about x-axis. Use washers (in \\( x \\)):\n  Outer radius = \\( 4x \\), inner radius = \\( x^3 \\).\n\n\\[ V = \\pi \\int_0^2 [(4x)^2 - (x^3)^2] dx = \\pi \\int_0^2 (16 x^2 - x^6) dx = \\pi\\left[\\frac{16 x^3}{3} - \\frac{x^7}{7}\\right]_0^2 \\]\n\\[ = \\pi\\left[\\frac{128}{3} - \\frac{128}{7}\\right] = 128 \\pi \\left(\\frac{1}{3} - \\frac{1}{7}\\right) = 128 \\pi \\cdot \\frac{4}{21} = \\frac{512 \\pi}{21}. \\]"
       },
@@ -455,7 +455,7 @@
       },
       {
         "prompt": "Find the volume of the solid of revolution using the method of cylindrical shells.",
-        "problem": "\\[ Rotate the region bounded by \\( \\displaystyle y = \\frac{e^{\\frac{1}{2}x}}{x + 2} \\), \\( \\displaystyle y = 5 - \\frac{1}{4}x \\), \\( x = - 1 \\) and \\( x = 6 \\) about the line \\( x = - 2 \\). \\]",
+        "problem": "Rotate the region bounded by \\( \\displaystyle y = \\frac{e^{\\frac{1}{2}x}}{x + 2} \\), \\( \\displaystyle y = 5 - \\frac{1}{4}x \\), \\( x = - 1 \\) and \\( x = 6 \\) about the line \\( x = - 2 \\).",
         "answer": "\\( 4\\pi\\left(\\frac{196}{3} + e^{-1/2} - e^3\\right) \\approx 576.22 \\)",
         "solution": "On \\( [-1, 6] \\), the line \\( y = 5 - \\frac{x}{4} \\) stays above \\( y = \\frac{e^{x/2}}{x+2} \\) (check at boundaries: at \\( x=-1 \\), \\( 5.25 \\) vs \\( \\approx 0.61 \\); at \\( x=6 \\), \\( 3.5 \\) vs \\( \\approx 2.51 \\)).\n\nRevolve about \\( x = -2 \\) (vertical line left of region). Use shells:\n  Radius = \\( x - (-2) = x + 2 \\). Height = \\( \\left(5 - \\frac{x}{4}\\right) - \\frac{e^{x/2}}{x + 2} \\).\n\n\\[ V = 2\\pi \\int_{-1}^{6} (x + 2)\\left[\\left(5 - \\frac{x}{4}\\right) - \\frac{e^{x/2}}{x + 2}\\right] dx \\]\n\\[ = 2\\pi \\int_{-1}^{6} \\left[(x + 2)\\left(5 - \\frac{x}{4}\\right) - e^{x/2}\\right] dx. \\]\n\nPolynomial part: \\( (x + 2)\\left(5 - \\frac{x}{4}\\right) = 5x - \\frac{x^2}{4} + 10 - \\frac{x}{2} = -\\frac{x^2}{4} + \\frac{9x}{2} + 10 \\).\n  \\[ \\int_{-1}^{6} \\left(-\\frac{x^2}{4} + \\frac{9x}{2} + 10\\right) dx = \\left[-\\frac{x^3}{12} + \\frac{9 x^2}{4} + 10 x\\right]_{-1}^{6} \\]\n  \\[ = (-18 + 81 + 60) - \\left(\\frac{1}{12} + \\frac{9}{4} - 10\\right) = 123 - \\left(\\frac{1}{12} + \\frac{27}{12} - \\frac{120}{12}\\right) = 123 + \\frac{92}{12} = 123 + \\frac{23}{3} = \\frac{392}{3}. \\]\n\nExponential: \\( \\int_{-1}^{6} e^{x/2} dx = 2[e^{x/2}]_{-1}^{6} = 2(e^3 - e^{-1/2}) \\).\n\n\\[ V = 2\\pi\\left[\\frac{392}{3} - 2 e^3 + 2 e^{-1/2}\\right] = \\frac{784\\pi}{3} - 4\\pi e^3 + 4\\pi e^{-1/2}. \\]\n\nNumerically: \\( V \\approx 821.05 - 252.83 + 7.62 \\approx 576.22 \\)."
       }
@@ -473,7 +473,7 @@
     "problems": [
       {
         "prompt": "Solve the following work problem.",
-        "problem": "\\[ A force of \\( F(x) = x^2 - \\cos(3x) + 2 \\), \\( x \\) is in meters, acts on an object. What is the work required to move the object from \\( x = 3 \\) to \\( x = 7 \\)? \\]",
+        "problem": "A force of \\( F(x) = x^2 - \\cos(3x) + 2 \\), \\( x \\) is in meters, acts on an object. What is the work required to move the object from \\( x = 3 \\) to \\( x = 7 \\)?",
         "answer": "\\( \\frac{340}{3} + \\frac{\\sin 9 - \\sin 21}{3} \\)",
         "solution": "Work = \\( \\int_a^b F(x) dx \\).\n\n\\[ W = \\int_3^7 [x^2 - \\cos(3x) + 2] dx = \\left[\\frac{x^3}{3} - \\frac{\\sin(3x)}{3} + 2x\\right]_3^7 \\]\n\\[ = \\left(\\frac{343}{3} - \\frac{\\sin(21)}{3} + 14\\right) - \\left(9 - \\frac{\\sin(9)}{3} + 6\\right) \\]\n\\[ = \\frac{343}{3} + 14 - 15 - \\frac{\\sin(21)}{3} + \\frac{\\sin(9)}{3} \\]\n\\[ = \\frac{343}{3} - 1 + \\frac{\\sin 9 - \\sin 21}{3} \\]\n\\[ = \\frac{340}{3} + \\frac{\\sin 9 - \\sin 21}{3}. \\]"
       },
@@ -2081,109 +2081,109 @@
     "problems": [
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{3}{8}x^2 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Show that \\( f(x) \\) is a probability density function.\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean \\( \\mu \\).",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{3}{8}x^2 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Show that \\( f(x) \\) is a probability density function.\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean \\( \\mu \\).",
         "answer": "(a) Verified. (b) \\( P(X \\le 1) = \\frac{1}{8} \\). (c) \\( \\mu = \\frac{3}{2} \\).",
         "solution": "(a) \\( f(x) \\ge 0 \\) on \\( [0,2] \\). Check:\n\\[ \\int_0^2 \\frac{3}{8}x^2\\,dx = \\frac{3}{8}\\cdot\\frac{x^3}{3}\\Big|_0^2 = \\frac{3}{8}\\cdot\\frac{8}{3} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\le 1) = \\int_0^1 \\frac{3}{8}x^2\\,dx = \\frac{3}{8}\\cdot\\frac{1}{3} = \\frac{1}{8} = 0.125. \\]\n\n(c)\n\\[ \\mu = \\int_0^2 x\\cdot\\frac{3}{8}x^2\\,dx = \\frac{3}{8}\\int_0^2 x^3\\,dx = \\frac{3}{8}\\cdot 4 = \\frac{3}{2}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} cx(3 - x) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\nDetermine the value of \\( c \\) that makes \\( f \\) a PDF.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} cx(3 - x) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\nDetermine the value of \\( c \\) that makes \\( f \\) a PDF.",
         "answer": "\\( c = \\dfrac{2}{9} \\)",
         "solution": "We need \\( \\int_0^3 cx(3-x)\\,dx = 1 \\).\n\\[ \\int_0^3 (3x - x^2)\\,dx = \\left[\\frac{3x^2}{2} - \\frac{x^3}{3}\\right]_0^3 = \\frac{27}{2} - 9 = \\frac{9}{2}. \\]\nSo \\( c\\cdot\\frac{9}{2} = 1 \\Rightarrow c = \\frac{2}{9} \\)."
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{1}{4} & \\text{if } 1 \\le x \\le 5 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(2 \\le X \\le 4) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{1}{4} & \\text{if } 1 \\le x \\le 5 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(2 \\le X \\le 4) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{1}{2} \\). (c) \\( \\mu = 3 \\).",
         "solution": "(a) \\( f(x) = \\frac{1}{4} \\ge 0 \\) and \\( \\int_1^5 \\frac{1}{4}\\,dx = \\frac{1}{4}\\cdot 4 = 1 \\). \\( \\checkmark \\)\n\n(b) \\( P(2 \\le X \\le 4) = \\int_2^4 \\frac{1}{4}\\,dx = \\frac{1}{4}\\cdot 2 = \\frac{1}{2} \\).\n\n(c) \\( \\mu = \\int_1^5 x\\cdot\\frac{1}{4}\\,dx = \\frac{1}{4}\\cdot\\frac{x^2}{2}\\Big|_1^5 = \\frac{1}{4}\\cdot\\frac{24}{2} = 3 \\)."
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{1}{9}(6x - 2x^2) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Show that \\( f(x) \\) is a PDF.\n(b) Find \\( P(X \\ge 2) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{1}{9}(6x - 2x^2) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Show that \\( f(x) \\) is a PDF.\n(b) Find \\( P(X \\ge 2) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( P(X \\ge 2) = \\frac{7}{27} \\). (c) \\( \\mu = \\frac{3}{2} \\).",
         "solution": "(a) On \\( [0,3] \\): \\( f(x) = \\frac{2x(3-x)}{9} \\ge 0 \\). Check:\n\\[ \\int_0^3 \\frac{1}{9}(6x - 2x^2)\\,dx = \\frac{1}{9}\\left[3x^2 - \\frac{2x^3}{3}\\right]_0^3 = \\frac{1}{9}(27 - 18) = \\frac{9}{9} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\ge 2) = \\int_2^3 \\frac{1}{9}(6x - 2x^2)\\,dx = \\frac{1}{9}\\left[3x^2 - \\frac{2x^3}{3}\\right]_2^3 = \\frac{1}{9}\\left[(27-18) - (12 - \\frac{16}{3})\\right] = \\frac{1}{9}\\left[9 - \\frac{20}{3}\\right] = \\frac{1}{9}\\cdot\\frac{7}{3} = \\frac{7}{27}. \\]\n\n(c)\n\\[ \\mu = \\int_0^3 x\\cdot\\frac{1}{9}(6x - 2x^2)\\,dx = \\frac{1}{9}\\int_0^3 (6x^2 - 2x^3)\\,dx = \\frac{1}{9}\\left[2x^3 - \\frac{x^4}{2}\\right]_0^3 = \\frac{1}{9}\\left(54 - \\frac{81}{2}\\right) = \\frac{1}{9}\\cdot\\frac{27}{2} = \\frac{3}{2}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(t) = \\begin{cases} \\frac{1}{5}e^{-t/5} & \\text{if } t \\ge 0 \\\\ 0 & \\text{if } t < 0. \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(T \\le 3) \\).\n(c) Find \\( P(T \\ge 10) \\).\n(d) Find the mean.",
+        "problem": "Let\n\\(\nf(t) = \\begin{cases} \\frac{1}{5}e^{-t/5} & \\text{if } t \\ge 0 \\\\ 0 & \\text{if } t < 0. \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(T \\le 3) \\).\n(c) Find \\( P(T \\ge 10) \\).\n(d) Find the mean.",
         "answer": "(a) Verified. (b) \\( 1 - e^{-3/5} \\approx 0.4512 \\). (c) \\( e^{-2} \\approx 0.1353 \\). (d) \\( \\mu = 5 \\).",
         "solution": "(a)\n\\[ \\int_0^{\\infty} \\frac{1}{5}e^{-t/5}\\,dt = \\lim_{b\\to\\infty}\\left[-e^{-t/5}\\right]_0^b = 0 - (-1) = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(T \\le 3) = \\int_0^3 \\frac{1}{5}e^{-t/5}\\,dt = \\left[-e^{-t/5}\\right]_0^3 = 1 - e^{-3/5} \\approx 0.4512. \\]\n\n(c)\n\\[ P(T \\ge 10) = \\int_{10}^{\\infty}\\frac{1}{5}e^{-t/5}\\,dt = e^{-2} \\approx 0.1353. \\]\n\n(d)\n\\[ \\mu = \\int_0^{\\infty} t\\cdot\\frac{1}{5}e^{-t/5}\\,dt. \\]\nIntegration by parts with \\( u = t \\), \\( dv = \\frac{1}{5}e^{-t/5}\\,dt \\):\n\\[ \\mu = \\left[-te^{-t/5}\\right]_0^{\\infty} + \\int_0^{\\infty} e^{-t/5}\\,dt = 0 + \\left[-5e^{-t/5}\\right]_0^{\\infty} = 5. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} cx^3 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Find \\( c \\).\n(b) Find \\( P(1 \\le X \\le 2) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} cx^3 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Find \\( c \\).\n(b) Find \\( P(1 \\le X \\le 2) \\).\n(c) Find the mean.",
         "answer": "(a) \\( c = \\frac{1}{4} \\). (b) \\( \\frac{15}{16} \\). (c) \\( \\mu = \\frac{8}{5} \\).",
         "solution": "(a)\n\\[ \\int_0^2 cx^3\\,dx = c\\cdot\\frac{16}{4} = 4c = 1 \\quad \\Rightarrow \\quad c = \\frac{1}{4}. \\]\n\n(b)\n\\[ P(1 \\le X \\le 2) = \\frac{1}{4}\\int_1^2 x^3\\,dx = \\frac{1}{4}\\cdot\\frac{1}{4}(16 - 1) = \\frac{15}{16}. \\]\n\n(c)\n\\[ \\mu = \\frac{1}{4}\\int_0^2 x^4\\,dx = \\frac{1}{4}\\cdot\\frac{32}{5} = \\frac{8}{5}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{3}{2}(1 - x^2) & \\text{if } -1 \\le x \\le 1 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(-0.5 \\le X \\le 0.5) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{3}{2}(1 - x^2) & \\text{if } -1 \\le x \\le 1 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(-0.5 \\le X \\le 0.5) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{11}{16} \\). (c) \\( \\mu = 0 \\).",
         "solution": "(a) On \\( [-1,1] \\): \\( 1 - x^2 \\ge 0 \\), so \\( f(x) \\ge 0 \\). Check:\n\\[ \\int_{-1}^{1}\\frac{3}{2}(1 - x^2)\\,dx = \\frac{3}{2}\\cdot 2\\int_0^1(1-x^2)\\,dx = 3\\left[x - \\frac{x^3}{3}\\right]_0^1 = 3\\cdot\\frac{2}{3} = 2. \\quad \\]\nWait, let me recalculate: \\( \\frac{3}{2}\\int_{-1}^{1}(1-x^2)\\,dx = \\frac{3}{2}\\left[x - \\frac{x^3}{3}\\right]_{-1}^{1} = \\frac{3}{2}\\left[\\frac{2}{3} - (-\\frac{2}{3})\\right] = \\frac{3}{2}\\cdot\\frac{4}{3} = 2 \\). That's not 1.\n\nLet me fix: we need \\( c\\int_{-1}^{1}(1-x^2)\\,dx = 1 \\), and the integral equals \\( \\frac{4}{3} \\). So \\( c = \\frac{3}{4} \\).\n\nCorrected: Let\n\\[ f(x) = \\begin{cases} \\frac{3}{4}(1 - x^2) & \\text{if } -1 \\le x \\le 1 \\\\ 0 & \\text{otherwise.} \\end{cases} \\]\n\n(a) \\( f(x) \\ge 0 \\) on \\( [-1,1] \\). Check:\n\\[ \\int_{-1}^{1}\\frac{3}{4}(1-x^2)\\,dx = \\frac{3}{4}\\cdot\\frac{4}{3} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(-0.5 \\le X \\le 0.5) = \\frac{3}{4}\\int_{-0.5}^{0.5}(1-x^2)\\,dx = \\frac{3}{4}\\cdot 2\\int_0^{0.5}(1-x^2)\\,dx = \\frac{3}{2}\\left[x - \\frac{x^3}{3}\\right]_0^{0.5}. \\]\n\\[ = \\frac{3}{2}\\left(\\frac{1}{2} - \\frac{1}{24}\\right) = \\frac{3}{2}\\cdot\\frac{11}{24} = \\frac{11}{16} = 0.6875. \\]\n\n(c) By symmetry of \\( f \\) about 0: \\( \\mu = 0 \\). (Alternatively, verify: \\( \\int_{-1}^{1}xf(x)\\,dx = \\frac{3}{4}\\int_{-1}^{1}x(1-x^2)\\,dx = 0 \\) since the integrand is odd.)"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{2}{25}(5 - x) & \\text{if } 0 \\le x \\le 5 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\le 2) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{2}{25}(5 - x) & \\text{if } 0 \\le x \\le 5 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\le 2) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{16}{25} \\). (c) \\( \\mu = \\frac{5}{3} \\).",
         "solution": "(a) \\( f(x) \\ge 0 \\) on \\( [0,5] \\). Check:\n\\[ \\int_0^5 \\frac{2}{25}(5-x)\\,dx = \\frac{2}{25}\\left[5x - \\frac{x^2}{2}\\right]_0^5 = \\frac{2}{25}\\cdot\\frac{25}{2} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\le 2) = \\frac{2}{25}\\int_0^2(5-x)\\,dx = \\frac{2}{25}\\left[5x - \\frac{x^2}{2}\\right]_0^2 = \\frac{2}{25}\\cdot 8 = \\frac{16}{25} = 0.64. \\]\n\n(c)\n\\[ \\mu = \\frac{2}{25}\\int_0^5 x(5-x)\\,dx = \\frac{2}{25}\\int_0^5(5x - x^2)\\,dx = \\frac{2}{25}\\left[\\frac{5x^2}{2} - \\frac{x^3}{3}\\right]_0^5 = \\frac{2}{25}\\left(\\frac{125}{2} - \\frac{125}{3}\\right) = \\frac{2}{25}\\cdot\\frac{125}{6} = \\frac{5}{3}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{4}{81}x(9 - x^2) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Show this is a PDF.\n(b) Find \\( P(1 \\le X \\le 2) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{4}{81}x(9 - x^2) & \\text{if } 0 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Show this is a PDF.\n(b) Find \\( P(1 \\le X \\le 2) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{13}{27} \\). (c) \\( \\mu = \\frac{8}{5} \\).",
         "solution": "(a) On \\( [0,3] \\): \\( x \\ge 0 \\) and \\( 9 - x^2 \\ge 0 \\), so \\( f(x) \\ge 0 \\). Check:\n\\[ \\frac{4}{81}\\int_0^3 (9x - x^3)\\,dx = \\frac{4}{81}\\left[\\frac{9x^2}{2} - \\frac{x^4}{4}\\right]_0^3 = \\frac{4}{81}\\left(\\frac{81}{2} - \\frac{81}{4}\\right) = \\frac{4}{81}\\cdot\\frac{81}{4} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(1 \\le X \\le 2) = \\frac{4}{81}\\int_1^2(9x - x^3)\\,dx = \\frac{4}{81}\\left[\\frac{9x^2}{2} - \\frac{x^4}{4}\\right]_1^2 = \\frac{4}{81}\\left[\\left(18 - 4\\right) - \\left(\\frac{9}{2} - \\frac{1}{4}\\right)\\right]. \\]\n\\[ = \\frac{4}{81}\\left[14 - \\frac{17}{4}\\right] = \\frac{4}{81}\\cdot\\frac{39}{4} = \\frac{39}{81} = \\frac{13}{27} \\approx 0.4815. \\]\n\n(c)\n\\[ \\mu = \\frac{4}{81}\\int_0^3 x(9x - x^3)\\,dx = \\frac{4}{81}\\int_0^3(9x^2 - x^4)\\,dx = \\frac{4}{81}\\left[3x^3 - \\frac{x^5}{5}\\right]_0^3 = \\frac{4}{81}\\left(81 - \\frac{243}{5}\\right) = \\frac{4}{81}\\cdot\\frac{162}{5} = \\frac{8}{5}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(t) = \\begin{cases} \\frac{1}{8}e^{-t/8} & \\text{if } t \\ge 0 \\\\ 0 & \\text{if } t < 0. \\end{cases}\n\\]\n(a) Find \\( P(T \\le 4) \\).\n(b) Find \\( P(2 \\le T \\le 6) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(t) = \\begin{cases} \\frac{1}{8}e^{-t/8} & \\text{if } t \\ge 0 \\\\ 0 & \\text{if } t < 0. \\end{cases}\n\\)\n(a) Find \\( P(T \\le 4) \\).\n(b) Find \\( P(2 \\le T \\le 6) \\).\n(c) Find the mean.",
         "answer": "(a) \\( 1 - e^{-1/2} \\approx 0.3935 \\). (b) \\( e^{-1/4} - e^{-3/4} \\approx 0.3064 \\). (c) \\( \\mu = 8 \\).",
         "solution": "(a)\n\\[ P(T \\le 4) = \\int_0^4 \\frac{1}{8}e^{-t/8}\\,dt = \\left[-e^{-t/8}\\right]_0^4 = 1 - e^{-1/2} \\approx 0.3935. \\]\n\n(b)\n\\[ P(2 \\le T \\le 6) = \\left[-e^{-t/8}\\right]_2^6 = e^{-1/4} - e^{-3/4} \\approx 0.7788 - 0.4724 = 0.3064. \\]\n\n(c) For the exponential distribution with parameter \\( \\lambda = 1/8 \\), the mean is \\( \\mu = 8 \\).\nAlternatively:\n\\[ \\mu = \\int_0^{\\infty} t\\cdot\\frac{1}{8}e^{-t/8}\\,dt = \\left[-te^{-t/8}\\right]_0^{\\infty} + \\int_0^{\\infty}e^{-t/8}\\,dt = 0 + 8 = 8. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} c(4x - x^2) & \\text{if } 0 \\le x \\le 4 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Find \\( c \\).\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} c(4x - x^2) & \\text{if } 0 \\le x \\le 4 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Find \\( c \\).\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean.",
         "answer": "(a) \\( c = \\frac{3}{32} \\). (b) \\( \\frac{5}{32} \\). (c) \\( \\mu = 2 \\).",
         "solution": "(a)\n\\[ \\int_0^4 (4x - x^2)\\,dx = \\left[2x^2 - \\frac{x^3}{3}\\right]_0^4 = 32 - \\frac{64}{3} = \\frac{32}{3}. \\]\nSo \\( c = \\frac{3}{32} \\).\n\n(b)\n\\[ P(X \\le 1) = \\frac{3}{32}\\int_0^1(4x - x^2)\\,dx = \\frac{3}{32}\\left[2x^2 - \\frac{x^3}{3}\\right]_0^1 = \\frac{3}{32}\\cdot\\frac{5}{3} = \\frac{5}{32} \\approx 0.1563. \\]\n\n(c)\n\\[ \\mu = \\frac{3}{32}\\int_0^4 x(4x - x^2)\\,dx = \\frac{3}{32}\\int_0^4(4x^2 - x^3)\\,dx = \\frac{3}{32}\\left[\\frac{4x^3}{3} - \\frac{x^4}{4}\\right]_0^4 = \\frac{3}{32}\\left(\\frac{256}{3} - 64\\right) = \\frac{3}{32}\\cdot\\frac{64}{3} = 2. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{1}{2}\\sin x & \\text{if } 0 \\le x \\le \\pi \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P\\!\\left(X \\le \\frac{\\pi}{2}\\right) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{1}{2}\\sin x & \\text{if } 0 \\le x \\le \\pi \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P\\!\\left(X \\le \\frac{\\pi}{2}\\right) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{1}{2} \\). (c) \\( \\mu = \\frac{\\pi}{2} \\).",
         "solution": "(a) \\( \\sin x \\ge 0 \\) on \\( [0,\\pi] \\). Check:\n\\[ \\int_0^{\\pi}\\frac{1}{2}\\sin x\\,dx = \\frac{1}{2}\\left[-\\cos x\\right]_0^{\\pi} = \\frac{1}{2}(1+1) = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P\\!\\left(X \\le \\frac{\\pi}{2}\\right) = \\frac{1}{2}\\int_0^{\\pi/2}\\sin x\\,dx = \\frac{1}{2}\\left[-\\cos x\\right]_0^{\\pi/2} = \\frac{1}{2}(0 + 1) = \\frac{1}{2}. \\]\n\n(c)\n\\[ \\mu = \\frac{1}{2}\\int_0^{\\pi}x\\sin x\\,dx. \\]\nIntegration by parts: \\( u = x \\), \\( dv = \\sin x\\,dx \\), \\( du = dx \\), \\( v = -\\cos x \\).\n\\[ = \\frac{1}{2}\\left(\\left[-x\\cos x\\right]_0^{\\pi} + \\int_0^{\\pi}\\cos x\\,dx\\right) = \\frac{1}{2}\\left(\\pi + [\\sin x]_0^{\\pi}\\right) = \\frac{1}{2}(\\pi + 0) = \\frac{\\pi}{2}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{3}{16}\\sqrt{x} & \\text{if } 0 \\le x \\le 4 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\ge 1) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{3}{16}\\sqrt{x} & \\text{if } 0 \\le x \\le 4 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\ge 1) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{7}{8} \\). (c) \\( \\mu = \\frac{12}{5} \\).",
         "solution": "(a)\n\\[ \\int_0^4 \\frac{3}{16}\\sqrt{x}\\,dx = \\frac{3}{16}\\cdot\\frac{2}{3}\\left[x^{3/2}\\right]_0^4 = \\frac{1}{8}\\cdot 8 = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\ge 1) = \\frac{3}{16}\\int_1^4 x^{1/2}\\,dx = \\frac{3}{16}\\cdot\\frac{2}{3}\\left[x^{3/2}\\right]_1^4 = \\frac{1}{8}(8 - 1) = \\frac{7}{8}. \\]\n\n(c)\n\\[ \\mu = \\frac{3}{16}\\int_0^4 x\\cdot x^{1/2}\\,dx = \\frac{3}{16}\\int_0^4 x^{3/2}\\,dx = \\frac{3}{16}\\cdot\\frac{2}{5}\\left[x^{5/2}\\right]_0^4 = \\frac{3}{16}\\cdot\\frac{2}{5}\\cdot 32 = \\frac{12}{5}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} 2(1 - x) & \\text{if } 0 \\le x \\le 1 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P\\!\\left(\\frac{1}{4} \\le X \\le \\frac{3}{4}\\right) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} 2(1 - x) & \\text{if } 0 \\le x \\le 1 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P\\!\\left(\\frac{1}{4} \\le X \\le \\frac{3}{4}\\right) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{1}{2} \\). (c) \\( \\mu = \\frac{1}{3} \\).",
         "solution": "(a) \\( f(x) \\ge 0 \\) on \\( [0,1] \\). Check:\n\\[ \\int_0^1 2(1-x)\\,dx = 2\\left[x - \\frac{x^2}{2}\\right]_0^1 = 2\\cdot\\frac{1}{2} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P\\!\\left(\\frac{1}{4} \\le X \\le \\frac{3}{4}\\right) = 2\\int_{1/4}^{3/4}(1-x)\\,dx = 2\\left[x - \\frac{x^2}{2}\\right]_{1/4}^{3/4} = 2\\left[\\left(\\frac{3}{4} - \\frac{9}{32}\\right) - \\left(\\frac{1}{4} - \\frac{1}{32}\\right)\\right]. \\]\n\\[ = 2\\left[\\frac{15}{32} - \\frac{7}{32}\\right] = 2\\cdot\\frac{8}{32} = \\frac{1}{2}. \\]\n\n(c)\n\\[ \\mu = \\int_0^1 2x(1-x)\\,dx = 2\\int_0^1(x - x^2)\\,dx = 2\\left[\\frac{1}{2} - \\frac{1}{3}\\right] = 2\\cdot\\frac{1}{6} = \\frac{1}{3}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{3}{26}x^2 & \\text{if } 1 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\le 2) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{3}{26}x^2 & \\text{if } 1 \\le x \\le 3 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Verify this is a PDF.\n(b) Find \\( P(X \\le 2) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{7}{26} \\). (c) \\( \\mu = \\frac{30}{13} \\).",
         "solution": "(a)\n\\[ \\int_1^3 \\frac{3}{26}x^2\\,dx = \\frac{3}{26}\\cdot\\frac{x^3}{3}\\Big|_1^3 = \\frac{1}{26}(27 - 1) = \\frac{26}{26} = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\le 2) = \\frac{3}{26}\\int_1^2 x^2\\,dx = \\frac{3}{26}\\cdot\\frac{1}{3}(8-1) = \\frac{7}{26}. \\]\n\n(c)\n\\[ \\mu = \\frac{3}{26}\\int_1^3 x^3\\,dx = \\frac{3}{26}\\cdot\\frac{x^4}{4}\\Big|_1^3 = \\frac{3}{26}\\cdot\\frac{80}{4} = \\frac{3}{26}\\cdot 20 = \\frac{60}{26} = \\frac{30}{13}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{12}{(1+x)^4} & \\text{if } x \\ge 0 \\\\ 0 & \\text{if } x < 0. \\end{cases}\n\\]\n(a) Verify this is a PDF (use an improper integral).\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean.",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{12}{(1+x)^4} & \\text{if } x \\ge 0 \\\\ 0 & \\text{if } x < 0. \\end{cases}\n\\)\n(a) Verify this is a PDF (use an improper integral).\n(b) Find \\( P(X \\le 1) \\).\n(c) Find the mean.",
         "answer": "(a) Verified. (b) \\( \\frac{7}{8} \\). (c) \\( \\mu = \\frac{1}{2} \\).",
         "solution": "(a)\n\\[ \\int_0^{\\infty}\\frac{12}{(1+x)^4}\\,dx = 12\\left[\\frac{-1}{3(1+x)^3}\\right]_0^{\\infty} = 12\\left(0 + \\frac{1}{3}\\right) = 4. \\quad \\]\nThat gives 4, not 1. Let me fix: \\( c\\int_0^{\\infty}(1+x)^{-4}\\,dx = c\\cdot\\frac{1}{3} = 1 \\Rightarrow c = 3 \\).\n\nCorrected: Let\n\\[ f(x) = \\begin{cases} \\frac{3}{(1+x)^4} & \\text{if } x \\ge 0 \\\\ 0 & \\text{if } x < 0. \\end{cases} \\]\n\n(a)\n\\[ \\int_0^{\\infty}\\frac{3}{(1+x)^4}\\,dx = 3\\left[\\frac{-1}{3(1+x)^3}\\right]_0^{\\infty} = \\left[\\frac{-1}{(1+x)^3}\\right]_0^{\\infty} = 0 + 1 = 1. \\quad \\checkmark \\]\n\n(b)\n\\[ P(X \\le 1) = \\left[\\frac{-1}{(1+x)^3}\\right]_0^1 = -\\frac{1}{8} + 1 = \\frac{7}{8}. \\]\n\n(c)\n\\[ \\mu = 3\\int_0^{\\infty}\\frac{x}{(1+x)^4}\\,dx. \\]\nLet \\( u = 1 + x \\), \\( x = u - 1 \\), \\( dx = du \\):\n\\[ = 3\\int_1^{\\infty}\\frac{u-1}{u^4}\\,du = 3\\int_1^{\\infty}\\left(u^{-3} - u^{-4}\\right)du = 3\\left[\\frac{-1}{2u^2} + \\frac{1}{3u^3}\\right]_1^{\\infty} = 3\\left(0 - \\left(-\\frac{1}{2} + \\frac{1}{3}\\right)\\right) = 3\\cdot\\frac{1}{6} = \\frac{1}{2}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} c\\,x(2 - x)^2 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Find \\( c \\).\n(b) Find \\( P(X \\ge 1) \\).",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} c\\,x(2 - x)^2 & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Find \\( c \\).\n(b) Find \\( P(X \\ge 1) \\).",
         "answer": "(a) \\( c = \\frac{3}{4} \\). (b) \\( P(X \\ge 1) = \\frac{5}{16} \\).",
         "solution": "(a) Expand: \\( x(2-x)^2 = x(4 - 4x + x^2) = 4x - 4x^2 + x^3 \\).\n\\[ \\int_0^2(4x - 4x^2 + x^3)\\,dx = \\left[2x^2 - \\frac{4x^3}{3} + \\frac{x^4}{4}\\right]_0^2 = 8 - \\frac{32}{3} + 4 = 12 - \\frac{32}{3} = \\frac{4}{3}. \\]\nSo \\( c = \\frac{3}{4} \\).\n\n(b)\n\\[ P(X \\ge 1) = \\frac{3}{4}\\int_1^2(4x - 4x^2 + x^3)\\,dx = \\frac{3}{4}\\left[2x^2 - \\frac{4x^3}{3} + \\frac{x^4}{4}\\right]_1^2. \\]\nAt \\( x = 2 \\): \\( 8 - \\frac{32}{3} + 4 = \\frac{4}{3} \\). At \\( x = 1 \\): \\( 2 - \\frac{4}{3} + \\frac{1}{4} = \\frac{11}{12} \\).\n\\[ P(X \\ge 1) = \\frac{3}{4}\\left(\\frac{4}{3} - \\frac{11}{12}\\right) = \\frac{3}{4}\\cdot\\frac{5}{12} = \\frac{5}{16}. \\]"
       },
       {
         "prompt": "Answer the following probability question.",
-        "problem": "Let\n\\[\nf(x) = \\begin{cases} \\frac{1}{2} & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\]\n(a) Find \\( P(0.5 \\le X \\le 1.5) \\).\n(b) Find the mean.\n(c) Find \\( P(X > 1) \\).",
+        "problem": "Let\n\\(\nf(x) = \\begin{cases} \\frac{1}{2} & \\text{if } 0 \\le x \\le 2 \\\\ 0 & \\text{otherwise.} \\end{cases}\n\\)\n(a) Find \\( P(0.5 \\le X \\le 1.5) \\).\n(b) Find the mean.\n(c) Find \\( P(X > 1) \\).",
         "answer": "(a) \\( \\frac{1}{2} \\). (b) \\( \\mu = 1 \\). (c) \\( \\frac{1}{2} \\).",
         "solution": "This is a uniform distribution on \\( [0,2] \\).\n\n(a) \\( P(0.5 \\le X \\le 1.5) = \\frac{1}{2}\\cdot 1 = \\frac{1}{2} \\).\n\n(b) \\( \\mu = \\frac{1}{2}\\int_0^2 x\\,dx = \\frac{1}{2}\\cdot 2 = 1 \\).\n\n(c) \\( P(X > 1) = \\frac{1}{2}\\int_1^2 dx = \\frac{1}{2} \\)."
       }
@@ -3647,73 +3647,73 @@
     "problems": [
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=0}^{\\infty} \\frac{4}{5^n} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=0}^{\\infty} \\frac{4}{5^n} \\)",
         "answer": "\\[ Converges to 5. \\]",
         "solution": "This is a geometric series with \\( a = 4 \\) and \\( r = \\frac{1}{5} \\). Since \\( |r| < 1 \\), it converges.\n\\[ \\sum_{n=0}^{\\infty} 4 \\cdot \\left(\\frac{1}{5}\\right)^n = \\frac{4}{1 - 1/5} = \\frac{4}{4/5} = 5 \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{3^n}{4^{n-1}} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{3^n}{4^{n-1}} \\)",
         "answer": "\\[ Converges to 12. \\]",
         "solution": "Rewrite: \\( \\frac{3^n}{4^{n-1}} = \\frac{3^n \\cdot 4}{4^n} = 4 \\cdot \\left(\\frac{3}{4}\\right)^n \\).\n\nSo: \\( \\displaystyle\\sum_{n=1}^{\\infty} 4\\left(\\frac{3}{4}\\right)^n = 4 \\cdot \\frac{3/4}{1 - 3/4} = 4 \\cdot \\frac{3/4}{1/4} = 4 \\cdot 3 = 12 \\)."
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(-2)^n}{7^n} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=0}^{\\infty} \\frac{(-2)^n}{7^n} \\)",
         "answer": "Converges to \\( \\frac{7}{9} \\).",
         "solution": "This is geometric with \\( r = \\frac{-2}{7} \\). Since \\( |r| = \\frac{2}{7} < 1 \\), it converges.\n\\[ \\frac{1}{1 - (-2/7)} = \\frac{1}{1 + 2/7} = \\frac{1}{9/7} = \\frac{7}{9} \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{7}{3n} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{7}{3n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\( \\displaystyle\\sum_{n=1}^{\\infty} \\frac{7}{3n} = \\frac{7}{3} \\sum_{n=1}^{\\infty} \\frac{1}{n} \\). This is a constant multiple of the harmonic series, which diverges."
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{2}{n^2 + 3n + 2} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{2}{n^2 + 3n + 2} \\)",
         "answer": "\\[ Converges to 1. \\]",
         "solution": "Partial fractions: \\( \\frac{2}{n^2+3n+2} = \\frac{2}{(n+1)(n+2)} = 2\\left(\\frac{1}{n+1} - \\frac{1}{n+2}\\right) \\).\n\nThis is a telescoping series. The partial sum is:\n\\[ s_N = 2\\sum_{n=1}^{N}\\left(\\frac{1}{n+1} - \\frac{1}{n+2}\\right) = 2\\left(\\frac{1}{2} - \\frac{1}{N+2}\\right) \\]\n\n\\[ \\lim_{N \\to \\infty} s_N = 2 \\cdot \\frac{1}{2} = 1 \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=0}^{\\infty} \\frac{2^{n+3}}{5^n} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=0}^{\\infty} \\frac{2^{n+3}}{5^n} \\)",
         "answer": "Converges to \\( \\frac{40}{3} \\).",
         "solution": "\\( \\frac{2^{n+3}}{5^n} = \\frac{8 \\cdot 2^n}{5^n} = 8\\left(\\frac{2}{5}\\right)^n \\).\n\nGeometric with \\( a = 8 \\), \\( r = \\frac{2}{5} \\). Since \\( |r| < 1 \\):\n\\[ 8 \\cdot \\frac{1}{1 - 2/5} = 8 \\cdot \\frac{5}{3} = \\frac{40}{3} \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=2}^{\\infty} \\frac{6}{n^2 - 1} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=2}^{\\infty} \\frac{6}{n^2 - 1} \\)",
         "answer": "Converges to \\( \\frac{9}{2} \\).",
         "solution": "\\( \\frac{6}{n^2 - 1} = \\frac{6}{(n-1)(n+1)} = 6 \\cdot \\frac{1}{2}\\left(\\frac{1}{n-1} - \\frac{1}{n+1}\\right) = 3\\left(\\frac{1}{n-1} - \\frac{1}{n+1}\\right) \\).\n\nPartial sum:\n\\[ s_N = 3\\sum_{n=2}^{N}\\left(\\frac{1}{n-1} - \\frac{1}{n+1}\\right) \\]\n\\[ = 3\\left[\\left(\\frac{1}{1} - \\frac{1}{3}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + \\left(\\frac{1}{3} - \\frac{1}{5}\\right) + \\left(\\frac{1}{4} - \\frac{1}{6}\\right) + \\cdots\\right] \\]\n\nThis telescopes. The surviving terms are \\( \\frac{1}{1} + \\frac{1}{2} \\) from the left, while the rightmost terms vanish as \\( N \\to \\infty \\).\n\n\\[ \\lim_{N \\to \\infty} s_N = 3\\left(1 + \\frac{1}{2}\\right) = 3 \\cdot \\frac{3}{2} = \\frac{9}{2} \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{5^n}{4^{n+1}} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{5^n}{4^{n+1}} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\( \\frac{5^n}{4^{n+1}} = \\frac{1}{4}\\left(\\frac{5}{4}\\right)^n \\).\n\nGeometric with \\( r = \\frac{5}{4} > 1 \\), so the series diverges."
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)} \\)",
         "answer": "\\[ Converges to 1. \\]",
         "solution": "Partial fractions: \\( \\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1} \\).\n\nTelescoping: \\( s_N = 1 - \\frac{1}{N+1} \\to 1 \\)."
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=0}^{\\infty} \\left(\\frac{3}{10}\\right)^n + \\left(\\frac{1}{2}\\right)^n \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=0}^{\\infty} \\left(\\frac{3}{10}\\right)^n + \\left(\\frac{1}{2}\\right)^n \\)",
         "answer": "Converges to \\( \\frac{24}{7} \\).",
         "solution": "Split into two geometric series:\n\\[ \\sum_{n=0}^{\\infty}\\left(\\frac{3}{10}\\right)^n + \\sum_{n=0}^{\\infty}\\left(\\frac{1}{2}\\right)^n = \\frac{1}{1-3/10} + \\frac{1}{1-1/2} = \\frac{10}{7} + 2 = \\frac{24}{7} \\]"
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{4}{n^2 + 5n + 6} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{4}{n^2 + 5n + 6} \\)",
         "answer": "Converges to \\( \\frac{4}{3} \\).",
         "solution": "\\( \\frac{4}{n^2+5n+6} = \\frac{4}{(n+2)(n+3)} = 4\\left(\\frac{1}{n+2} - \\frac{1}{n+3}\\right) \\).\n\nTelescoping: \\( s_N = 4\\left(\\frac{1}{3} - \\frac{1}{N+3}\\right) \\to \\frac{4}{3} \\)."
       },
       {
         "prompt": "Determine convergence and, if possible, find the sum.",
-        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-3)^{n-1}}{2^n} \\]",
+        "problem": "Determine if the series converges or diverges. If it converges, find its value.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-3)^{n-1}}{2^n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\( \\frac{(-3)^{n-1}}{2^n} = \\frac{1}{-3} \\cdot \\frac{(-3)^n}{2^n} = -\\frac{1}{3}\\left(\\frac{-3}{2}\\right)^n \\). Alternatively, rewrite directly:\n\n\\( \\frac{(-3)^{n-1}}{2^n} = \\frac{1}{2} \\cdot \\frac{(-3)^{n-1}}{2^{n-1}} = \\frac{1}{2}\\left(\\frac{-3}{2}\\right)^{n-1} \\).\n\nGeometric with first term \\( a = \\frac{1}{2} \\) and ratio \\( r = \\frac{-3}{2} \\). Since \\( |r| = \\frac{3}{2} > 1 \\), the series diverges."
       }
@@ -3731,61 +3731,61 @@
     "problems": [
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^3} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^3} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( f(x) = \\frac{1}{x^3} \\). This is positive, continuous, and decreasing for \\( x \\ge 1 \\).\n\\[ \\int_1^{\\infty} \\frac{1}{x^3}\\,dx = \\lim_{t \\to \\infty}\\left[-\\frac{1}{2x^2}\\right]_1^t = \\lim_{t \\to \\infty}\\left(-\\frac{1}{2t^2} + \\frac{1}{2}\\right) = \\frac{1}{2} \\]\n\nSince the integral converges, the series converges by the Integral Test."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{3}{2n+1} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{3}{2n+1} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "Let \\( f(x) = \\frac{3}{2x+1} \\). Positive, continuous, decreasing for \\( x \\ge 1 \\).\n\\[ \\int_1^{\\infty} \\frac{3}{2x+1}\\,dx = \\lim_{t \\to \\infty}\\frac{3}{2}\\ln(2x+1)\\Big|_1^t = \\lim_{t \\to \\infty}\\frac{3}{2}[\\ln(2t+1) - \\ln 3] = \\infty \\]\n\nSince the integral diverges, the series diverges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 4} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 4} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "Let \\( f(x) = \\frac{x}{x^2+4} \\). Positive and continuous for \\( x \\ge 1 \\). For \\( x \\ge 2 \\), \\( f'(x) = \\frac{4 - x^2}{(x^2+4)^2} < 0 \\), so eventually decreasing.\n\\[ \\int_1^{\\infty} \\frac{x}{x^2+4}\\,dx = \\lim_{t \\to \\infty}\\frac{1}{2}\\ln(x^2+4)\\Big|_1^t = \\lim_{t \\to \\infty}\\frac{1}{2}[\\ln(t^2+4) - \\ln 5] = \\infty \\]\n\nThe integral diverges, so the series diverges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=2}^{\\infty} \\frac{1}{n(\\ln n)^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=2}^{\\infty} \\frac{1}{n(\\ln n)^2} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( f(x) = \\frac{1}{x(\\ln x)^2} \\). Positive, continuous, and decreasing for \\( x \\ge 2 \\).\n\\[ \\int_2^{\\infty} \\frac{1}{x(\\ln x)^2}\\,dx \\]\nSubstitute \\( u = \\ln x \\), \\( du = \\frac{1}{x}\\,dx \\):\n\\[ = \\int_{\\ln 2}^{\\infty} \\frac{1}{u^2}\\,du = \\left[-\\frac{1}{u}\\right]_{\\ln 2}^{\\infty} = 0 + \\frac{1}{\\ln 2} = \\frac{1}{\\ln 2} \\]\n\nThe integral converges, so the series converges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^{2/3}} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^{2/3}} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "Let \\( f(x) = x^{-2/3} \\). Positive, continuous, decreasing for \\( x \\ge 1 \\). This is a p-series with \\( p = \\frac{2}{3} \\).\n\\[ \\int_1^{\\infty} x^{-2/3}\\,dx = \\lim_{t \\to \\infty}\\left[3x^{1/3}\\right]_1^t = \\lim_{t \\to \\infty}(3t^{1/3} - 3) = \\infty \\]\n\nThe integral diverges, so the series diverges. (This also follows from the p-Series Test since \\( p = \\frac{2}{3} \\le 1 \\).)"
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} n e^{-n^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} n e^{-n^2} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( f(x) = xe^{-x^2} \\). Positive for \\( x > 0 \\). For large \\( x \\), it is decreasing (the exponential decay dominates).\n\\[ \\int_1^{\\infty} xe^{-x^2}\\,dx \\]\nSubstitute \\( u = x^2 \\), \\( du = 2x\\,dx \\):\n\\[ = \\frac{1}{2}\\int_1^{\\infty} e^{-u}\\,du = \\frac{1}{2}\\left[-e^{-u}\\right]_1^{\\infty} = \\frac{1}{2}(0 + e^{-1}) = \\frac{1}{2e} \\]\n\nThe integral converges, so the series converges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=2}^{\\infty} \\frac{1}{n \\ln n} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=2}^{\\infty} \\frac{1}{n \\ln n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "Let \\( f(x) = \\frac{1}{x \\ln x} \\). Positive, continuous, and decreasing for \\( x \\ge 2 \\).\n\\[ \\int_2^{\\infty} \\frac{1}{x \\ln x}\\,dx \\]\nSubstitute \\( u = \\ln x \\), \\( du = \\frac{1}{x}\\,dx \\):\n\\[ = \\int_{\\ln 2}^{\\infty} \\frac{1}{u}\\,du = \\lim_{t \\to \\infty}[\\ln u]_{\\ln 2}^{t} = \\infty \\]\n\nThe integral diverges, so the series diverges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{(3n+2)^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{(3n+2)^2} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( f(x) = \\frac{1}{(3x+2)^2} \\). Positive, continuous, decreasing for \\( x \\ge 1 \\).\n\\[ \\int_1^{\\infty} \\frac{1}{(3x+2)^2}\\,dx = \\lim_{t \\to \\infty}\\left[-\\frac{1}{3(3x+2)}\\right]_1^t = 0 + \\frac{1}{15} = \\frac{1}{15} \\]\n\nThe integral converges, so the series converges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges. (Use p-series result.)\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^{5/4}} \\]",
+        "problem": "Determine if the series converges or diverges. (Use p-series result.)\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^{5/4}} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "This is a p-series with \\( p = \\frac{5}{4} > 1 \\). By the p-Series Test, it converges."
       },
       {
         "prompt": "Use the Integral Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{\\ln n}{n^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Integral Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{\\ln n}{n^2} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( f(x) = \\frac{\\ln x}{x^2} \\). Positive and continuous for \\( x \\ge 1 \\). \\( f'(x) = \\frac{1 - 2\\ln x}{x^3} < 0 \\) for \\( x > \\sqrt{e} \\), so eventually decreasing.\n\n\\[ \\int_1^{\\infty} \\frac{\\ln x}{x^2}\\,dx \\]\nIntegration by parts with \\( u = \\ln x \\), \\( dv = x^{-2}\\,dx \\):\n\\[ = \\left[-\\frac{\\ln x}{x}\\right]_1^{\\infty} + \\int_1^{\\infty} \\frac{1}{x^2}\\,dx = (0 - 0) + \\left[-\\frac{1}{x}\\right]_1^{\\infty} = 0 + 1 = 1 \\]\n\nThe integral converges, so the series converges."
       }
@@ -3803,73 +3803,73 @@
     "problems": [
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 5} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 5} \\)",
         "answer": "Converges by (Direct) Comparison Test.",
         "solution": "For all \\( n \\ge 1 \\): \\( \\frac{1}{n^2 + 5} < \\frac{1}{n^2} \\). Since \\( \\sum \\frac{1}{n^2} \\) converges (p-series, \\( p=2 \\)), by the Comparison Test, \\( \\sum \\frac{1}{n^2+5} \\) converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{n}{n^2 + 1} \\)",
         "answer": "Diverges by Limit Comparison Test.",
         "solution": "Use Limit Comparison with \\( b_n = \\frac{1}{n} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{a_n}{b_n} = \\lim_{n \\to \\infty} \\frac{n/(n^2+1)}{1/n} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2+1} = 1 \\]\n\nSince \\( 0 < 1 < \\infty \\) and \\( \\sum \\frac{1}{n} \\) diverges, by the Limit Comparison Test, the given series diverges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{3}{n^3 + 2n} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{3}{n^3 + 2n} \\)",
         "answer": "Converges by Comparison Test.",
         "solution": "For \\( n \\ge 1 \\): \\( \\frac{3}{n^3 + 2n} < \\frac{3}{n^3} \\). Since \\( \\sum \\frac{3}{n^3} = 3\\sum \\frac{1}{n^3} \\) converges (p-series, \\( p=3 \\)), by the Comparison Test, the given series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=2}^{\\infty} \\frac{n+3}{n^2 - 1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=2}^{\\infty} \\frac{n+3}{n^2 - 1} \\)",
         "answer": "Diverges by Limit Comparison Test.",
         "solution": "Use Limit Comparison with \\( b_n = \\frac{1}{n} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{(n+3)/(n^2-1)}{1/n} = \\lim_{n \\to \\infty} \\frac{n(n+3)}{n^2-1} = \\lim_{n \\to \\infty} \\frac{n^2+3n}{n^2-1} = 1 \\]\n\nSince \\( \\sum \\frac{1}{n} \\) diverges, by LCT, the given series diverges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{2^n}{3^n + 1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{2^n}{3^n + 1} \\)",
         "answer": "Converges by Comparison Test.",
         "solution": "For all \\( n \\): \\( \\frac{2^n}{3^n + 1} < \\frac{2^n}{3^n} = \\left(\\frac{2}{3}\\right)^n \\). Since \\( \\sum \\left(\\frac{2}{3}\\right)^n \\) is a convergent geometric series (\\( |r| < 1 \\)), by the Comparison Test the given series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{n^2 + 3} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{n^2 + 3} \\)",
         "answer": "Converges by Limit Comparison Test.",
         "solution": "Use LCT with \\( b_n = \\frac{1}{n^{3/2}} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{\\sqrt{n}/(n^2+3)}{1/n^{3/2}} = \\lim_{n \\to \\infty} \\frac{n^{3/2} \\cdot \\sqrt{n}}{n^2 + 3} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2+3} = 1 \\]\n\nSince \\( \\sum \\frac{1}{n^{3/2}} \\) converges (p-series, \\( p = \\frac{3}{2} > 1 \\)), by LCT the given series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^2 + 1}{n^3 + 5} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^2 + 1}{n^3 + 5} \\)",
         "answer": "Diverges by Limit Comparison Test.",
         "solution": "Use LCT with \\( b_n = \\frac{1}{n} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{(n^2+1)/(n^3+5)}{1/n} = \\lim_{n \\to \\infty} \\frac{n^3+n}{n^3+5} = 1 \\]\n\nSince \\( \\sum \\frac{1}{n} \\) diverges, by LCT the series diverges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{2^n + n} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{2^n + n} \\)",
         "answer": "Converges by Comparison Test.",
         "solution": "For \\( n \\ge 1 \\): \\( \\frac{1}{2^n + n} < \\frac{1}{2^n} \\). Since \\( \\sum \\frac{1}{2^n} \\) converges (geometric, \\( r = 1/2 \\)), by the Comparison Test the given series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=3}^{\\infty} \\frac{n}{(n-1)(n+2)} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=3}^{\\infty} \\frac{n}{(n-1)(n+2)} \\)",
         "answer": "Diverges by Limit Comparison Test.",
         "solution": "Use LCT with \\( b_n = \\frac{1}{n} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{n/[(n-1)(n+2)]}{1/n} = \\lim_{n \\to \\infty} \\frac{n^2}{(n-1)(n+2)} = \\lim_{n \\to \\infty} \\frac{n^2}{n^2 + n - 2} = 1 \\]\n\nSince \\( \\sum \\frac{1}{n} \\) diverges, by LCT the series diverges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{5n + 2}{n^3 + 4n^2} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{5n + 2}{n^3 + 4n^2} \\)",
         "answer": "Converges by Limit Comparison Test.",
         "solution": "Use LCT with \\( b_n = \\frac{1}{n^2} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{(5n+2)/(n^3+4n^2)}{1/n^2} = \\lim_{n \\to \\infty} \\frac{n^2(5n+2)}{n^3+4n^2} = \\lim_{n \\to \\infty} \\frac{5n^3+2n^2}{n^3+4n^2} = 5 \\]\n\nSince \\( 0 < 5 < \\infty \\) and \\( \\sum \\frac{1}{n^2} \\) converges, by LCT the series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2} \\)",
         "answer": "Converges by Comparison Test.",
         "solution": "Since \\( 0 \\le \\sin^2(n) \\le 1 \\), we have \\( 0 \\le \\frac{\\sin^2(n)}{n^2} \\le \\frac{1}{n^2} \\). Since \\( \\sum \\frac{1}{n^2} \\) converges, by the Comparison Test the given series converges."
       },
       {
         "prompt": "Use a Comparison Test to determine convergence.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=2}^{\\infty} \\frac{1}{\\sqrt{n^3 - 1}} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=2}^{\\infty} \\frac{1}{\\sqrt{n^3 - 1}} \\)",
         "answer": "Converges by Limit Comparison Test.",
         "solution": "Use LCT with \\( b_n = \\frac{1}{n^{3/2}} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{1/\\sqrt{n^3-1}}{1/n^{3/2}} = \\lim_{n \\to \\infty} \\frac{n^{3/2}}{\\sqrt{n^3-1}} = \\lim_{n \\to \\infty} \\sqrt{\\frac{n^3}{n^3-1}} = 1 \\]\n\nSince \\( \\sum \\frac{1}{n^{3/2}} \\) converges, by LCT the series converges."
       }
@@ -3887,61 +3887,61 @@
     "problems": [
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n+3} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n+3} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{1}{n+3} \\). Check the conditions of the Alternating Series Test:\n1. \\( b_n > 0 \\) for all \\( n \\ge 1 \\). Check.\n2. \\( b_{n+1} = \\frac{1}{n+4} < \\frac{1}{n+3} = b_n \\). The sequence \\( \\{b_n\\} \\) is decreasing. Check.\n3. \\( \\lim_{n \\to \\infty} b_n = 0 \\). Check.\n\nAll conditions satisfied, so the series converges by the Alternating Series Test."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{2n+1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{2n+1} \\)",
         "answer": "Diverges (by the Divergence Test).",
         "solution": "Let \\( b_n = \\frac{n}{2n+1} \\). Check: \\( \\lim_{n \\to \\infty} \\frac{n}{2n+1} = \\frac{1}{2} \\neq 0 \\).\n\nSince \\( \\lim_{n \\to \\infty} b_n \\neq 0 \\), the series diverges by the Divergence Test (the general term \\( \\frac{(-1)^n \\cdot n}{2n+1} \\) does not approach 0)."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n-1}}{n^2 + 1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n-1}}{n^2 + 1} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{1}{n^2+1} \\).\n1. \\( b_n > 0 \\). Check.\n2. \\( b_{n+1} = \\frac{1}{(n+1)^2+1} < \\frac{1}{n^2+1} = b_n \\). Decreasing. Check.\n3. \\( \\lim_{n \\to \\infty} b_n = 0 \\). Check.\n\nBy the AST, the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} \\ln(n)}{n} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} \\ln(n)}{n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{\\ln n}{n} \\). Consider \\( f(x) = \\frac{\\ln x}{x} \\). Then \\( f'(x) = \\frac{1 - \\ln x}{x^2} < 0 \\) for \\( x > e \\), so \\( b_n \\) is eventually decreasing.\n\n\\( \\lim_{n \\to \\infty} \\frac{\\ln n}{n} = 0 \\) (by L'Hopital's Rule).\n\nAll conditions of the AST are eventually satisfied, so the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n} \\)",
         "answer": "Converges (to \\( \\frac{3}{4} \\)).",
         "solution": "This is actually a geometric series with \\( r = -\\frac{1}{3} \\). Since \\( |r| < 1 \\), it converges (to \\( \\frac{1}{1+1/3} = \\frac{3}{4} \\)).\n\nWe could also verify via AST: \\( b_n = \\frac{1}{3^n} \\) is decreasing and approaches 0."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=2}^{\\infty} \\frac{(-1)^n \\sqrt{n}}{n-1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=2}^{\\infty} \\frac{(-1)^n \\sqrt{n}}{n-1} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{\\sqrt{n}}{n-1} \\). For large \\( n \\), \\( b_n \\approx \\frac{1}{\\sqrt{n}} \\to 0 \\).\n\nMore precisely: \\( \\lim_{n \\to \\infty} \\frac{\\sqrt{n}}{n-1} = 0 \\). Check.\n\nIs \\( b_n \\) eventually decreasing? Let \\( f(x) = \\frac{\\sqrt{x}}{x-1} \\). Then:\n\\[ f'(x) = \\frac{\\frac{1}{2\\sqrt{x}}(x-1) - \\sqrt{x}}{(x-1)^2} = \\frac{x - 1 - 2x}{2\\sqrt{x}(x-1)^2} = \\frac{-(x+1)}{2\\sqrt{x}(x-1)^2} < 0 \\]\nfor \\( x > 1 \\). So \\( b_n \\) is decreasing for \\( n \\ge 2 \\). Check.\n\nBy the AST, the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n-1} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2n-1} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{1}{2n-1} \\).\n1. \\( b_n > 0 \\). Check.\n2. \\( b_{n+1} = \\frac{1}{2n+1} < \\frac{1}{2n-1} = b_n \\). Decreasing. Check.\n3. \\( \\lim_{n \\to \\infty} b_n = 0 \\). Check.\n\nBy the AST, the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n (n+2)}{n^2 + 4n + 5} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n (n+2)}{n^2 + 4n + 5} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{n+2}{n^2+4n+5} \\). Check the limit: \\( \\lim_{n \\to \\infty} \\frac{n+2}{n^2+4n+5} = 0 \\). Check.\n\nIs it decreasing? Let \\( f(x) = \\frac{x+2}{x^2+4x+5} \\):\n\\[ f'(x) = \\frac{(x^2+4x+5) - (x+2)(2x+4)}{(x^2+4x+5)^2} = \\frac{x^2+4x+5 - 2x^2 - 8x - 8}{(x^2+4x+5)^2} = \\frac{-x^2 - 4x - 3}{(x^2+4x+5)^2} \\]\n\nThe numerator \\( -(x^2+4x+3) = -(x+1)(x+3) < 0 \\) for \\( x > 0 \\). So \\( f \\) is decreasing for \\( x \\ge 1 \\). Check.\n\nBy the AST, the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} (-1)^{n+1} \\frac{3^n}{n!} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} (-1)^{n+1} \\frac{3^n}{n!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "Let \\( b_n = \\frac{3^n}{n!} \\). Check limit: \\( \\lim_{n \\to \\infty} \\frac{3^n}{n!} = 0 \\) (factorial grows faster than exponential). Check.\n\nIs it eventually decreasing? \\( \\frac{b_{n+1}}{b_n} = \\frac{3}{n+1} < 1 \\) when \\( n \\ge 3 \\). So \\( b_n \\) is decreasing for \\( n \\ge 3 \\). Check.\n\nBy the AST, the series converges."
       },
       {
         "prompt": "Use the Alternating Series Test.",
-        "problem": "Determine if the series converges or diverges.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} n^2}{n^2 + 5} \\]",
+        "problem": "Determine if the series converges or diverges.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} n^2}{n^2 + 5} \\)",
         "answer": "Diverges (by the Divergence Test).",
         "solution": "\\( \\lim_{n \\to \\infty} \\frac{n^2}{n^2+5} = 1 \\neq 0 \\).\n\nSo the general term \\( \\frac{(-1)^{n+1} n^2}{n^2+5} \\) does not approach 0. By the Divergence Test, the series diverges."
       }
@@ -3959,61 +3959,61 @@
     "problems": [
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^2} \\)",
         "answer": "Absolutely convergent.",
         "solution": "Consider \\( \\sum \\left| \\frac{(-1)^{n+1}}{n^2} \\right| = \\sum \\frac{1}{n^2} \\), which converges (p-series, \\( p=2 \\)).\n\nSince \\( \\sum |a_n| \\) converges, the series is **absolutely convergent**."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n-1}}{\\sqrt{n}} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n-1}}{\\sqrt{n}} \\)",
         "answer": "Conditionally convergent.",
         "solution": "Consider \\( \\sum \\frac{1}{\\sqrt{n}} = \\sum \\frac{1}{n^{1/2}} \\), a p-series with \\( p = \\frac{1}{2} \\le 1 \\). This diverges.\n\nSo the series is not absolutely convergent. Now check the original: \\( b_n = \\frac{1}{\\sqrt{n}} \\) is positive, decreasing, and approaches 0. By the AST, the original series converges.\n\nSince the series converges but not absolutely, it is **conditionally convergent**."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{n+2} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{n+2} \\)",
         "answer": "\\[ Divergent. \\]",
         "solution": "\\( \\lim_{n \\to \\infty} \\frac{n}{n+2} = 1 \\neq 0 \\). Since the terms do not approach 0, the series diverges by the Divergence Test."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^3 + 2} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^3 + 2} \\)",
         "answer": "Absolutely convergent.",
         "solution": "\\( \\sum \\left| a_n \\right| = \\sum \\frac{1}{n^3+2} \\). Compare with \\( \\frac{1}{n^3} \\): since \\( \\frac{1}{n^3+2} < \\frac{1}{n^3} \\) and \\( \\sum \\frac{1}{n^3} \\) converges, by the Comparison Test \\( \\sum |a_n| \\) converges."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=2}^{\\infty} \\frac{(-1)^n}{n \\ln n} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=2}^{\\infty} \\frac{(-1)^n}{n \\ln n} \\)",
         "answer": "Conditionally convergent.",
         "solution": "Consider \\( \\sum \\frac{1}{n \\ln n} \\). By the Integral Test (Section 10.6), \\( \\int_2^{\\infty} \\frac{1}{x \\ln x}\\,dx = \\infty \\). So the series of absolute values diverges; the series is not absolutely convergent.\n\nNow check the original with AST. \\( b_n = \\frac{1}{n \\ln n} \\) is positive, decreasing for \\( n \\ge 2 \\), and \\( \\lim_{n \\to \\infty} b_n = 0 \\). By the AST, the original converges."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} n}{n^2 + 3} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} n}{n^2 + 3} \\)",
         "answer": "Conditionally convergent.",
         "solution": "Consider \\( \\sum \\frac{n}{n^2+3} \\). By LCT with \\( \\frac{1}{n} \\): \\( \\lim \\frac{n^2}{n^2+3} = 1 \\), so this diverges (harmonic comparison). Not absolutely convergent.\n\nCheck AST: \\( b_n = \\frac{n}{n^2+3} \\). Let \\( f(x) = \\frac{x}{x^2+3} \\), \\( f'(x) = \\frac{3-x^2}{(x^2+3)^2} < 0 \\) for \\( x > \\sqrt{3} \\). So \\( b_n \\) is eventually decreasing, and \\( b_n \\to 0 \\). AST gives convergence."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{3^n} \\)",
         "answer": "Absolutely convergent.",
         "solution": "\\( \\sum |a_n| = \\sum \\frac{1}{3^n} \\), a geometric series with \\( r = \\frac{1}{3} < 1 \\). Converges."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^{4/3}} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^{4/3}} \\)",
         "answer": "Absolutely convergent.",
         "solution": "\\( \\sum |a_n| = \\sum \\frac{1}{n^{4/3}} \\), a p-series with \\( p = \\frac{4}{3} > 1 \\). Converges."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} \\ln n}{n} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} \\ln n}{n} \\)",
         "answer": "Conditionally convergent.",
         "solution": "\\( \\sum \\frac{\\ln n}{n} \\) diverges (by comparison: \\( \\frac{\\ln n}{n} > \\frac{1}{n} \\) for \\( n \\ge 3 \\), and the harmonic series diverges). Not absolutely convergent.\n\nCheck AST: \\( b_n = \\frac{\\ln n}{n} \\). \\( f(x) = \\frac{\\ln x}{x} \\), \\( f'(x) = \\frac{1-\\ln x}{x^2} < 0 \\) for \\( x > e \\). So \\( b_n \\) eventually decreasing and \\( b_n \\to 0 \\). AST gives convergence."
       },
       {
         "prompt": "Classify the series as absolutely convergent, conditionally convergent, or divergent.",
-        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n!} \\]",
+        "problem": "Determine if the series is absolutely convergent, conditionally convergent, or divergent.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n!} \\)",
         "answer": "Absolutely convergent.",
         "solution": "\\( \\sum |a_n| = \\sum \\frac{1}{n!} \\). The Ratio Test: \\( \\frac{a_{n+1}}{a_n} = \\frac{1}{n+1} \\to 0 < 1 \\). Converges."
       }
@@ -4031,85 +4031,85 @@
     "problems": [
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n}{3^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n}{3^n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n \\to \\infty} \\frac{(n+1)/3^{n+1}}{n/3^n} = \\lim_{n \\to \\infty} \\frac{n+1}{3n} = \\frac{1}{3} \\]\n\nSince \\( L = \\frac{1}{3} < 1 \\), the series converges by the Ratio Test."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=0}^{\\infty} \\frac{n!}{5^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=0}^{\\infty} \\frac{n!}{5^n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)!/5^{n+1}}{n!/5^n} = \\lim_{n \\to \\infty} \\frac{n+1}{5} = \\infty \\]\n\nSince \\( L = \\infty > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{2^n}{n!} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{2^n}{n!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{2^{n+1}/(n+1)!}{2^n/n!} = \\lim_{n \\to \\infty} \\frac{2}{n+1} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^2 \\cdot 4^n}{n!} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^2 \\cdot 4^n}{n!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)^2 \\cdot 4^{n+1}/(n+1)!}{n^2 \\cdot 4^n/n!} = \\lim_{n \\to \\infty} \\frac{(n+1)^2 \\cdot 4}{n^2(n+1)} = \\lim_{n \\to \\infty} \\frac{4(n+1)}{n^2} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{3^n}{n^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{3^n}{n^2} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{3^{n+1}/(n+1)^2}{3^n/n^2} = \\lim_{n \\to \\infty} 3 \\cdot \\frac{n^2}{(n+1)^2} = 3 \\]\n\nSince \\( L = 3 > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{4^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{4^n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(-1)^{n+1}(n+1)/4^{n+1}}{(-1)^n \\cdot n/4^n} \\right| = \\lim_{n \\to \\infty} \\frac{n+1}{4n} = \\frac{1}{4} \\]\n\nSince \\( L = \\frac{1}{4} < 1 \\), the series converges (absolutely)."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(2n)!}{(n!)^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=0}^{\\infty} \\frac{(2n)!}{(n!)^2} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(2n+2)!/((n+1)!)^2}{(2n)!/(n!)^2} = \\lim_{n \\to \\infty} \\frac{(2n+2)(2n+1)}{(n+1)^2} = \\lim_{n \\to \\infty} \\frac{4n^2+6n+2}{n^2+2n+1} = 4 \\]\n\nSince \\( L = 4 > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{5^n \\cdot n!}{(2n)!} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{5^n \\cdot n!}{(2n)!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{5^{n+1}(n+1)!/(2n+2)!}{5^n \\cdot n!/(2n)!} = \\lim_{n \\to \\infty} \\frac{5(n+1)}{(2n+2)(2n+1)} = \\lim_{n \\to \\infty} \\frac{5(n+1)}{2(n+1)(2n+1)} = \\lim_{n \\to \\infty} \\frac{5}{2(2n+1)} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^3}{2^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^3}{2^n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)^3/2^{n+1}}{n^3/2^n} = \\lim_{n \\to \\infty} \\frac{(n+1)^3}{2n^3} = \\frac{1}{2} \\]\n\nSince \\( L = \\frac{1}{2} < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^4} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^4} \\)",
         "answer": "Ratio Test is inconclusive. (Series converges by p-Series Test.)",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{1/(n+1)^4}{1/n^4} = \\lim_{n \\to \\infty} \\frac{n^4}{(n+1)^4} = 1 \\]\n\nSince \\( L = 1 \\), the Ratio Test is **inconclusive**. (The series does converge by the p-Series Test with \\( p = 4 > 1 \\), but the Ratio Test cannot determine this.)"
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=0}^{\\infty} \\frac{n! \\cdot n!}{(2n)!} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=0}^{\\infty} \\frac{n! \\cdot n!}{(2n)!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)!(n+1)!/(2n+2)!}{n! \\cdot n!/(2n)!} = \\lim_{n \\to \\infty} \\frac{(n+1)^2}{(2n+2)(2n+1)} = \\lim_{n \\to \\infty} \\frac{(n+1)^2}{2(n+1)(2n+1)} = \\lim_{n \\to \\infty} \\frac{n+1}{2(2n+1)} = \\frac{1}{4} \\]\n\nSince \\( L = \\frac{1}{4} < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 2^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 2^n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(-3)^{n+1}/((n+1)2^{n+1})}{(-3)^n/(n \\cdot 2^n)} \\right| = \\lim_{n \\to \\infty} \\frac{3n}{2(n+1)} = \\frac{3}{2} \\]\n\nSince \\( L = \\frac{3}{2} > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{10^n}{n!} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{10^n}{n!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{10^{n+1}/(n+1)!}{10^n/n!} = \\lim_{n \\to \\infty} \\frac{10}{n+1} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Ratio Test.",
-        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n!}{n^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Ratio Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n!}{n^n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)!/(n+1)^{n+1}}{n!/n^n} = \\lim_{n \\to \\infty} \\frac{(n+1) \\cdot n^n}{(n+1)^{n+1}} = \\lim_{n \\to \\infty} \\frac{n^n}{(n+1)^n} = \\lim_{n \\to \\infty} \\left(\\frac{n}{n+1}\\right)^n = \\lim_{n \\to \\infty} \\left(\\frac{1}{1+1/n}\\right)^n = \\frac{1}{e} \\]\n\nSince \\( L = \\frac{1}{e} < 1 \\), the series converges."
       }
@@ -4127,61 +4127,61 @@
     "problems": [
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{2n}{3n+1}\\right)^n \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{2n}{3n+1}\\right)^n \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{2n}{3n+1}\\right)^n} = \\lim_{n \\to \\infty} \\frac{2n}{3n+1} = \\frac{2}{3} \\]\n\nSince \\( L = \\frac{2}{3} < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{n+1}{n}\\right)^{n^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{n+1}{n}\\right)^{n^2} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{n+1}{n}\\right)^{n^2}} = \\lim_{n \\to \\infty} \\left(\\frac{n+1}{n}\\right)^n = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e \\]\n\nSince \\( L = e > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{5^n}{n^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{5^n}{n^n} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\frac{5^n}{n^n}} = \\lim_{n \\to \\infty} \\frac{5}{n} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=0}^{\\infty} \\left(\\frac{4n+1}{2n+3}\\right)^n \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=0}^{\\infty} \\left(\\frac{4n+1}{2n+3}\\right)^n \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\left(\\frac{4n+1}{2n+3}\\right) = 2 \\]\n\nSince \\( L = 2 > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-3)^{2n}}{7^n} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-3)^{2n}}{7^n} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\( \\frac{(-3)^{2n}}{7^n} = \\frac{9^n}{7^n} = \\left(\\frac{9}{7}\\right)^n \\).\n\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{9}{7}\\right)^n} = \\frac{9}{7} \\]\n\nSince \\( L = \\frac{9}{7} > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{n}{n+2}\\right)^{3n} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{n}{n+2}\\right)^{3n} \\)",
         "answer": "Diverges (by the Divergence Test; Root Test inconclusive).",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{n}{n+2}\\right)^{3n}} = \\lim_{n \\to \\infty} \\left(\\frac{n}{n+2}\\right)^3 = 1^3 = 1 \\]\n\nSince \\( L = 1 \\), the Root Test is inconclusive.\n\nLet's analyze more carefully: \\( \\left(\\frac{n}{n+2}\\right)^{3n} = \\left(\\frac{1}{1+2/n}\\right)^{3n} = \\frac{1}{(1+2/n)^{3n}} \\to \\frac{1}{e^6} \\neq 0 \\).\n\nSince \\( a_n \\to \\frac{1}{e^6} \\neq 0 \\), the series diverges by the Divergence Test."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=2}^{\\infty} \\frac{2^n}{n^3} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=2}^{\\infty} \\frac{2^n}{n^3} \\)",
         "answer": "\\[ Diverges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\frac{2^n}{n^3}} = \\lim_{n \\to \\infty} \\frac{2}{n^{3/n}} = \\frac{2}{1} = 2 \\]\n(since \\( n^{3/n} = e^{3\\ln n/n} \\to e^0 = 1 \\))\n\nSince \\( L = 2 > 1 \\), the series diverges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{3}{5}\\right)^n \\cdot \\frac{1}{n^2} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{3}{5}\\right)^n \\cdot \\frac{1}{n^2} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{3}{5}\\right)^n \\cdot \\frac{1}{n^2}} = \\lim_{n \\to \\infty} \\frac{3}{5} \\cdot \\frac{1}{n^{2/n}} = \\frac{3}{5} \\cdot 1 = \\frac{3}{5} \\]\n\nSince \\( L = \\frac{3}{5} < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{\\ln n}{n}\\right)^n \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{\\ln n}{n}\\right)^n \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{\\ln n}{n}\\right)^n} = \\lim_{n \\to \\infty} \\frac{\\ln n}{n} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series converges."
       },
       {
         "prompt": "Apply the Root Test.",
-        "problem": "Determine if the series converges or diverges using the Root Test.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^n}{4^n \\cdot n!} \\]",
+        "problem": "Determine if the series converges or diverges using the Root Test.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^n}{4^n \\cdot n!} \\)",
         "answer": "\\[ Converges. \\]",
         "solution": "\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\frac{n^n}{4^n \\cdot n!}} = \\lim_{n \\to \\infty} \\frac{n}{4 \\cdot (n!)^{1/n}} \\]\n\nBy Stirling's approximation, \\( (n!)^{1/n} \\approx \\frac{n}{e} \\) for large \\( n \\), so:\n\\[ L = \\lim_{n \\to \\infty} \\frac{n}{4 \\cdot n/e} = \\frac{e}{4} \\approx 0.68 \\]\n\nSince \\( L = \\frac{e}{4} < 1 \\), the series converges."
       }
@@ -4199,73 +4199,73 @@
     "problems": [
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{2n+3}{n^2+4n} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{2n+3}{n^2+4n} \\)",
         "answer": "Diverges (LCT with harmonic series).",
         "solution": "The general term behaves like \\( \\frac{2n}{n^2} = \\frac{2}{n} \\) for large \\( n \\), suggesting divergence. Use **Limit Comparison Test** with \\( b_n = \\frac{1}{n} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{(2n+3)/(n^2+4n)}{1/n} = \\lim_{n \\to \\infty} \\frac{n(2n+3)}{n^2+4n} = \\lim_{n \\to \\infty} \\frac{2n^2+3n}{n^2+4n} = 2 \\]\n\nSince \\( \\sum \\frac{1}{n} \\) diverges and the limit is positive and finite, the series **diverges** by LCT."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=0}^{\\infty} \\frac{n^2}{e^n} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=0}^{\\infty} \\frac{n^2}{e^n} \\)",
         "answer": "Converges (Ratio Test).",
         "solution": "The presence of \\( e^n \\) in the denominator (exponential) and \\( n^2 \\) (polynomial) in the numerator suggests the **Ratio Test**:\n\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)^2/e^{n+1}}{n^2/e^n} = \\lim_{n \\to \\infty} \\frac{(n+1)^2}{en^2} = \\frac{1}{e} < 1 \\]\n\nThe series **converges** by the Ratio Test."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n+5} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n+5} \\)",
         "answer": "\\[ Converges (AST). \\]",
         "solution": "This is an alternating series. Use **Alternating Series Test**: \\( b_n = \\frac{1}{n+5} \\) is positive, decreasing, and \\( b_n \\to 0 \\). The series **converges**.\n\n(Note: it is only conditionally convergent, since \\( \\sum \\frac{1}{n+5} \\) diverges.)"
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n!}{10^n} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{n!}{10^n} \\)",
         "answer": "Diverges (Ratio Test).",
         "solution": "Factorials grow faster than exponentials. Use the **Ratio Test**:\n\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)!/10^{n+1}}{n!/10^n} = \\lim_{n \\to \\infty} \\frac{n+1}{10} = \\infty \\]\n\nThe series **diverges**."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 2n + 1} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{1}{n^2 + 2n + 1} \\)",
         "answer": "Converges (p-Series Test).",
         "solution": "Note \\( n^2 + 2n + 1 = (n+1)^2 \\), so this is \\( \\sum \\frac{1}{(n+1)^2} \\). This is a p-series (shifted) with \\( p = 2 > 1 \\). **Converges** by the p-Series Test."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^2 + 5}{n^2 + 1} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^2 + 5}{n^2 + 1} \\)",
         "answer": "Diverges (Divergence Test).",
         "solution": "\\[ \\lim_{n \\to \\infty} \\frac{n^2+5}{n^2+1} = 1 \\neq 0 \\]\n\n**Diverges** by the Divergence Test."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{3^n + 2}{5^n} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{3^n + 2}{5^n} \\)",
         "answer": "Converges (Geometric Series).",
         "solution": "\\( \\frac{3^n + 2}{5^n} = \\left(\\frac{3}{5}\\right)^n + \\frac{2}{5^n} \\). Both are convergent geometric series (\\( |r| < 1 \\)). The series **converges** (sum of convergent geometric series)."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=2}^{\\infty} \\frac{1}{\\sqrt{n} - 1} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=2}^{\\infty} \\frac{1}{\\sqrt{n} - 1} \\)",
         "answer": "Diverges (LCT with p-series, \\( p = 1/2 \\)).",
         "solution": "For large \\( n \\), \\( \\frac{1}{\\sqrt{n}-1} \\approx \\frac{1}{\\sqrt{n}} \\). Use **LCT** with \\( b_n = \\frac{1}{\\sqrt{n}} \\):\n\\[ \\lim_{n \\to \\infty} \\frac{1/(\\sqrt{n}-1)}{1/\\sqrt{n}} = \\lim_{n \\to \\infty} \\frac{\\sqrt{n}}{\\sqrt{n}-1} = 1 \\]\n\nSince \\( \\sum \\frac{1}{\\sqrt{n}} \\) diverges (p-series, \\( p = 1/2 \\)), the series **diverges**."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\left(\\frac{n}{2n+3}\\right)^n \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\left(\\frac{n}{2n+3}\\right)^n \\)",
         "answer": "Converges (Root Test).",
         "solution": "Use the **Root Test**:\n\\[ L = \\lim_{n \\to \\infty} \\sqrt[n]{\\left(\\frac{n}{2n+3}\\right)^n} = \\lim_{n \\to \\infty} \\frac{n}{2n+3} = \\frac{1}{2} < 1 \\]\n\nThe series **converges**."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{n^3 + 1} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n \\cdot n}{n^3 + 1} \\)",
         "answer": "\\[ Converges (AST). \\]",
         "solution": "Alternating series. Let \\( b_n = \\frac{n}{n^3+1} \\). For large \\( n \\), \\( b_n \\approx \\frac{1}{n^2} \\to 0 \\). Verify decreasing: \\( f(x) = \\frac{x}{x^3+1} \\), \\( f'(x) = \\frac{1-2x^3}{(x^3+1)^2} < 0 \\) for \\( x \\ge 1 \\). All AST conditions met.\n\nThe series **converges** by the AST."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=3}^{\\infty} \\frac{1}{n \\ln(n) (\\ln \\ln n)^2} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=3}^{\\infty} \\frac{1}{n \\ln(n) (\\ln \\ln n)^2} \\)",
         "answer": "Converges (Integral Test).",
         "solution": "Use the **Integral Test**. Let \\( f(x) = \\frac{1}{x \\ln x (\\ln \\ln x)^2} \\) for \\( x \\ge 3 \\).\n\nSubstitution: \\( u = \\ln(\\ln x) \\), \\( du = \\frac{1}{x \\ln x}\\,dx \\):\n\\[ \\int_3^{\\infty} \\frac{dx}{x \\ln x (\\ln \\ln x)^2} = \\int_{\\ln \\ln 3}^{\\infty} \\frac{du}{u^2} = \\left[-\\frac{1}{u}\\right]_{\\ln \\ln 3}^{\\infty} = \\frac{1}{\\ln \\ln 3} < \\infty \\]\n\nThe integral converges, so the series **converges**."
       },
       {
         "prompt": "Determine convergence. Name the test you used.",
-        "problem": "Determine if the series converges or diverges. State which test you used.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n}{(n+1)!} \\]",
+        "problem": "Determine if the series converges or diverges. State which test you used.\n\\( \\sum_{n=1}^{\\infty} \\frac{n}{(n+1)!} \\)",
         "answer": "Converges (Ratio Test).",
         "solution": "Use the **Ratio Test**:\n\\[ L = \\lim_{n \\to \\infty} \\frac{(n+1)/(n+2)!}{n/(n+1)!} = \\lim_{n \\to \\infty} \\frac{(n+1)}{n(n+2)} = 0 \\]\n\nSince \\( L = 0 < 1 \\), the series **converges**."
       }
@@ -4343,67 +4343,67 @@
     "problems": [
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{x^n}{n+1} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{x^n}{n+1} \\)",
         "answer": "\\( R = 1 \\), interval of convergence: \\( [-1, 1) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{x^{n+1}/(n+2)}{x^n/(n+1)} \\right| = |x| \\lim_{n \\to \\infty} \\frac{n+1}{n+2} = |x| \\]\n\nConverges when \\( |x| < 1 \\). Radius \\( R = 1 \\).\n\nCheck endpoints:\n- \\( x = 1 \\): \\( \\sum \\frac{1}{n+1} \\) diverges (harmonic).\n- \\( x = -1 \\): \\( \\sum \\frac{(-1)^n}{n+1} \\) converges (AST)."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{n}{4^n}(x-2)^n \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{n}{4^n}(x-2)^n \\)",
         "answer": "\\( R = 4 \\), interval: \\( (-2, 6) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(n+1)(x-2)^{n+1}/4^{n+1}}{n(x-2)^n/4^n} \\right| = \\frac{|x-2|}{4} \\lim_{n \\to \\infty} \\frac{n+1}{n} = \\frac{|x-2|}{4} \\]\n\nConverges when \\( |x-2| < 4 \\), i.e., \\( -2 < x < 6 \\). Radius \\( R = 4 \\).\n\nCheck endpoints:\n- \\( x = 6 \\): \\( \\sum \\frac{n \\cdot 4^n}{4^n} = \\sum n \\) diverges.\n- \\( x = -2 \\): \\( \\sum \\frac{n(-4)^n}{4^n} = \\sum n(-1)^n \\) diverges."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(x+1)^n}{n!} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{(x+1)^n}{n!} \\)",
         "answer": "\\( R = \\infty \\), interval: \\( (-\\infty, \\infty) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(x+1)^{n+1}/(n+1)!}{(x+1)^n/n!} \\right| = |x+1| \\lim_{n \\to \\infty} \\frac{1}{n+1} = 0 \\]\n\n\\( L = 0 < 1 \\) for all \\( x \\). The series converges for all \\( x \\)."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=1}^{\\infty} \\frac{n^2}{3^n}(x+4)^n \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=1}^{\\infty} \\frac{n^2}{3^n}(x+4)^n \\)",
         "answer": "\\( R = 3 \\), interval: \\( (-7, -1) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(n+1)^2(x+4)^{n+1}/3^{n+1}}{n^2(x+4)^n/3^n} \\right| = \\frac{|x+4|}{3} \\lim_{n \\to \\infty} \\frac{(n+1)^2}{n^2} = \\frac{|x+4|}{3} \\]\n\nConverges when \\( |x+4| < 3 \\), i.e., \\( -7 < x < -1 \\). Radius \\( R = 3 \\).\n\nCheck endpoints:\n- \\( x = -1 \\): \\( \\sum n^2 \\cdot 3^n / 3^n = \\sum n^2 \\) diverges.\n- \\( x = -7 \\): \\( \\sum n^2 (-3)^n/3^n = \\sum n^2(-1)^n \\) diverges."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(-1)^n x^n}{\\sqrt{n}} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=1}^{\\infty} \\frac{(-1)^n x^n}{\\sqrt{n}} \\)",
         "answer": "\\( R = 1 \\), interval: \\( (-1, 1] \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{x^{n+1}/\\sqrt{n+1}}{x^n/\\sqrt{n}} \\right| = |x| \\lim_{n \\to \\infty} \\sqrt{\\frac{n}{n+1}} = |x| \\]\n\nConverges when \\( |x| < 1 \\). Radius \\( R = 1 \\).\n\nCheck endpoints:\n- \\( x = 1 \\): \\( \\sum \\frac{(-1)^n}{\\sqrt{n}} \\) converges (AST).\n- \\( x = -1 \\): \\( \\sum \\frac{(-1)^n(-1)^n}{\\sqrt{n}} = \\sum \\frac{1}{\\sqrt{n}} \\) diverges (p-series, \\( p = 1/2 \\))."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} n!(2x)^n \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} n!(2x)^n \\)",
         "answer": "\\( R = 0 \\), converges only at \\( x = 0 \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(n+1)!(2x)^{n+1}}{n!(2x)^n} \\right| = \\lim_{n \\to \\infty} (n+1)|2x| = \\infty \\]\nfor any \\( x \\neq 0 \\). At \\( x = 0 \\), the series equals 1."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(2x-1)^n}{5^n} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{(2x-1)^n}{5^n} \\)",
         "answer": "\\( R = \\frac{5}{2} \\), interval: \\( (-2, 3) \\).",
         "solution": "This is geometric with ratio \\( r = \\frac{2x-1}{5} \\). Converges when \\( \\left|\\frac{2x-1}{5}\\right| < 1 \\), i.e., \\( |2x-1| < 5 \\).\n\n\\( -5 < 2x-1 < 5 \\Rightarrow -2 < x < 3 \\). Centered at \\( x = 1/2 \\). Radius \\( R = 5/2 \\)."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=1}^{\\infty} \\frac{(x-3)^n}{n \\cdot 2^n} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=1}^{\\infty} \\frac{(x-3)^n}{n \\cdot 2^n} \\)",
         "answer": "\\( R = 2 \\), interval: \\( [1, 5) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(x-3)^{n+1}/((n+1)2^{n+1})}{(x-3)^n/(n \\cdot 2^n)} \\right| = \\frac{|x-3|}{2} \\lim_{n \\to \\infty} \\frac{n}{n+1} = \\frac{|x-3|}{2} \\]\n\nConverges when \\( |x-3| < 2 \\), i.e., \\( 1 < x < 5 \\). Radius \\( R = 2 \\).\n\nCheck endpoints:\n- \\( x = 5 \\): \\( \\sum \\frac{2^n}{n \\cdot 2^n} = \\sum \\frac{1}{n} \\) diverges.\n- \\( x = 1 \\): \\( \\sum \\frac{(-2)^n}{n \\cdot 2^n} = \\sum \\frac{(-1)^n}{n} \\) converges (AST)."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{n!}{(2n)!} x^n \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{n!}{(2n)!} x^n \\)",
         "answer": "\\( R = \\infty \\), interval: \\( (-\\infty, \\infty) \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(n+1)! x^{n+1}/(2n+2)!}{n! x^n/(2n)!} \\right| = |x| \\lim_{n \\to \\infty} \\frac{n+1}{(2n+2)(2n+1)} = |x| \\cdot 0 = 0 \\]\n\n\\( L = 0 \\) for all \\( x \\)."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=1}^{\\infty} \\frac{5^n}{n^2}(x+2)^n \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=1}^{\\infty} \\frac{5^n}{n^2}(x+2)^n \\)",
         "answer": "\\( R = \\frac{1}{5} \\), interval: \\( \\left[-\\frac{11}{5}, -\\frac{9}{5}\\right] \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{5^{n+1}(x+2)^{n+1}/(n+1)^2}{5^n(x+2)^n/n^2} \\right| = 5|x+2| \\lim_{n \\to \\infty} \\frac{n^2}{(n+1)^2} = 5|x+2| \\]\n\nConverges when \\( 5|x+2| < 1 \\), i.e., \\( |x+2| < \\frac{1}{5} \\). Radius \\( R = \\frac{1}{5} \\).\n\nCheck endpoints:\n- \\( x = -2 + 1/5 = -9/5 \\): \\( \\sum \\frac{5^n (1/5)^n}{n^2} = \\sum \\frac{1}{n^2} \\) converges.\n- \\( x = -2 - 1/5 = -11/5 \\): \\( \\sum \\frac{5^n (-1/5)^n}{n^2} = \\sum \\frac{(-1)^n}{n^2} \\) converges."
       },
       {
         "prompt": "Find the radius and interval of convergence.",
-        "problem": "Find the radius and interval of convergence.\n\\[ \\sum_{n=0}^{\\infty} \\frac{(3x)^n}{n^2 + 1} \\]",
+        "problem": "Find the radius and interval of convergence.\n\\( \\sum_{n=0}^{\\infty} \\frac{(3x)^n}{n^2 + 1} \\)",
         "answer": "\\( R = \\frac{1}{3} \\), interval: \\( \\left[-\\frac{1}{3}, \\frac{1}{3}\\right] \\).",
         "solution": "Ratio Test:\n\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(3x)^{n+1}/((n+1)^2+1)}{(3x)^n/(n^2+1)} \\right| = 3|x| \\lim_{n \\to \\infty} \\frac{n^2+1}{(n+1)^2+1} = 3|x| \\]\n\nConverges when \\( 3|x| < 1 \\), i.e., \\( |x| < \\frac{1}{3} \\). Radius \\( R = \\frac{1}{3} \\).\n\nCheck endpoints:\n- \\( x = 1/3 \\): \\( \\sum \\frac{1}{n^2+1} \\) converges (comparison with \\( 1/n^2 \\)).\n- \\( x = -1/3 \\): \\( \\sum \\frac{(-1)^n}{n^2+1} \\) converges (AST, or absolutely)."
       }
@@ -4601,7 +4601,7 @@
     "problems": [
       {
         "prompt": "Use series to solve the problem.",
-        "problem": "Determine a Taylor Series about \\( x = 0 \\) for the integral:\n\\[ \\int \\frac{\\cos x - 1}{x}\\,dx \\]",
+        "problem": "Determine a Taylor Series about \\( x = 0 \\) for the integral:\n\\( \\int \\frac{\\cos x - 1}{x}\\,dx \\)",
         "answer": "\\( C + \\displaystyle\\sum_{n=1}^{\\infty} \\frac{(-1)^n x^{2n}}{2n \\cdot (2n)!} \\)",
         "solution": "\\( \\cos x = 1 - \\frac{x^2}{2} + \\frac{x^4}{24} - \\cdots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\).\n\n\\( \\cos x - 1 = \\sum_{n=1}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\).\n\n\\( \\frac{\\cos x - 1}{x} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n x^{2n-1}}{(2n)!} \\).\n\nIntegrate:\n\\[ \\int \\frac{\\cos x - 1}{x}\\,dx = C + \\sum_{n=1}^{\\infty} \\frac{(-1)^n x^{2n}}{2n \\cdot (2n)!} \\]"
       },
@@ -4619,7 +4619,7 @@
       },
       {
         "prompt": "Use series to solve the problem.",
-        "problem": "Determine a Taylor Series about \\( x = 0 \\) for the integral:\n\\[ \\int e^{-x^3}\\,dx \\]",
+        "problem": "Determine a Taylor Series about \\( x = 0 \\) for the integral:\n\\( \\int e^{-x^3}\\,dx \\)",
         "answer": "\\( C + \\displaystyle\\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{3n+1}}{n!(3n+1)} \\)",
         "solution": "\\( e^u = \\sum \\frac{u^n}{n!} \\). Substitute \\( u = -x^3 \\):\n\\[ e^{-x^3} = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{3n}}{n!} \\]\n\nIntegrate:\n\\[ \\int e^{-x^3}\\,dx = C + \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{3n+1}}{n!(3n+1)} \\]"
       },
