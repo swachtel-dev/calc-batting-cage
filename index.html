@@ -468,6 +468,7 @@
   }
   /* Timer hidden mode: display still there but faint and unanimated; session timer dimmed */
   body.timer-hidden .problem-timer { visibility: hidden; height: 32px; }
+  .session-timer, .problem-timer, #timer-toggle { display: none !important; }
   body.timer-hidden .session-timer { opacity: 0.3; }
   body.timer-hidden .session-timer__dot { animation: none; }
   .problem-timer .timer-pulse {
@@ -958,7 +959,6 @@
             <th>Section</th>
             <th>Problem</th>
             <th>Result</th>
-            <th>Time</th>
             <th>Paul's Notes</th>
           </tr>
         </thead>
@@ -1301,10 +1301,6 @@ function showResults() {
   // Stats
   document.getElementById('stats-row').innerHTML = `
     <div class="stat-card">
-      <div class="stat-card__value amber">${formatTime(totalTime)}</div>
-      <div class="stat-card__label">Total Time</div>
-    </div>
-    <div class="stat-card">
       <div class="stat-card__value">${total}</div>
       <div class="stat-card__label">Problems</div>
     </div>
@@ -1346,7 +1342,6 @@ function showResults() {
       <td><span style="font-family:var(--font-mono);font-size:12px;color:var(--text-3)">\u00a7${sec.id}</span></td>
       <td class="result-problem-cell"></td>
       <td><span class="result-badge ${badgeClass}">${badgeText}</span></td>
-      <td style="font-family:var(--font-mono);font-size:13px;color:var(--text-2)">${formatTime(r.time)}</td>
       <td>
         <div class="result-actions-cell">
           <button class="result-walkthrough-toggle" data-idx="${i}" onclick="toggleResultWalkthrough(${i})">
